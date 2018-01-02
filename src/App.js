@@ -1,24 +1,18 @@
-import React, {Component} from 'react'
-import {CSSTransitionGroup} from 'react-transition-group'
-import {PageContainer, PageName} from './page-router'
+import React, {Component} from 'react';
+import {Router, PageName, RoutePage, EntryPage} from './js/page-router';
 
 class App extends Component {
 
-  constructor(prop) {
-    super(prop);
+  constructor(props) {
+    super(props);
     this.state = {
       location : ""
-    }
-    this.routingPage = this.routingPage.bind(this);
+    };
   }
 
   componentDidMount() {
-    this.routingPage();
-  }
-
-  routingPage() {
-    const page = PageContainer(PageName.MAIN_LOGIN);
-    this.setState({location : page });
+    Router.ConnectRouteContainer(this);
+    RoutePage(EntryPage);
   }
 
   render() {
@@ -26,9 +20,9 @@ class App extends Component {
 
     return (
       <div>
-        {location}
+        { location }
       </div>
-    )
+    );
   }
 }
 
