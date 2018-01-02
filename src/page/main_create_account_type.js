@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
+import BaseView from './base_view';
 
 const style = {
   position:'absolute',
   margin:'100px'
 }
 
-class View extends Component {
+class View extends BaseView {
 
   constructor(props) {
     super(props);

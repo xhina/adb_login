@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
+import BaseView from './base_view';
 
-class View extends Component {
+class View extends BaseView {
 
   constructor(props) {
     super(props);
