@@ -1,5 +1,5 @@
 import React from 'react';
-import BaseView from './base_view';
+import PageView from '../page-view';
 import {
   Container,
   Row,
@@ -11,7 +11,7 @@ import {
   Input
 } from 'reactstrap';
 
-class View extends BaseView {
+class View extends PageView {
 
   render() {
     return (<Container>

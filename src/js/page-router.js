@@ -8,8 +8,6 @@ import Login from './page/login';
 import TemporaryPassword from './page/temporary_password';
 import Header from './header';
 
-const _container = Symbol('container');
-
 export const PageName = {
   MAIN_ACCOUNT_SELECT: Symbol(),
   CREATE_EMAIL_ACCOUNT: Symbol(),
@@ -17,16 +15,16 @@ export const PageName = {
   PRIVACY_POLICY: Symbol(),
   ADDITIONAL_INFO: Symbol(),
   LOGIN: Symbol(),
-  TEMPORARY_PASSWORD: Symbol()
+  TEMPORARY_PASSWORD: Symbol(),
+  HEADER: Symbol(),
 };
 
 export const EntryPage = PageName.MAIN_ACCOUNT_SELECT;
 
-export class Router {
-  static ConnectRouteContainer(container) {
-    this[_container] = container;
-  }
-}
+let routeContainer;
+export let SetRouteContainer = (container) => {
+  routeContainer = container;
+};
 
 export const RoutePage = (pageName) => {
   let pageView;
@@ -52,6 +50,9 @@ export const RoutePage = (pageName) => {
     case PageName.TEMPORARY_PASSWORD:
       pageView = <TemporaryPassword />;
       break;
+    case PageName.HEADER:
+      pageView = <Header />;
+      break;
     default:
       pageView = null;
       break;
@@ -60,5 +61,5 @@ export const RoutePage = (pageName) => {
 };
 
 const Routing = (pageComponent) => {
-    Router[_container].setState({'location' : pageComponent});
-}
+    routeContainer.setState({'location' : pageComponent});
+};

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
-import BaseView from './base_view';
+import PageView from '../page-view';
 
-class View extends BaseView {
+class View extends PageView {
   render() {
     return (
 <pre style={style}>

@@ -1,19 +1,18 @@
 import React, {Component} from 'react';
-import BaseView from './base_view';
+import PageView from '../page-view';
 import {Button, Container, Row, Col} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
-import {RoutePage, PageName} from '../page-router'
-import Header from '../header'
+import {PageName} from '../page-router';
+import Header from '../header';
 
-
-class View extends BaseView {
+class View extends PageView {
 
   constructor(props) {
     super(props);
   }
 
   gotoCreateEmailAccountPage() {
-    RoutePage(PageName.CREATE_EMAIL_ACCOUNT);
+    super.go(PageName.CREATE_EMAIL_ACCOUNT);
   }
 
   render() {
@@ -24,7 +23,7 @@ class View extends BaseView {
           <Row className="justify-content-center">
             <Col className='debug_box'>
               <Row className="justify-content-center">
-                <img src={img_logo}/>
+                <img src={img_logo} />
               </Row>
               <div style={btn_group}>
                 <Row className="justify-content-center">

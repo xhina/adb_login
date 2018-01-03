@@ -5,31 +5,27 @@ class Header extends Component {
 
   changeNavButton(prop) {
     if (prop == "back") {
-      return <p>&lt;</p>
+      return "<";
     }
     else if (prop == "close") {
-      return <p>X</p>
+      return 'X';
     }
     return null;
   }
 
   render() {
     return (
-      <div>
-        <Navbar>
-          <Nav className="justify-content-center nav-fill">
-            <NavItem>
-              <NavLink href="#" className="text-left">{this.changeNavButton(this.props.left)}</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink>{this.props.title}</NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink href="#" className="text-right">{this.changeNavButton(this.props.right)}</NavLink>
-            </NavItem>
-          </Nav>
-        </Navbar>
-      </div>
+      <Nav style={{width:'100%',backgroundColor:'#ff8822'}} className="justify-content-center nav-fill">
+        <NavItem>
+          <NavLink href="#" className="text-left">{this.changeNavButton(this.props.left)}</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink>{this.props.title}</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink href="#" className="text-right">{this.changeNavButton(this.props.right)}</NavLink>
+        </NavItem>
+      </Nav>
     );
   }
 }

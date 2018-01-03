@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
-import {Router, PageName, RoutePage, EntryPage} from './js/page-router';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import {SetRouteContainer, PageName, RoutePage, EntryPage} from './js/page-router';
+// import * as data from './test';
 
 class App extends Component {
 
@@ -11,7 +13,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    Router.ConnectRouteContainer(this);
+    SetRouteContainer(this);
     RoutePage(EntryPage);
   }
 
@@ -19,9 +21,11 @@ class App extends Component {
     const location = this.state.location;
 
     return (
-      <div>
-        { location }
-      </div>
+      <Router>
+        <div>
+          <Route exact path="/" render={() => <div>{location}</div> } />
+        </div>
+      </Router>
     );
   }
 }
