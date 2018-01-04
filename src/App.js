@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {SetRouteContainer, PageName, RoutePage, EntryPage} from './js/page-router';
+import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
 // import * as data from './test';
 
 class App extends Component {
@@ -14,7 +14,7 @@ class App extends Component {
 
   componentDidMount() {
     SetRouteContainer(this);
-    RoutePage(EntryPage);
+    Go(PageUID.TEMPORARY_PASSWORD);
   }
 
   render() {
@@ -23,7 +23,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <Route exact path="/" render={() => <div>{location}</div> } />
+          <Route path="/" render={() => <div>{location}</div> } />
         </div>
       </Router>
     );

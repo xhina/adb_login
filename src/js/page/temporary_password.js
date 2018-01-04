@@ -1,5 +1,5 @@
 import React from 'react';
-import PageView from '../page-view';
+import Page from '../page';
 import {
   Container,
   Row,
@@ -11,26 +11,31 @@ import {
   Input
 } from 'reactstrap';
 
-class View extends PageView {
+class View extends Page {
 
   render() {
-    return (<Container>
-      <Form>
-        <FormGroup>
-          <Row>
-            <Col xs='2'>
-              <Label for="email">이메일</Label>
-            </Col>
-            <Col xs='10'>
-              <Input type="email" name="email" id="inputEmail" placeholder="adb@example.com"/>
-            </Col>
-          </Row>
-        </FormGroup>
-        <Row className="justify-content-center">
-          <Button color="primary">임시 비밀번호 받기</Button>
-        </Row>
-      </Form>
-    </Container>);
+    return (
+        <div>
+        {super.attachHeader('임시 비밀번호 요청')}
+        <Container>
+          <Form>
+            <FormGroup>
+              <Row>
+                <Col xs='2'>
+                  <Label for="email">이메일</Label>
+                </Col>
+                <Col xs='10'>
+                  <Input type="email" name="email" id="inputEmail" placeholder="adb@example.com"/>
+                </Col>
+              </Row>
+            </FormGroup>
+            <Row className="justify-content-center">
+              <Button color="primary">임시 비밀번호 받기</Button>
+            </Row>
+          </Form>
+        </Container>
+      </div>
+    );
   }
 }
 

@@ -1,10 +1,14 @@
 import React, {Component} from 'react';
-import PageView from '../page-view';
+import {Container} from 'reactstrap';
+import Page from '../page';
 
-class View extends PageView {
+class View extends Page {
   render() {
     return (
-<pre style={style}>
+      <div>
+        {super.attachHeader('개인정보 보호정책')}
+        <Container>
+          <pre style={style}>
 {`
 [제1장 총칙]
   제1조 (목적)
@@ -38,7 +42,9 @@ class View extends PageView {
   1. 본 약관의 내용은 ‘회사’가 제공하는 모든 서비스 화면에 게시하거나 기타의 방법으로 ‘회원’에게 공지함으로써 효력 이 발생합니다.
   2. 이 약관은 회사가 제공하는 모든 인터 넷서비스에 게시하여 공시합니다. ‘회사’ 는 "약관의 규제에 관한 법률", "정보통 신망 이용촉진 및 정보보호 등에 관한 법률" 등 관련 법에 위배되지 않는 범위 에서 이 약관을 변경할 수 있으며, ‘회사’ 는 약관이 변경되는 경우에 변경된 약관 의 내용과 시행일을 정하여, 그 시행일로 부터 최소 10일(이용자에게 불리하거나 중대한 사항의 변경은 30일) 이전부터 시행일 후 상당한 기간 동안 공지하고
 `}
-</pre>
+          </pre>
+        </Container>
+      </div>
     );
   }
 }

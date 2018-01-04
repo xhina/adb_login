@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import PageView from '../page-view';
+import Page from '../page';
 import {
   Container,
   Row,
@@ -11,40 +11,45 @@ import {
   Input
 } from 'reactstrap';
 
-class View extends PageView {
+class View extends Page {
 
   constructor(props) {
     super(props);
   }
 
   render() {
-    return (<Container>
-      <Form>
-        <FormGroup>
-          <Row>
-            <Col xs='2'>
-              <Label for="email">이메일</Label>
-            </Col>
-            <Col xs='10'>
-              <Input type="email" name="email" id="inputEmail" placeholder="adb@example.com"/>
-            </Col>
-          </Row>
-        </FormGroup>
-        <FormGroup>
-          <Row>
-            <Col xs="2">
-              <Label for="userName">이름</Label>
-            </Col>
-            <Col xs='10'>
-              <Input type="name" name="userName" id="inputUsername" placeholder="최소2자 ~ 16자"/>
-            </Col>
-          </Row>
-        </FormGroup>
-        <Row className="justify-content-center">
-          <Button color="primary" size="lg">가입 완료하기</Button>
-        </Row>
-      </Form>
-    </Container>);
+    return (
+      <div>
+        {super.attachHeader('추가 정보')}
+        <Container>
+          <Form>
+            <FormGroup>
+              <Row>
+                <Col xs='2'>
+                  <Label for="email">이메일</Label>
+                </Col>
+                <Col xs='10'>
+                  <Input type="email" name="email" id="inputEmail" placeholder="adb@example.com"/>
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col xs="2">
+                  <Label for="userName">이름</Label>
+                </Col>
+                <Col xs='10'>
+                  <Input type="name" name="userName" id="inputUsername" placeholder="최소2자 ~ 16자"/>
+                </Col>
+              </Row>
+            </FormGroup>
+            <Row className="justify-content-center">
+              <Button color="primary" size="lg">가입 완료하기</Button>
+            </Row>
+          </Form>
+        </Container>
+      </div>
+    );
   }
 }
 
