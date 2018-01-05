@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Page from '../page';
 import {
   Container,
@@ -13,14 +13,10 @@ import {
 
 class View extends Page {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
-        {super.attachHeader('이메일 가입')}
+        {super.attachHeader(super.getStrRes('email_account_title'))}
         <Container>
           <Form>
             <FormGroup>

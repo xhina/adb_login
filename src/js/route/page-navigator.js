@@ -1,4 +1,4 @@
-import React,{Component} from 'react';
+import {Component} from 'react';
 import {Go, GoBack, GoBackEnable} from './page-route-controller';
 
 class PageNavigator extends Component {

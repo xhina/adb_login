@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import BrowserHistory from './browser-history';
 
-// Page Comonent
+// Page Component
 import MainPage from '../page/main_account_select';
 import EmailAccountPage from '../page/create_email_account';
 import ServiceAgreement from '../page/service_agreement';

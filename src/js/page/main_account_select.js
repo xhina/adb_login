@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Page from '../page';
 import {Container, Button, Row, Col} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';

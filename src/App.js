@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
-// import * as data from './test';
+import StringResource from './js/string-resource';
 
 class App extends Component {
 
@@ -10,11 +10,11 @@ class App extends Component {
     this.state = {
       location : ""
     };
-  }
 
-  componentDidMount() {
-    SetRouteContainer(this);
-    Go(PageUID.TEMPORARY_PASSWORD);
+    new StringResource(() => {
+      SetRouteContainer(this);
+      Go(PageUID.MAIN_ACCOUNT_SELECT);
+    });
   }
 
   render() {

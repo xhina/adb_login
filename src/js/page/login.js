@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Page from '../page';
 import {
   Container,
@@ -13,15 +13,11 @@ import {
 
 class View extends Page {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
     return (
       <div>
         {super.attachHeader('로그인')}
-        
+
         <Container>
           <Form>
             <FormGroup>

@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import {Navbar,Nav,NavItem,NavLink} from 'reactstrap';
+import React from 'react';
+import {Nav,NavItem,NavLink} from 'reactstrap';
 import Navigator from '../route/page-navigator';
 
 class HeaderView extends Navigator {

@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Page from '../page';
 import {
   Container,
@@ -12,10 +12,6 @@ import {
 } from 'reactstrap';
 
 class View extends Page {
-
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
