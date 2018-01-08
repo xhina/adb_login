@@ -1,14 +1,10 @@
 import React from 'react';
 import Page from '../page';
-import {Container, Button, Row, Col} from 'reactstrap';
+import {Container, Button, Row} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
 import {PageUID} from '../route/page-route-controller';
 
 class View extends Page {
-
-  constructor(props) {
-    super(props);
-  }
 
   gotoCreateEmailAccountPage() {
     super.go(PageUID.CREATE_EMAIL_ACCOUNT);
@@ -20,7 +16,7 @@ class View extends Page {
         { super.attachHeader('') }
         <Container>
           <Row className="justify-content-center">
-            <img src={img_logo}/>
+            <img alt="" src={img_logo}/>
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">

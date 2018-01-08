@@ -59,12 +59,12 @@ const RoutePage = (pageUID) => {
 };
 
 export const Go = (pageUID) => {
-  history.go(pageUID) ? RoutePage(pageUID) : '';
+  if (history.go(pageUID)) RoutePage(pageUID);
 };
 
 export const GoBack = () => {
   const pageUID = history.goBack();
-  pageUID != null ? RoutePage(pageUID) : '';
+  if (pageUID) RoutePage(pageUID);
 };
 
 export const GoBackEnable = () => history.goBackEnable();

@@ -4,22 +4,18 @@ import Navigator from '../route/page-navigator';
 
 class HeaderView extends Navigator {
 
-  constructor(props) {
-    super(props);
-  }
-
   changeNavButtonView(prop, leftOrRight = 'left') {
-    if (leftOrRight == 'left') {
+    if (leftOrRight === 'left') {
       if ((super.isGoBackEnable() || prop == "back")) return "<";
     }
     else {
-      if (!super.isGoBackEnable() || prop == "close") return 'X';
+      if (!super.isGoBackEnable() || prop === "close") return 'X';
     }
     return null;
   }
 
   clickLeft(prop) {
-    if ((super.isGoBackEnable() || prop == "back")) {
+    if ((super.isGoBackEnable() || prop === "back")) {
       super.goBack();
     }
   }

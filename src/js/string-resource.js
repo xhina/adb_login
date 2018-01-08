@@ -32,7 +32,7 @@ class StringDataLoader {
       reader.onload = (e) => {
         this.parsing(tableObj, e.target.result);
         console.log('complete : string resoucre');
-        onLoadComplete ? onLoadComplete() : '';
+        if (onLoadComplete) onLoadComplete();
       };
       reader.readAsText(blob);
     });

@@ -68,9 +68,4 @@ const btn_style = {
   'width':'15em'
 };
 
-const btn_group = {
-  'margin-top' : '4em',
-  'margin-bottom' : '1em'
-}
-
 export default View;

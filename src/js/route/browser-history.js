@@ -7,7 +7,7 @@ export default class BrowserHistory {
 
   go(page_uid) {
     let lastPage = _.last(this.history);
-    if (lastPage == page_uid) {
+    if (lastPage === page_uid) {
       console.log('cannot go to the duplicate page');
       return false;
     }
