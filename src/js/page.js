@@ -6,7 +6,7 @@ import StringResource from './string-resource';
 export default class Page extends Navigator {
 
   attachHeader(title, leftBtnType, rightBtnType) {
-    return <Header title={title} left={leftBtnType} right={rightBtnType} />;
+    return <Header left={leftBtnType} right={rightBtnType} />;
   }
 
   getStrRes(id) {
