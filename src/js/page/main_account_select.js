@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import Page from '../page';
 import {Container, Button, Row} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
@@ -6,12 +7,20 @@ import {PageUID} from '../route/page-route-controller';
 
 class View extends Page {
 
+  constructor(props) {
+    super(props);
+  }
+
   gotoCreateEmailAccountPage() {
     super.go(PageUID.CREATE_EMAIL_ACCOUNT);
   }
 
+  getParent() {
+    return this;
+  }
+
   render() {
-      return (
+    return (
       <div>
         { super.attachHeader('') }
         <Container>

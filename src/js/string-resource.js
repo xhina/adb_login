@@ -12,7 +12,6 @@ class StringResource {
   }
 
   static get(id) {
-    console.log(StringResource[table_sym]);
     if (StringResource[table_sym] == null) {
       console.warn('not initialize, string resource');
       return;
@@ -31,7 +30,7 @@ class StringDataLoader {
       var reader = new FileReader();
       reader.onload = (e) => {
         this.parsing(tableObj, e.target.result);
-        console.log('complete : string resoucre');
+        console.log('complete : string resoucre loaded');
         if (onLoadComplete) onLoadComplete();
       };
       reader.readAsText(blob);

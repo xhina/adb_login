@@ -3,12 +3,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
 
+
 class App extends Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      location : ""
+      location : "",
     };
 
     new StringResource(() => {
@@ -22,9 +23,7 @@ class App extends Component {
 
     return (
       <Router>
-        <div>
-          <Route path="/" render={() => <div>{location}</div> } />
-        </div>
+         <Route path="/" render={() => location} />
       </Router>
     );
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import BrowserHistory from './browser-history';
 
+
 // Page Component
 import MainPage from '../page/main_account_select';
 import EmailAccountPage from '../page/create_email_account';
@@ -9,6 +10,7 @@ import PrivacyPolicy from '../page/privacy_policy';
 import AdditionalInfo from '../page/additional_info';
 import Login from '../page/login';
 import TemporaryPassword from '../page/temporary_password';
+import {GoFowardTransition, GoBackwardTransition} from './page-transition';
 
 export const PageUID = {
   MAIN_ACCOUNT_SELECT: Symbol(),
@@ -21,13 +23,15 @@ export const PageUID = {
 };
 
 const history = new BrowserHistory();
-
+let loadedPage = null;
+let loadPage = null;
 let routeContainer;
+
 export let SetRouteContainer = (container) => {
   routeContainer = container;
 };
 
-const RoutePage = (pageUID) => {
+const loadPageComponent = (pageUID) => {
   let pageView;
   switch (pageUID) {
     case PageUID.MAIN_ACCOUNT_SELECT:
@@ -55,21 +59,27 @@ const RoutePage = (pageUID) => {
       pageView = null;
       break;
   }
-  Routing(pageView);
+
+
+  loadedPage = loadPage;
+  loadPage = pageView;
+  return pageView;
+};
+
+const Routing = (pageOutput) => {
+  routeContainer.setState({'location' : pageOutput});
 };
 
 export const Go = (pageUID) => {
-  if (history.go(pageUID)) RoutePage(pageUID);
+  if (!history.go(pageUID)) return;
+  const inPage = loadPageComponent(pageUID);
+  Routing(GoFowardTransition(inPage, loadedPage, Routing));
 };
 
 export const GoBack = () => {
-  const pageUID = history.goBack();
-  if (pageUID) RoutePage(pageUID);
+  if (!GoBackEnable()) return;
+  const inPage = loadPageComponent(history.goBack());
+  Routing(GoBackwardTransition(loadedPage, inPage));
 };
 
 export const GoBackEnable = () => history.goBackEnable();
-
-const Routing = (pageComponent) => {
-    routeContainer.setState({'location' : pageComponent});
-    console.log('routing');
-};
