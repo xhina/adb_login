@@ -1,4 +1,4 @@
-import * as string_data from '../res/string/test';
+import {TextRes} from './res-link';
 import _ from 'lodash';
 
 const table_sym = Symbol('string_table');
@@ -8,7 +8,10 @@ class StringResource {
   constructor(onLoadComplete) {
     const table = {};
     StringResource[table_sym] = table;
-    new StringDataLoader(table, string_data, onLoadComplete);
+    new StringDataLoader(table, TextRes.ui_string, onLoadComplete);
+    // getStringResource().then(module=>{
+      // new StringDataLoader(table, module, onLoadComplete);
+    // });
   }
 
   static get(id) {

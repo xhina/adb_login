@@ -15,9 +15,6 @@ class App extends Component {
       SetRouteContainer(this);
       Go(PageUID.MAIN_ACCOUNT_SELECT);
     });
-  }
-
-  componentDidMount() {
 
   }
 

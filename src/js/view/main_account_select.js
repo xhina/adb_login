@@ -3,6 +3,7 @@ import BaseView from './base_view';
 import {Container, Button, Row} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
 import {PageUID} from '../route/page-route-controller';
+import {ImageRes} from '../res-link';
 
 class View extends BaseView {
 
@@ -22,14 +23,15 @@ class View extends BaseView {
       <div>
         { super.attachHeader('') }
         { super.attachAlertModal() }
+
         <Container>
           <Row className="justify-content-center">
-            <img alt="" src={img_logo}/>
+            <img alt="" src={ImageRes.logo}/>
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">
               <Button style={btn_style} color="info"
-                      onClick={this.gotoCreateEmailAccountPage}>이메일로 가입</Button>
+                      onClick={this.gotoCreateEmailAccountPage}>{super.getStrRes('email_account_title')}이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
               <Button style={btn_style} color="primary">페이스북으로 가입</Button>
