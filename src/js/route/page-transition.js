@@ -2,24 +2,27 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Motion,spring} from 'react-motion';
 import _ from 'lodash';
-import Page from '../page';
 
-let removeIntended;
+let pageInClass, pageOutClass;
 
 function screenSize() {
   return window.innerWidth;
 }
 
-function onRest() {
-  if (removeIntended == null) return;
+function onRestPageOut() {
+  if (!pageOutClass) return;
+  pageOutClass.hidden();
+  pageOutClass = null;
 }
 
 export const GoFowardTransition = (pageIn, pageOut) => {
-  removeIntended = pageOut;
+  if (pageOut) {
+    pageOut = React.cloneElement(pageOut, {ref:(cl)=> pageOutClass = cl});
+  }
 
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={onRest} defaultStyle={{x:screenSize()}} style={{x:spring(0)}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:screenSize()}} style={{x:spring(0)}}>
         {
           ({x}) =>
               <div style={{
@@ -31,7 +34,7 @@ export const GoFowardTransition = (pageIn, pageOut) => {
         }
       </Motion>
 
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:0}} style={{x:spring(-screenSize())}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={onRestPageOut} defaultStyle={{x:0}} style={{x:spring(-screenSize())}}>
         {
           ({x}) =>
               <div style={{
@@ -47,9 +50,13 @@ export const GoFowardTransition = (pageIn, pageOut) => {
 };
 
 export const GoBackwardTransition = (pageOut, pageIn) => {
+  if (pageOut){
+    pageOut = React.cloneElement(pageOut, {ref:(cl)=> pageOutClass = cl});
+  }
+
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:0}} style={{x:spring(screenSize())}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={onRestPageOut} defaultStyle={{x:0}} style={{x:spring(screenSize())}}>
         {
           ({x}) =>
               <div style={{

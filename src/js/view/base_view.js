@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from './header/header';
-import Navigator from './route/page-navigator';
-import StringResource from './string-resource';
+import Page from '../route/page';
+import StringResource from '../string-resource';
+import Header from '../header/header';
 
-export default class Page extends Navigator {
-
+export default class BaseView extends Page {
   attachHeader(title, leftBtnType, rightBtnType) {
     return <Header left={leftBtnType} right={rightBtnType} />;
   }
@@ -12,5 +11,4 @@ export default class Page extends Navigator {
   getStrRes(id) {
     return StringResource.get(id);
   }
-
 }

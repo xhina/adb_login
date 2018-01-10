@@ -1,15 +1,14 @@
 import React from 'react';
 import BrowserHistory from './browser-history';
 
-
 // Page Component
-import MainPage from '../page/main_account_select';
-import EmailAccountPage from '../page/create_email_account';
-import ServiceAgreement from '../page/service_agreement';
-import PrivacyPolicy from '../page/privacy_policy';
-import AdditionalInfo from '../page/additional_info';
-import Login from '../page/login';
-import TemporaryPassword from '../page/temporary_password';
+import MainPage from '../view/main_account_select';
+import EmailAccountPage from '../view/create_email_account';
+import ServiceAgreement from '../view/service_agreement';
+import PrivacyPolicy from '../view/privacy_policy';
+import AdditionalInfo from '../view/additional_info';
+import Login from '../view/login';
+import TemporaryPassword from '../view/temporary_password';
 import {GoFowardTransition, GoBackwardTransition} from './page-transition';
 
 export const PageUID = {
@@ -59,8 +58,6 @@ const loadPageComponent = (pageUID) => {
       pageView = null;
       break;
   }
-
-
   loadedPage = loadPage;
   loadPage = pageView;
   return pageView;
@@ -73,7 +70,7 @@ const Routing = (pageOutput) => {
 export const Go = (pageUID) => {
   if (!history.go(pageUID)) return;
   const inPage = loadPageComponent(pageUID);
-  Routing(GoFowardTransition(inPage, loadedPage, Routing));
+  Routing(GoFowardTransition(inPage, loadedPage));
 };
 
 export const GoBack = () => {

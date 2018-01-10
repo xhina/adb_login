@@ -1,25 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Page from '../page';
+import BaseView from './base_view';
 import {Container, Button, Row} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
 import {PageUID} from '../route/page-route-controller';
 
-class View extends Page {
+class View extends BaseView {
 
   constructor(props) {
     super(props);
+    this.getRenderView.bind(this);
   }
 
   gotoCreateEmailAccountPage() {
     super.go(PageUID.CREATE_EMAIL_ACCOUNT);
   }
 
-  getParent() {
-    return this;
-  }
-
   render() {
+    if (super.isHidden()) return null;
+
     return (
       <div>
         { super.attachHeader('') }

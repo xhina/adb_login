@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../page';
+import BaseView from './base_view';
 import {
   Container,
   Row,
@@ -11,9 +11,10 @@ import {
   Input
 } from 'reactstrap';
 
-class View extends Page {
+class View extends BaseView {
 
   render() {
+    if (super.isHidden()) return null;
     return (
       <div>
         {super.attachHeader('로그인')}

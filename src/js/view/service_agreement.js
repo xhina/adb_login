@@ -1,9 +1,11 @@
 import React from 'react';
 import {Container} from 'reactstrap';
-import Page from '../page';
+import BaseView from './base_view';
 
-class View extends Page {
+class View extends BaseView {
   render() {
+    if (super.isHidden()) return null;
+    
     return (
       <div>
         {super.attachHeader('이용약관')}

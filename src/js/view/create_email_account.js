@@ -1,5 +1,5 @@
 import React from 'react';
-import Page from '../page';
+import BaseView from './base_view';
 import {
   Container,
   Row,
@@ -11,12 +11,13 @@ import {
   Input
 } from 'reactstrap';
 
-class View extends Page {
+class View extends BaseView {
 
   render() {
+    if (super.isHidden()) return null;
     return (
       <div>
-        {super.attachHeader('추가 정보')}
+        {super.attachHeader(super.getStrRes('email_account_title'))}
         <Container>
           <Form>
             <FormGroup>
@@ -32,6 +33,16 @@ class View extends Page {
             <FormGroup>
               <Row>
                 <Col xs="2">
+                  <Label for="pw">비밀번호</Label>
+                </Col>
+                <Col xs='10'>
+                  <Input type="pw" name="pw" id="inputPassword" placeholder="최소4자 ~ 12자"/>
+                </Col>
+              </Row>
+            </FormGroup>
+            <FormGroup>
+              <Row>
+                <Col xs="2">
                   <Label for="userName">이름</Label>
                 </Col>
                 <Col xs='10'>
@@ -40,7 +51,7 @@ class View extends Page {
               </Row>
             </FormGroup>
             <Row className="justify-content-center">
-              <Button color="primary" size="lg">가입 완료하기</Button>
+              <Button color="primary" size="lg">이메일로 가입하기</Button>
             </Row>
           </Form>
         </Container>
