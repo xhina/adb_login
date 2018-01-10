@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
 
-
 class App extends Component {
 
   constructor(props) {
@@ -18,12 +17,18 @@ class App extends Component {
     });
   }
 
+  componentDidMount() {
+
+  }
+
   render() {
     const location = this.state.location;
 
     return (
       <Router>
+        <div>
          <Route path="/" render={() => location} />
+       </div>
       </Router>
     );
   }

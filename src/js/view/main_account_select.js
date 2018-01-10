@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import BaseView from './base_view';
 import {Container, Button, Row} from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
@@ -9,7 +8,7 @@ class View extends BaseView {
 
   constructor(props) {
     super(props);
-    this.getRenderView.bind(this);
+    this.gotoCreateEmailAccountPage = this.gotoCreateEmailAccountPage.bind(this);
   }
 
   gotoCreateEmailAccountPage() {
@@ -22,6 +21,7 @@ class View extends BaseView {
     return (
       <div>
         { super.attachHeader('') }
+        { super.attachAlertModal() }
         <Container>
           <Row className="justify-content-center">
             <img alt="" src={img_logo}/>

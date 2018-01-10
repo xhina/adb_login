@@ -18,5 +18,4 @@ export default class Page extends Navigator {
     return this.state.hidden;
   }
 
-
 }

@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import {Motion,spring} from 'react-motion';
 import _ from 'lodash';
 
