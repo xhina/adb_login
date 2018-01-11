@@ -16,8 +16,8 @@ class View extends BaseView {
   render() {
     if (super.isHidden()) return null;
     return (
-      <div>
-        {super.attachHeader(super.getStrRes('email_account_title'))}
+      <React.Fragment>
+        {super.attachHeader(super.getUiString('email_account_title'))}
         <Container>
           <Form>
             <FormGroup>
@@ -55,7 +55,7 @@ class View extends BaseView {
             </Row>
           </Form>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }

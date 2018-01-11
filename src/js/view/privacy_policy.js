@@ -5,9 +5,9 @@ import BaseView from './base_view';
 class View extends BaseView {
   render() {
     if (super.isHidden()) return null;
-    
+
     return (
-      <div>
+      <React.Fragment>
         {super.attachHeader('개인정보 보호정책')}
         <Container>
           <pre style={style}>
@@ -46,7 +46,7 @@ class View extends BaseView {
 `}
           </pre>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }

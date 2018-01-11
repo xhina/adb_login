@@ -17,7 +17,7 @@ class View extends BaseView {
     if (super.isHidden()) return null;
 
     return (
-      <div>
+      <React.Fragment>
         {super.attachHeader('추가 정보')}
         <Container>
           <Form>
@@ -46,7 +46,7 @@ class View extends BaseView {
             </Row>
           </Form>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }

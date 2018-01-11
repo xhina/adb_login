@@ -17,7 +17,7 @@ class View extends BaseView {
     if (super.isHidden()) return null;
 
     return (
-        <div>
+        <React.Fragment>
         {super.attachHeader('임시 비밀번호 요청')}
         <Container>
           <Form>
@@ -36,7 +36,7 @@ class View extends BaseView {
             </Row>
           </Form>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }

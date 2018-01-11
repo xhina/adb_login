@@ -20,18 +20,18 @@ class View extends BaseView {
     if (super.isHidden()) return null;
 
     return (
-      <div>
+      <React.Fragment>
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
         <Container>
           <Row className="justify-content-center">
-            <img alt="" src={ImageRes.logo}/>
+            <img alt="" src="" src={super.img.logo}/>
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">
               <Button style={btn_style} color="info"
-                      onClick={this.gotoCreateEmailAccountPage}>{super.getStrRes('email_account_title')}이메일로 가입</Button>
+                      onClick={this.gotoCreateEmailAccountPage}>{super.getUiString('email_account_title')}이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
               <Button style={btn_style} color="primary">페이스북으로 가입</Button>
@@ -48,7 +48,7 @@ class View extends BaseView {
               </p>
           </Row>
         </Container>
-      </div>
+      </React.Fragment>
     );
   }
 }

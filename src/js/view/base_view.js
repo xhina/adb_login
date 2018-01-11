@@ -3,6 +3,7 @@ import Page from '../route/page';
 import StringResource from '../string-resource';
 import Header from '../header/header';
 import AlertModal from './alert-modal';
+import {TextRes, ImageRes} from '../res-link';
 
 export default class BaseView extends Page {
   constructor(props) {
@@ -22,7 +23,12 @@ export default class BaseView extends Page {
     return React.createElement(AlertModal, {ref:(a) => this.alert = a});
   }
 
-  getStrRes(id) {
+  getUiString(id) {
     return StringResource.get(id);
   }
+
+  get img() {
+    return ImageRes;
+  }
+
 }
