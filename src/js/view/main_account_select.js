@@ -10,7 +10,6 @@ class View extends BaseView {
   constructor(props) {
     super(props);
     this.gotoCreateEmailAccountPage = this.gotoCreateEmailAccountPage.bind(this);
-    console.log(process.env);
   }
 
   gotoCreateEmailAccountPage() {
@@ -27,12 +26,12 @@ class View extends BaseView {
 
         <Container>
           <Row className="justify-content-center">
-            <img alt="" src="" src={super.img.logo}/>
+            <img alt="" src={super.img.logo}/>
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">
               <Button style={btn_style} color="info"
-                      onClick={this.gotoCreateEmailAccountPage}>{super.getUiString('email_account_title')}이메일로 가입</Button>
+                      onClick={this.gotoCreateEmailAccountPage}>{super.getUiString(1)}이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
               <Button style={btn_style} color="primary">페이스북으로 가입</Button>
