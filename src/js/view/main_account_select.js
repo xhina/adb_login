@@ -10,6 +10,7 @@ class View extends BaseView {
   constructor(props) {
     super(props);
     this.gotoCreateEmailAccountPage = this.gotoCreateEmailAccountPage.bind(this);
+    console.log(process.env);
   }
 
   gotoCreateEmailAccountPage() {
