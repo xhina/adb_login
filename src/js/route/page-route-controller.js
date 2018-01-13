@@ -76,7 +76,7 @@ export const Go = (pageUID) => {
 export const GoBack = () => {
   if (!GoBackEnable()) return;
   const inPage = loadPageComponent(history.goBack());
-  Routing(GoBackwardTransition(loadedPage, inPage));
+  Routing(GoBackwardTransition(inPage, loadedPage));
 };
 
 export const GoBackEnable = () => history.goBackEnable();

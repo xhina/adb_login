@@ -9,9 +9,6 @@ class StringResource {
     const table = {};
     StringResource[table_sym] = table;
     new StringDataLoader(table, TextRes.ui_string, onLoadComplete);
-    // getStringResource().then(module=>{
-      // new StringDataLoader(table, module, onLoadComplete);
-    // });
   }
 
   static get(id) {

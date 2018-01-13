@@ -48,7 +48,7 @@ export const GoFowardTransition = (pageIn, pageOut) => {
   );
 };
 
-export const GoBackwardTransition = (pageOut, pageIn) => {
+export const GoBackwardTransition = (pageIn, pageOut) => {
   if (pageOut){
     pageOut = React.cloneElement(pageOut, {ref:(cl)=> pageOutClass = cl});
   }
