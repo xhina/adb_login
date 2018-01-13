@@ -31,7 +31,7 @@ class View extends BaseView {
           <div style={btn_group}>
             <Row className="justify-content-center">
               <Button style={btn_style} color="info"
-                      onClick={this.gotoCreateEmailAccountPage}>{super.getUiString(1)}이메일로 가입</Button>
+                onClick={this.gotoCreateEmailAccountPage}>이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
               <Button style={btn_style} color="primary">페이스북으로 가입</Button>
