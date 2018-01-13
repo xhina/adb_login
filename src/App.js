@@ -24,8 +24,8 @@ class App extends Component {
     return (
       <Router>
         <div>
-         <Route path="/" render={() => location} />
-       </div>
+          <Route path="/" render={() => location} />
+        </div>
       </Router>
     );
   }

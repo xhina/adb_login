@@ -11,7 +11,7 @@ class View extends BaseView {
         {super.attachHeader('이용약관')}
         <Container>
           <pre style={style}>
-{`
+            {`
 [제1장 총칙]
   제1조 (목적)
   본 약관은 ‘Clipeo(이하 ‘회사’)’가 제공하 는 ‘드라마바이블’ 서비스(이하 ‘서비스’) 와 관련하여 회사와 이용고객(회원) 간에 이용 조건 및 절차, 권리와 의무, 책임사 항 등을 규정함을 을 목적으로 합니다.

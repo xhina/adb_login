@@ -43,9 +43,9 @@ class View extends BaseView {
           <Row className="justify-content-center">
             <p>가입과 동시에
               <a href="www.naver.com"> 이용약관 </a>
-               및
+              및
               <a href="www.daum.net"> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
-              </p>
+            </p>
           </Row>
         </Container>
       </React.Fragment>
