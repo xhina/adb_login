@@ -2,29 +2,30 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 # ADB SPA Framework
 
-### main Library
+### Main Library
 - react
   -  setting : create-react-app / [facebook boilerplate](https://github.com/facebookincubator/create-react-app)
 - redux
 
-### language
+### Language
 - JAVASCRIPT : ES6
 - JSX
 
 ### UI
-- bootstrap v4 / reactstrap
+- bootstrap v4
+  - reactstrap
 
-### util
+### Util
 - lodash
 - flow
 - react-router
 
-### module bundler
+### Module Bundler
 - webpack
 
-### tween
+### Tween
 - react-motion
 
-### editor
+### Editor / IDE
 - atom
   - nuclide
