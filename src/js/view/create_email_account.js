@@ -14,7 +14,6 @@ import {
 class View extends BaseView {
 
   render() {
-    if (super.isHidden()) return null;
     return (
       <React.Fragment>
         {super.attachHeader(super.getUiString('email_account_title'))}

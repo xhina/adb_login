@@ -14,7 +14,6 @@ import {
 class View extends BaseView {
 
   render() {
-    if (super.isHidden()) return null;
     return (
       <div>
         {super.attachHeader('로그인')}

@@ -14,8 +14,6 @@ import {
 class View extends BaseView {
 
   render() {
-    if (super.isHidden()) return null;
-
     return (
       <React.Fragment>
         {super.attachHeader('추가 정보')}

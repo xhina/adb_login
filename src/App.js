@@ -3,6 +3,12 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
 
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { userApi } from './js/redux/reducers';
+
+let store = createStore(userApi);
+
 class App extends Component {
 
   constructor(props) {
@@ -16,17 +22,23 @@ class App extends Component {
       Go(PageUID.MAIN_ACCOUNT_SELECT);
     });
     console.log(process.env);
+
+    store.subscribe(()=> {
+      console.log(store.getState());
+    });
   }
 
   render() {
     const location = this.state.location;
 
     return (
-      <Router>
-        <div>
-          <Route path="/" render={() => location} />
-        </div>
-      </Router>
+      <Provider store={store}>
+        <Router>
+          <div>
+            <Route path="/" render={() => location} />
+          </div>
+        </Router>
+      </Provider>
     );
   }
 }

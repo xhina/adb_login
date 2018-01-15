@@ -4,8 +4,6 @@ import BaseView from './base_view';
 
 class View extends BaseView {
   render() {
-    if (super.isHidden()) return null;
-
     return (
       <React.Fragment>
         {super.attachHeader('개인정보 보호정책')}

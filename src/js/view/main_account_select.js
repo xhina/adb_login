@@ -1,24 +1,29 @@
 import React from 'react';
 import BaseView from './base_view';
-import {Container, Button, Row} from 'reactstrap';
+import { Container, Button, Row } from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
-import {PageUID} from '../route/page-route-controller';
-import {ImageRes} from '../res-link';
+import { PageUID } from '../route/page-route-controller';
+import { ImageRes } from '../res-link';
 
 class View extends BaseView {
 
   constructor(props) {
     super(props);
-    this.gotoCreateEmailAccountPage = this.gotoCreateEmailAccountPage.bind(this);
   }
 
-  gotoCreateEmailAccountPage() {
+  gotoCreateEmailAccount() {
     super.go(PageUID.CREATE_EMAIL_ACCOUNT);
   }
 
-  render() {
-    if (super.isHidden()) return null;
+  gotoServiceAgreement() {
+    super.go(PageUID.SERVICE_AGREEMENT);
+  }
 
+  gotoPrivacyPolicy() {
+    super.go(PageUID.PRIVACY_POLICY);
+  }
+
+  render() {
     return (
       <React.Fragment>
         { super.attachHeader('') }
@@ -31,7 +36,7 @@ class View extends BaseView {
           <div style={btn_group}>
             <Row className="justify-content-center">
               <Button style={btn_style} color="info"
-                onClick={this.gotoCreateEmailAccountPage}>이메일로 가입</Button>
+                onClick={this.gotoCreateEmailAccount.bind(this)}>이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
               <Button style={btn_style} color="primary">페이스북으로 가입</Button>
@@ -42,9 +47,9 @@ class View extends BaseView {
           </div>
           <Row className="justify-content-center">
             <p>가입과 동시에
-              <a href="www.naver.com"> 이용약관 </a>
+              <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
               및
-              <a href="www.daum.net"> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
+              <a href="#" onClick={this.gotoPrivacyPolicy}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
             </p>
           </Row>
         </Container>
