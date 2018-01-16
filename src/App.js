@@ -16,7 +16,10 @@ class App extends Component {
     this.state = {
       location : "",
     };
+    this.initAPP();
+  }
 
+  initAPP() {
     new StringResource(() => {
       SetRouteContainer(this);
       Go(PageUID.MAIN_ACCOUNT_SELECT);
@@ -35,7 +38,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Route path="/" render={() => location} />
+            <Route exact path="/" render={() => location } />
+            <Route path="/oauth" render={() => location } />
           </div>
         </Router>
       </Provider>

@@ -4,6 +4,8 @@ import { Container, Button, Row } from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
 import { PageUID } from '../route/page-route-controller';
 import { ImageRes } from '../res-link';
+import _ from 'lodash';
+import { KakaoLogin, KakaoToken } from '../login/kakao';
 
 class View extends BaseView {
 
@@ -23,9 +25,24 @@ class View extends BaseView {
     super.go(PageUID.PRIVACY_POLICY);
   }
 
+  startWithFB() {
+
+  }
+
+  startWithKakao() {
+    KakaoLogin();
+  }
+
+  componentDidMount() {
+    const code = _.replace(window.location.search, '?code=', '').toString();
+    if (code == "") return;
+    KakaoToken(code)
+  }
+
   render() {
     return (
       <React.Fragment>
+
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
@@ -39,10 +56,10 @@ class View extends BaseView {
                 onClick={this.gotoCreateEmailAccount.bind(this)}>이메일로 가입</Button>
             </Row>
             <Row className="justify-content-center">
-              <Button style={btn_style} color="primary">페이스북으로 가입</Button>
+              <Button style={btn_style} color="primary" onClick={this.startWithFB}>페이스북으로 가입</Button>
             </Row>
             <Row className="justify-content-center">
-              <Button style={btn_style} color="warning">카카오톡으로 가입</Button>
+              <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
             </Row>
           </div>
           <Row className="justify-content-center">
