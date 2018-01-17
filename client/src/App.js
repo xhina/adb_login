@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOMServer from 'react-dom/server';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
@@ -8,6 +9,7 @@ import { Provider } from 'react-redux';
 import { userApi } from './js/redux/reducers';
 
 let store = createStore(userApi);
+const context = {};
 
 class App extends Component {
 
@@ -39,7 +41,9 @@ class App extends Component {
         <Router>
           <div>
             <Route exact path="/" render={() => location } />
-            <Route path="/oauth" render={() => location } />
+            <Route path="/oauth_kakao" render={() => location } />
+            <Route path="/oauth_fb" render={() => location } />
+            <Route path="/oauth_cancel_fb" render={() => location } />
           </div>
         </Router>
       </Provider>

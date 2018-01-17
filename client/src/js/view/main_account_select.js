@@ -5,7 +5,8 @@ import img_logo from '../../res/img/logo.png';
 import { PageUID } from '../route/page-route-controller';
 import { ImageRes } from '../res-link';
 import _ from 'lodash';
-import { KakaoLogin, KakaoToken } from '../login/kakao';
+import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo } from '../login/kakao';
+import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, successOAuthResult } from '../login/facebook';
 
 class View extends BaseView {
 
@@ -26,29 +27,37 @@ class View extends BaseView {
   }
 
   startWithFB() {
-
+    fbLogin();
   }
 
   startWithKakao() {
-    KakaoLogin();
+    kakaoLogin();
   }
 
   componentDidMount() {
-    const code = _.replace(window.location.search, '?code=', '').toString();
-    if (code == "") return;
-    KakaoToken(code)
+    console.log(window.location);
+    if (checkKakaoSess()) {
+      getKakaoInfo();
+    }
+
+    if (checkFbSess() && successOAuthResult()) {
+      // success fb oauth flow
+      getFbInfo();
+    }
+    else{
+      // fail fb oauth flow
+    }
   }
 
   render() {
     return (
       <React.Fragment>
-
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
         <Container>
           <Row className="justify-content-center">
-            <img alt="" src={super.img.logo}/>
+            <img alt="" src={super.img.logo} />
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">
@@ -62,7 +71,7 @@ class View extends BaseView {
               <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
             </Row>
           </div>
-          <Row className="justify-content-center">
+          <Row className="justify-content-center" style={{fontSize:'10pt'}}>
             <p>가입과 동시에
               <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
               및

@@ -8,21 +8,28 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var headers = {
+  'User-Agent': 'Super Agent/0.0.1',
+  'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+};
+
 app.get('/', function(req, res) {
-  res.send('hello world');
+  res.send("adb proxy api server");
 });
 
-app.post('/proxy_backend_api', function(req, res) {
-  var headers = {
-    'User-Agent': 'Super Agent/0.0.1',
-    'Content-Type': 'application/x-www-form-urlencoded'
+app.post('/kakao_access_token', function(req, res) {
+  var params = {
+    grant_type:req.body.grant_type,
+    client_id:req.body.client_id,
+    redirect_uri:req.body.redirect_uri,
+    code:req.body.code
   };
 
   var options = {
     url : req.body.url,
     method :'POST',
     headers : headers,
-    form : req.body.params
+    form : params
   };
 
   request(options, function (error, response, body) {
@@ -31,16 +38,38 @@ app.post('/proxy_backend_api', function(req, res) {
       var result = {
         res : 0,
         body : body
-      }
-      res.send(result);
+      };
+      res.send(body);
     }
     else {
       console.log("error:",error);
       console.log("body:",body);
       res.send(body);
     }
+  });
+});
 
+app.post('/kakao_user_id', function(req, res) {
+  var tokenHeader = {
+    Authorization : 'Bearer ' + req.body.access_token
+  }
+  var headers = Object.assign({}, headers, tokenHeader);
 
+  var options = {
+    url : req.body.url,
+    method :'POST',
+    headers : headers
+  };
+
+  request(options, function (error, response, body) {
+    if (!error && response.statusCode == 200) {
+      res.send(body);
+    }
+    else {
+      console.log("error:",error);
+      console.log("body:",body);
+      res.send(body);
+    }
   });
 });
 
