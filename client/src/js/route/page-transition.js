@@ -19,7 +19,7 @@ const createOutContainer = (page) => {
 export const GoFowardTransition = (pageIn, pageOut) => {
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:screenSize()}} style={{x:spring(0)}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:screenSize()}} style={{x:spring(0, {stiffness:200, damping:30, precision:0.01})}}>
         {
           ({x}) =>
           <div style={{
@@ -31,7 +31,9 @@ export const GoFowardTransition = (pageIn, pageOut) => {
         }
       </Motion>
 
-        <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:0}} style={{x:spring(-screenSize())}}>
+        <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer}
+          defaultStyle={{x:0, opacity:1}}
+          style={{x:spring(-screenSize(), {stiffness:200, damping:30, precision:1})}}>
           {
             ({x}) =>
             <div style={{
@@ -49,7 +51,7 @@ export const GoFowardTransition = (pageIn, pageOut) => {
 export const GoBackwardTransition = (pageIn, pageOut) => {
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:0}} style={{x:spring(screenSize())}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:0}} style={{x:spring(screenSize(), {stiffness:200, damping:30, precision:1})}}>
         {
           ({x}) =>
           <div style={{
@@ -61,7 +63,7 @@ export const GoBackwardTransition = (pageIn, pageOut) => {
         }
       </Motion>
 
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:-screenSize()}} style={{x:spring(0)}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:-screenSize()}} style={{x:spring(0, {stiffness:200, damping:30, precision:0.01})}}>
         {
           ({x}) =>
               <div style={{

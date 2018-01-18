@@ -6,5 +6,5 @@ export const TextRes = {
 };
 
 export const ImageRes = {
-  "logo" : img_logo
+  "logo" : img_logo,
 };

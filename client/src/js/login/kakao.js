@@ -16,6 +16,11 @@ export function checkOAuthSession() {
   return (window.location.pathname === "/oauth_kakao") ? true : false;
 }
 
+export function checkOAuthError() {
+  const bool = window.location.search.includes("error");
+  return bool;
+}
+
 export function getUserInfo() {
   const code = _.replace(window.location.search, "?code=", "");
   callAccessTokenAPI(code);

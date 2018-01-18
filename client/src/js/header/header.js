@@ -27,7 +27,7 @@ class HeaderView extends Navigator {
 
   render() {
     return (
-      <Nav style={{width:'100%',backgroundColor:'#ff8822'}} className="justify-content-center nav-fill">
+      <Nav style={{width:'100%',backgroundColor:'#ff8822'}} className="justify-content-center nav-fill sticky-top">
         <NavItem>
           <NavLink href="#" className="text-left" onClick={this.clickLeft}>
             {this.changeNavButtonView(this.props.left, 'left')}

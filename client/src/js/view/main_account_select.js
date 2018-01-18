@@ -3,10 +3,13 @@ import BaseView from './base_view';
 import { Container, Button, Row } from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
 import { PageUID } from '../route/page-route-controller';
-import { ImageRes } from '../res-link';
 import _ from 'lodash';
-import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo } from '../login/kakao';
-import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, successOAuthResult } from '../login/facebook';
+import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo, checkOAuthError as checkOAuthErrorKakao } from '../login/kakao';
+import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, checkOAuthError as checkOAuthErrorFb } from '../login/facebook';
+
+const st = {
+
+}
 
 class View extends BaseView {
 
@@ -35,17 +38,12 @@ class View extends BaseView {
   }
 
   componentDidMount() {
-    console.log(window.location);
     if (checkKakaoSess()) {
-      getKakaoInfo();
+      !checkOAuthErrorKakao() ? getKakaoInfo() : null;
     }
 
-    if (checkFbSess() && successOAuthResult()) {
-      // success fb oauth flow
-      getFbInfo();
-    }
-    else{
-      // fail fb oauth flow
+    if (checkFbSess()) {
+      !checkOAuthErrorFb() ? getFbInfo() : null;
     }
   }
 
@@ -57,7 +55,7 @@ class View extends BaseView {
 
         <Container>
           <Row className="justify-content-center">
-            <img alt="" src={super.img.logo} />
+            <img alt="logo" src={super.img.logo} />
           </Row>
           <div style={btn_group}>
             <Row className="justify-content-center">
