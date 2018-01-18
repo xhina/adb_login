@@ -7,10 +7,6 @@ import _ from 'lodash';
 import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo, checkOAuthError as checkOAuthErrorKakao } from '../login/kakao';
 import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, checkOAuthError as checkOAuthErrorFb } from '../login/facebook';
 
-const st = {
-
-}
-
 class View extends BaseView {
 
   constructor(props) {
