@@ -30,6 +30,11 @@ export let SetRouteContainer = (container) => {
   routeContainer = container;
 };
 
+export const RoutePage = (pageUID) => {
+  history.go(pageUID)
+  Routing(loadPageComponent(pageUID));
+};
+
 const loadPageComponent = (pageUID) => {
   let pageView;
   switch (pageUID) {

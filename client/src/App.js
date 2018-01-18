@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import ReactDOMServer from 'react-dom/server';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {SetRouteContainer, Go, PageUID} from './js/route/page-route-controller';
+import {SetRouteContainer, Go, PageUID, RoutePage} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
 
 import { createStore } from 'redux';
@@ -24,7 +24,7 @@ class App extends Component {
   initAPP() {
     new StringResource(() => {
       SetRouteContainer(this);
-      Go(PageUID.MAIN_ACCOUNT_SELECT);
+      RoutePage(PageUID.MAIN_ACCOUNT_SELECT);
     });
     console.log(process.env);
 

@@ -49,30 +49,32 @@ class View extends BaseView {
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
-        <Container className="pre-scrollable">
-          <Row className="justify-content-center">
-            <img alt="logo" src={super.img.logo} />
-          </Row>
-          <div style={btn_group}>
+        <div className="pre-scrollable">
+          <Container>
             <Row className="justify-content-center">
-              <Button style={btn_style} color="info"
-                onClick={this.gotoCreateEmailAccount.bind(this)}>이메일로 가입</Button>
+              <img alt="logo" src={super.img.logo} />
             </Row>
-            <Row className="justify-content-center">
-              <Button style={btn_style} color="primary" onClick={this.startWithFB}>페이스북으로 가입</Button>
+            <div style={btn_group}>
+              <Row className="justify-content-center">
+                <Button style={btn_style} color="info"
+                  onClick={this.gotoCreateEmailAccount.bind(this)}>이메일로 가입</Button>
+              </Row>
+              <Row className="justify-content-center">
+                <Button style={btn_style} color="primary" onClick={this.startWithFB}>페이스북으로 가입</Button>
+              </Row>
+              <Row className="justify-content-center">
+                <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
+              </Row>
+            </div>
+            <Row className="justify-content-center" style={{fontSize:'10pt'}}>
+              <p>가입과 동시에
+                <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
+                및
+                <a href="#" onClick={this.gotoPrivacyPolicy}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
+              </p>
             </Row>
-            <Row className="justify-content-center">
-              <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
-            </Row>
-          </div>
-          <Row className="justify-content-center" style={{fontSize:'10pt'}}>
-            <p>가입과 동시에
-              <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
-              및
-              <a href="#" onClick={this.gotoPrivacyPolicy}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
-            </p>
-          </Row>
-        </Container>
+          </Container>
+        </div>
       </div>
     );
   }
