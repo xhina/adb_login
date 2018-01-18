@@ -32,30 +32,17 @@ export const GoFowardTransition = (pageIn, pageOut) => {
           }}>{pageIn}</div>
         }
       </Motion>
-
-      {/* <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer}
-        defaultStyle={{x:0, opacity:1}}
-        style={{x:0}}>
-        {
-          ({x}) =>
-          <div style={{
-        width:'100%',
-        position:'absolute',
-        zIndex:'0',
-        transform:`translate3d(${x}px, 0, 0)`,
-          }}>{createOutContainer(pageOut)}</div>
-        }
-      </Motion> */}
-
       { pageOut ? createOutContainer(pageOut) : "" }
     </div>
   );
 };
 
 export const GoBackwardTransition = (pageIn, pageOut) => {
+  const pageOutContainer = createOutContainer(pageOut);
+
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} defaultStyle={{x:0}} style={{x:spring(screenSize(), {stiffness:200, damping:30, precision:1})}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:0}} style={{x:spring(screenSize(), {stiffness:200, damping:30, precision:1})}}>
         {
           ({x}) =>
           <div style={{
@@ -63,21 +50,9 @@ export const GoBackwardTransition = (pageIn, pageOut) => {
             position:'absolute',
             zIndex:'1',
             transform:`translate3d(${x}px, 0, 0)`
-          }}>{createOutContainer(pageOut)}</div>
+          }}>{pageOutContainer}</div>
         }
       </Motion>
-
-      {/* <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:-screenSize()}} style={{x:spring(0, {stiffness:200, damping:30, precision:0.01})}}>
-        {
-          ({x}) =>
-          <div style={{
-        width:'100%',
-        position:'absolute',
-        zIndex:'0',
-        transform:`translate3d(${x}px, 0, 0)`
-          }}>{pageIn}</div>
-        }
-      </Motion> */}
       {pageIn}
     </div>
   );
@@ -97,7 +72,6 @@ class TransitionContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state.hidden);
     if (this.state.hidden) {
       return null;
     }

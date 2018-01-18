@@ -5,6 +5,13 @@ import PropTypes from 'prop-types';
 
 class HeaderView extends Navigator {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      headerSticky : false
+    }
+  }
+
   changeNavButtonView(prop, leftOrRight = 'left') {
     if (leftOrRight === 'left') {
       if ((super.isGoBackEnable() || prop === "back")) return "<";
@@ -25,9 +32,22 @@ class HeaderView extends Navigator {
     super.close();
   }
 
+  componentDidMount() {
+    // setTimeout(this.setHeaderStickyTop.bind(this), 700);
+  }
+
+  setHeaderStickyTop() {
+    this.setState({headerSticky:true});
+  }
+
   render() {
+    let navClass = ["justify-content-center", "nav-fill"];
+    if (this.state.headerSticky) {
+      navClass.push("sticky-top");
+    }
+
     return (
-      <Nav style={{width:'100%',backgroundColor:'#ff8822'}} className="justify-content-center nav-fill sticky-top">
+      <Nav style={{width:'100%',backgroundColor:'#ff8822'}} className={navClass.join(' ')}>
         <NavItem>
           <NavLink href="#" className="text-left" onClick={this.clickLeft}>
             {this.changeNavButtonView(this.props.left, 'left')}

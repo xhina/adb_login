@@ -50,7 +50,7 @@ class View extends BaseView {
 }
 
 const style ={
-  'white-space':'pre-wrap'
+  'whiteSpace':'pre-wrap'
 }
 
 export default View;
