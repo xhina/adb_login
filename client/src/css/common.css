@@ -19,6 +19,6 @@
 .pre-scrollable {
   max-height:100vh;
   background-color:white;
-  padding-bottom:150pt;
+  padding-bottom:20vh;
   -webkit-overflow-scrolling:touch;
 }
