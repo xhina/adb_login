@@ -49,7 +49,7 @@ class View extends BaseView {
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
-        <Container>
+        <Container className="pre-scrollable">
           <Row className="justify-content-center">
             <img alt="logo" src={super.img.logo} />
           </Row>

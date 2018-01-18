@@ -17,7 +17,7 @@ class View extends BaseView {
     return (
         <div className="page">
           {super.attachHeader('임시 비밀번호 요청')}
-          <Container>
+          <Container className="pre-scrollable">
             <Form>
               <FormGroup>
                 <Row>

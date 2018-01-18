@@ -11,6 +11,16 @@
 }
 
 .page {
+  min-height:100vh;
   background-color:white;
-  height:100vh;
+  scroll-behavior:auto;
+  overflow:hidden;
+}
+
+.pre-scrollable {
+  max-width:100vw;
+  max-height:100vh;
+  background-color: #f9f9f9;
+  overflow: auto;
+  -webkit-overflow-scrolling:touch;
 }

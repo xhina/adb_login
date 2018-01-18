@@ -17,7 +17,7 @@ class View extends BaseView {
     return (
       <div class="page">
         {super.attachHeader('추가 정보')}
-        <Container>
+        <Container className="pre-scrollable">
           <Form>
             <FormGroup>
               <Row>

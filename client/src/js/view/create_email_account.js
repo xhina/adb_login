@@ -17,7 +17,7 @@ class View extends BaseView {
     return (
       <div className="page">
         {super.attachHeader(super.getUiString('email_account_title'))}
-        <Container>
+        <Container className="pre-scrollable">
           <Form>
             <FormGroup>
               <Row>

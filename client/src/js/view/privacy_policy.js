@@ -7,7 +7,7 @@ class View extends BaseView {
     return (
       <div className="page">
         {super.attachHeader('개인정보 보호정책')}
-        <Container>
+        <Container className="pre-scrollable">
           <pre style={style}>
             {`
 [제1장 총칙]

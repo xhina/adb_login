@@ -18,7 +18,7 @@ class View extends BaseView {
       <div className="page">
         {super.attachHeader('로그인')}
 
-        <Container>
+        <Container className="pre-scrollable">
           <Form>
             <FormGroup>
               <Row>
