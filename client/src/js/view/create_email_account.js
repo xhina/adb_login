@@ -15,7 +15,7 @@ class View extends BaseView {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="page">
         {super.attachHeader(super.getUiString('email_account_title'))}
         <Container>
           <Form>
@@ -54,7 +54,7 @@ class View extends BaseView {
             </Row>
           </Form>
         </Container>
-      </React.Fragment>
+      </div>
     );
   }
 }

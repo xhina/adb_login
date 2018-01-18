@@ -15,7 +15,7 @@ class View extends BaseView {
 
   render() {
     return (
-      <div>
+      <div className="page">
         {super.attachHeader('로그인')}
 
         <Container>

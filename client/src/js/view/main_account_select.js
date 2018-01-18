@@ -45,7 +45,7 @@ class View extends BaseView {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="page">
         { super.attachHeader('') }
         { super.attachAlertModal() }
 
@@ -73,7 +73,7 @@ class View extends BaseView {
             </p>
           </Row>
         </Container>
-      </React.Fragment>
+      </div>
     );
   }
 }

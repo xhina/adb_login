@@ -5,7 +5,7 @@ import BaseView from './base_view';
 class View extends BaseView {
   render() {
     return (
-      <React.Fragment>
+      <div className="page">
         {super.attachHeader('이용약관')}
         <Container>
           <pre style={style}>
@@ -44,7 +44,7 @@ class View extends BaseView {
 `}
           </pre>
         </Container>
-      </React.Fragment>
+      </div>
     );
   }
 }

@@ -9,3 +9,8 @@
 .debug-box {
   background-color: #ffcc11;
 }
+
+.page {
+  background-color:white;
+  height:100vh;
+}

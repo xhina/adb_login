@@ -29,11 +29,7 @@ class View extends BaseView {
 
   render() {
     return (
-      <React.Fragment>
-        <Container>
-            
-        </Container>
-      </React.Fragment>
+      null
     );
   }
 }

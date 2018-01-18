@@ -15,7 +15,7 @@ class View extends BaseView {
 
   render() {
     return (
-        <React.Fragment>
+        <div className="page">
           {super.attachHeader('임시 비밀번호 요청')}
           <Container>
             <Form>
@@ -34,7 +34,7 @@ class View extends BaseView {
               </Row>
             </Form>
           </Container>
-        </React.Fragment>
+        </div>
     );
   }
 }
