@@ -40,25 +40,25 @@ const loadPageComponent = (pageUID) => {
   let pageView;
   switch (pageUID) {
     case PageUID.MAIN_ACCOUNT_SELECT:
-      pageView = <MainPage ref={(c)=>refTarget=c} />;
+      pageView = <MainPage key="1" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.CREATE_EMAIL_ACCOUNT:
-      pageView = <EmailAccountPage ref={(c)=>refTarget=c} />;
+      pageView = <EmailAccountPage key="2" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.SERVICE_AGREEMENT:
-      pageView = <ServiceAgreement ref={(c)=>refTarget=c} />;
+      pageView = <ServiceAgreement key="3" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.PRIVACY_POLICY:
-      pageView = <PrivacyPolicy ref={(c)=>refTarget=c} />;
+      pageView = <PrivacyPolicy key="4" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.ADDITIONAL_INFO:
-      pageView = <AdditionalInfo ref={(c)=>refTarget=c} />;
+      pageView = <AdditionalInfo key="5" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.LOGIN:
-      pageView = <Login ref={(c)=>refTarget=c} />;
+      pageView = <Login key="6" ref={(c)=>refTarget=c} />;
       break;
     case PageUID.TEMPORARY_PASSWORD:
-      pageView = <TemporaryPassword ref={(c)=>refTarget=c} />;
+      pageView = <TemporaryPassword key="7" ref={(c)=>refTarget=c} />;
       break;
     default:
       pageView = null;
