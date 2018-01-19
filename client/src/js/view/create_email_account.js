@@ -13,7 +13,12 @@ import {
 
 class View extends BaseView {
 
-  render() {
+  constructor(props) {
+    super(props);
+    super.pageRender(this.view());
+  }
+
+  view() {
     return (
       <div className="page">
         {super.attachHeader(super.getUiString('email_account_title'))}
@@ -58,6 +63,10 @@ class View extends BaseView {
         </div>
       </div>
     );
+  }
+
+  render() {
+    return super.render();
   }
 }
 

@@ -25,6 +25,7 @@ const history = new BrowserHistory();
 let loadedPage = null;
 let loadPage = null;
 let routeContainer;
+let refTarget;
 
 export let SetRouteContainer = (container) => {
   routeContainer = container;
@@ -32,32 +33,32 @@ export let SetRouteContainer = (container) => {
 
 export const RoutePage = (pageUID) => {
   history.go(pageUID)
-  Routing(loadPageComponent(pageUID));
+  Route(loadPageComponent(pageUID));
 };
 
 const loadPageComponent = (pageUID) => {
   let pageView;
   switch (pageUID) {
     case PageUID.MAIN_ACCOUNT_SELECT:
-      pageView = <MainPage />;
+      pageView = <MainPage ref={(c)=>refTarget=c} />;
       break;
     case PageUID.CREATE_EMAIL_ACCOUNT:
-      pageView = <EmailAccountPage />;
+      pageView = <EmailAccountPage ref={(c)=>refTarget=c} />;
       break;
     case PageUID.SERVICE_AGREEMENT:
-      pageView = <ServiceAgreement />;
+      pageView = <ServiceAgreement ref={(c)=>refTarget=c} />;
       break;
     case PageUID.PRIVACY_POLICY:
-      pageView = <PrivacyPolicy />;
+      pageView = <PrivacyPolicy ref={(c)=>refTarget=c} />;
       break;
     case PageUID.ADDITIONAL_INFO:
-      pageView = <AdditionalInfo />;
+      pageView = <AdditionalInfo ref={(c)=>refTarget=c} />;
       break;
     case PageUID.LOGIN:
-      pageView = <Login />;
+      pageView = <Login ref={(c)=>refTarget=c} />;
       break;
     case PageUID.TEMPORARY_PASSWORD:
-      pageView = <TemporaryPassword />;
+      pageView = <TemporaryPassword ref={(c)=>refTarget=c} />;
       break;
     default:
       pageView = null;
@@ -68,20 +69,27 @@ const loadPageComponent = (pageUID) => {
   return pageView;
 };
 
-const Routing = (pageOutput) => {
-  routeContainer.setState({'location' : pageOutput});
+const Route = (page) => {
+  routeContainer.addRender(page);
+  routeContainer.renderTrigger();
 };
+
+const RouteBack = () => {
+  routeContainer.removeRender();
+  routeContainer.renderTrigger();
+}
 
 export const Go = (pageUID) => {
   if (!history.go(pageUID)) return;
-  const inPage = loadPageComponent(pageUID);
-  Routing(GoFowardTransition(inPage, loadedPage));
+  const pageIn = loadPageComponent(pageUID);
+  Route(pageIn);
 };
 
 export const GoBack = () => {
   if (!GoBackEnable()) return;
-  const inPage = loadPageComponent(history.goBack());
-  Routing(GoBackwardTransition(inPage, loadedPage));
+  const pageOut = loadedPage;
+  refTarget.isPageRenderMode() ? refTarget.pageOut(RouteBack) : RouteBack();
+  history.goBack();
 };
 
 export const GoBackEnable = () => history.goBackEnable();

@@ -11,14 +11,17 @@
 }
 
 .page {
+  width:100%;
   height:100vh;
+  position:absolute;
   background-color:white;
   overflow:hidden;
 }
 
 .pre-scrollable {
   max-height:100vh;
-  background-color:white;
   padding-bottom:20vh;
+  overflow: auto;
+  background-color:white;
   -webkit-overflow-scrolling:touch;
 }

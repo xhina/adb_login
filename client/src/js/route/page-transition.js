@@ -19,20 +19,19 @@ const createOutContainer = (page) => {
 }
 
 export const GoFowardTransition = (pageIn, pageOut) => {
+  return pageIn;
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:screenSize()}} style={{x:spring(0, {stiffness:200, damping:30, precision:1})}}>
+      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:screenSize()}} style={{x:spring(0, {stiffness:230, damping:30, precision:2})}}>
         {
           ({x}) =>
           <div style={{
-            width:'100%',
-            position:'absolute',
             zIndex:'1',
             transform:`translate3d(${x}px, 0, 0)`,
           }}>{pageIn}</div>
         }
       </Motion>
-      { pageOut ? createOutContainer(pageOut) : "" }
+      {/* { pageOut ? createOutContainer(pageOut) : "" } */}
     </div>
   );
 };
@@ -42,7 +41,7 @@ export const GoBackwardTransition = (pageIn, pageOut) => {
 
   return (
     <div>
-      <Motion key={_.random(Number.MAX_SAFE_INTEGER)} onRest={hiddenContainer} defaultStyle={{x:0}} style={{x:spring(screenSize(), {stiffness:200, damping:30, precision:1})}}>
+      <Motion defaultStyle={{x:0}} style={{x:spring(screenSize(), {stiffness:10, damping:30, precision:2})}}>
         {
           ({x}) =>
           <div style={{
@@ -50,10 +49,10 @@ export const GoBackwardTransition = (pageIn, pageOut) => {
             position:'absolute',
             zIndex:'1',
             transform:`translate3d(${x}px, 0, 0)`
-          }}>{pageOutContainer}</div>
+          }}>{pageOut}</div>
         }
       </Motion>
-      {pageIn}
+      {/* {pageIn} */}
     </div>
   );
 }
@@ -77,9 +76,9 @@ class TransitionContainer extends React.Component {
     }
 
     return (
-      <React.Fragment>
+      <div id="11">
         {this.props.children}
-      </React.Fragment>
+      </div>
     );
   }
 
