@@ -22,17 +22,19 @@ export const PageUID = {
 };
 
 const history = new BrowserHistory();
+const FORCE_ROUTE_BACK_TIME = 600;
 let loadedPage = null;
 let loadPage = null;
 let routeContainer;
 let refTarget;
+let block = false;
 
 export let SetRouteContainer = (container) => {
   routeContainer = container;
 };
 
 export const RoutePage = (pageUID) => {
-  history.go(pageUID)
+  history.go(pageUID);
   Route(loadPageComponent(pageUID));
 };
 
@@ -69,6 +71,11 @@ const loadPageComponent = (pageUID) => {
   return pageView;
 };
 
+const routeBlock = ()=>{
+  block = true;
+  setTimeout(()=>block = false, FORCE_ROUTE_BACK_TIME + 150);
+}
+
 const Route = (page) => {
   routeContainer.addRender(page);
   routeContainer.renderTrigger();
@@ -80,16 +87,29 @@ const RouteBack = () => {
 }
 
 export const Go = (pageUID) => {
+  if (block) return;
   if (!history.go(pageUID)) return;
+
   const pageIn = loadPageComponent(pageUID);
+  routeBlock();
   Route(pageIn);
 };
 
 export const GoBack = () => {
+  if (block) return;
   if (!GoBackEnable()) return;
-  const pageOut = loadedPage;
-  refTarget.isPageRenderMode() ? refTarget.pageOut(RouteBack) : RouteBack();
+
   history.goBack();
+
+  const pageOut = loadedPage;
+  if (refTarget.isPageRenderMode()) {
+    routeBlock();
+    setTimeout(()=>RouteBack(), FORCE_ROUTE_BACK_TIME);
+    refTarget.pageOut();
+  }
+  else {
+    RouteBack();
+  }
 };
 
 export const GoBackEnable = () => history.goBackEnable();
