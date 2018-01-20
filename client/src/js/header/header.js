@@ -7,6 +7,11 @@ class HeaderView extends Navigator {
 
   constructor(props) {
     super(props);
+    this.firstRender = false;
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    return false;
   }
 
   changeNavButtonView(prop, leftOrRight = 'left') {

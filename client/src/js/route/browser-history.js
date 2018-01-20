@@ -12,7 +12,6 @@ export default class BrowserHistory {
       return false;
     }
     this.history.push(page_uid);
-    // console.log('browser history', 'go');
     return true;
   }
 
@@ -20,7 +19,6 @@ export default class BrowserHistory {
     let list = this.history;
     let p = _.takeRight(list, 2);
     if (_.size(p) > 1) {
-      // console.log('browser history', 'go back');
       list.pop();
       return _.last(list);
     }

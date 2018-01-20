@@ -65,9 +65,6 @@ class View extends BaseView {
     );
   }
 
-  render() {
-    return super.render();
-  }
 }
 
 export default View;

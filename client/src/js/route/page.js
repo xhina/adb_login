@@ -12,10 +12,9 @@ export default class Page extends Navigator {
   constructor(props) {
     super(props);
     this.state = {
-      pageIn : true
+      pageIn : true,
+      renderToggle:false
     };
-    this.pageOut = this.pageOut.bind(this);
-    this.onFinishMotion = this.onFinishMotion.bind(this);
   }
 
   isPageRenderMode() {
@@ -26,27 +25,32 @@ export default class Page extends Navigator {
     this.renderEl = el;
   }
 
+  renderTick(view) {
+    if (view != null) this.pageRender(view);
+    this.setState({renderToggle:!this.state.renderToggle});
+  }
+
   pageIn() {
     this.setState({pageIn:true});
   }
 
-  pageOut(onFinishCallback) {
+  pageOut() {
     this.setState({pageIn:false});
-    this.onFinishCallback = onFinishCallback;
-  }
-
-  onFinishMotion() {
-    if (this.onFinishCallback != null) this.onFinishCallback();
   }
 
   render() {
     return (
-      <Motion defaultStyle={{x:this.state.pageIn ? screenSize() : 0}} onRest={this.onFinishMotion} style={{x:spring(this.state.pageIn ? 0 : screenSize())}}>
+      <Motion
+        defaultStyle={{x:this.state.pageIn ? screenSize() : 0}}
+        onRest={this.state.pageIn ? null : this.props.onFinishPageOut}
+        style={{x:spring(this.state.pageIn ? 0 : screenSize(), {stiffness:230, damping:30, precision:2})}}
+      >
         {({x}) =>
           <div
             style={{
+              position:'relative',
               zIndex:'1',
-              transform:`translate3d(${x}px, 0, 0)`
+              left:`${x}px`,
             }}>
             {this.renderEl}
           </div>

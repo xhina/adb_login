@@ -21,8 +21,10 @@ export const PageUID = {
   TEMPORARY_PASSWORD: Symbol(),
 };
 
-const history = new BrowserHistory();
-const FORCE_ROUTE_BACK_TIME = 600;
+
+const ROUTE_BLOCKING_TIME = 700;
+const HISTORY = new BrowserHistory();
+
 let loadedPage = null;
 let loadPage = null;
 let routeContainer;
@@ -34,7 +36,7 @@ export let SetRouteContainer = (container) => {
 };
 
 export const RoutePage = (pageUID) => {
-  history.go(pageUID);
+  HISTORY.go(pageUID);
   Route(loadPageComponent(pageUID));
 };
 
@@ -42,25 +44,25 @@ const loadPageComponent = (pageUID) => {
   let pageView;
   switch (pageUID) {
     case PageUID.MAIN_ACCOUNT_SELECT:
-      pageView = <MainPage key="1" ref={(c)=>refTarget=c} />;
+      pageView = <MainPage key="1" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.CREATE_EMAIL_ACCOUNT:
-      pageView = <EmailAccountPage key="2" ref={(c)=>refTarget=c} />;
+      pageView = <EmailAccountPage key="2" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.SERVICE_AGREEMENT:
-      pageView = <ServiceAgreement key="3" ref={(c)=>refTarget=c} />;
+      pageView = <ServiceAgreement key="3" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.PRIVACY_POLICY:
-      pageView = <PrivacyPolicy key="4" ref={(c)=>refTarget=c} />;
+      pageView = <PrivacyPolicy key="4" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.ADDITIONAL_INFO:
-      pageView = <AdditionalInfo key="5" ref={(c)=>refTarget=c} />;
+      pageView = <AdditionalInfo key="5" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.LOGIN:
-      pageView = <Login key="6" ref={(c)=>refTarget=c} />;
+      pageView = <Login key="6" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     case PageUID.TEMPORARY_PASSWORD:
-      pageView = <TemporaryPassword key="7" ref={(c)=>refTarget=c} />;
+      pageView = <TemporaryPassword key="7" onFinishPageOut={RouteBack} ref={(c)=>refTarget=c} />;
       break;
     default:
       pageView = null;
@@ -73,7 +75,7 @@ const loadPageComponent = (pageUID) => {
 
 const routeBlock = ()=>{
   block = true;
-  setTimeout(()=>block = false, FORCE_ROUTE_BACK_TIME + 150);
+  setTimeout(()=>block = false, ROUTE_BLOCKING_TIME);
 }
 
 const Route = (page) => {
@@ -88,7 +90,7 @@ const RouteBack = () => {
 
 export const Go = (pageUID) => {
   if (block) return;
-  if (!history.go(pageUID)) return;
+  if (!HISTORY.go(pageUID)) return;
 
   const pageIn = loadPageComponent(pageUID);
   routeBlock();
@@ -99,12 +101,10 @@ export const GoBack = () => {
   if (block) return;
   if (!GoBackEnable()) return;
 
-  history.goBack();
-
+  HISTORY.goBack();
   const pageOut = loadedPage;
   if (refTarget.isPageRenderMode()) {
     routeBlock();
-    setTimeout(()=>RouteBack(), FORCE_ROUTE_BACK_TIME);
     refTarget.pageOut();
   }
   else {
@@ -112,4 +112,4 @@ export const GoBack = () => {
   }
 };
 
-export const GoBackEnable = () => history.goBackEnable();
+export const GoBackEnable = () => HISTORY.goBackEnable();
