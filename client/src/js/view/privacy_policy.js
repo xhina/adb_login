@@ -3,7 +3,16 @@ import {Container} from 'reactstrap';
 import BaseView from './base_view';
 
 class View extends BaseView {
-  render() {
+
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    super.pageRender(this.view());
+  }
+
+  view() {
     return (
       <div className="page">
         {super.attachHeader('개인정보 보호정책')}

@@ -15,12 +15,12 @@ export default class BaseView extends Page {
   }
 
   alert(message, onConfirm) {
-    if (this.alert == null) return;
-    this.alert.show(message, onConfirm);
+    if (this.alertModal == null) return;
+    this.alertModal.show(message, onConfirm);
   }
 
   attachAlertModal() {
-    return React.createElement(AlertModal, {ref:(a) => this.alert = a});
+    return React.createElement(AlertModal, {ref:(a) => this.alertModal = a});
   }
 
   getUiString(id) {

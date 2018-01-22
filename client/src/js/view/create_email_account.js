@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseView from './base_view';
+import { PageUID } from '../route/page-route-controller';
 import {
   Container,
   Row,
@@ -15,13 +16,22 @@ class View extends BaseView {
 
   constructor(props) {
     super(props);
+  }
+
+  componentDidMount() {
     super.pageRender(this.view());
+  }
+
+  onClickJoinEmail() {
+    super.go(PageUID.DUMMY1);
   }
 
   view() {
     return (
       <div className="page">
         {super.attachHeader(super.getUiString('email_account_title'))}
+        {super.attachAlertModal()}
+
         <div className="pre-scrollable">
           <Container>
             <Form>
@@ -56,7 +66,7 @@ class View extends BaseView {
                 </Row>
               </FormGroup>
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">이메일로 가입하기</Button>
+                <Button color="primary" size="lg" onClick={this.onClickJoinEmail}>이메일로 가입하기</Button>
               </Row>
             </Form>
           </Container>

@@ -30,4 +30,8 @@ export default class BrowserHistory {
     return _.size(list) > 1;
   }
 
+  current() {
+    return _.last(this.history);
+  }
+
 }

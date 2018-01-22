@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Navigator from './page-navigator';
 import {Motion,spring} from 'react-motion';
 import _ from 'lodash';
@@ -12,7 +13,7 @@ export default class Page extends Navigator {
   constructor(props) {
     super(props);
     this.state = {
-      pageIn : true,
+      transitionType : "go",
       renderToggle:false
     };
   }
@@ -30,20 +31,51 @@ export default class Page extends Navigator {
     this.setState({renderToggle:!this.state.renderToggle});
   }
 
+  pageGo() {
+    this.setState({transitionType:"go"});
+  }
+
+  pageBack() {
+    this.setState({transitionType:"back"});
+  }
+
   pageIn() {
-    this.setState({pageIn:true});
+    this.setState({transitionType:"in"});
   }
 
   pageOut() {
-    this.setState({pageIn:false});
+    this.setState({transitionType:"out"});
   }
 
   render() {
+    let transitionType = this.state.transitionType;
+    let defaultX, destX;
+    if (transitionType === "go") {
+      defaultX = screenSize();
+      destX = 0;
+    }
+    else if (transitionType === "back") {
+      defaultX = 0;
+      destX = screenSize();
+    }
+    else if (transitionType === "out"){
+      defaultX = 0;
+      destX = -screenSize() / 4;
+    }
+    else if (transitionType === "in"){
+      defaultX = -screenSize();
+      destX = 0;
+    }
+    else {
+      defaultX = 0;
+      destX = 0;
+    }
+
     return (
       <Motion
-        defaultStyle={{x:this.state.pageIn ? screenSize() : 0}}
-        onRest={this.state.pageIn ? null : this.props.onFinishPageOut}
-        style={{x:spring(this.state.pageIn ? 0 : screenSize(), {stiffness:230, damping:30, precision:2})}}
+        defaultStyle={{x:defaultX}}
+        onRest={transitionType === "back" ? this.props.onFinishPageBack : null}
+        style={{x:spring(destX, {stiffness:230, damping:30, precision:2})}}
       >
         {({x}) =>
           <div
@@ -58,4 +90,8 @@ export default class Page extends Navigator {
       </Motion>
     );
   }
+}
+
+Page.propTypes = {
+    onFinishPageBack:PropTypes.func
 }

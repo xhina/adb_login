@@ -22,7 +22,8 @@ class View extends BaseView {
   }
 
   gotoPrivacyPolicy() {
-    super.go(PageUID.PRIVACY_POLICY);
+    // super.go(PageUID.PRIVACY_POLICY);
+    super.alert('alert message');
   }
 
   startWithFB() {
@@ -34,6 +35,8 @@ class View extends BaseView {
   }
 
   componentDidMount() {
+    super.pageRender(this.view());
+
     if (checkKakaoSess()) {
       !checkOAuthErrorKakao() ? getKakaoInfo() : null;
     }
@@ -43,7 +46,7 @@ class View extends BaseView {
     }
   }
 
-  render() {
+  view() {
     return (
       <div className="page">
         { super.attachHeader('') }
@@ -66,13 +69,15 @@ class View extends BaseView {
                 <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
               </Row>
             </div>
-            <Row className="justify-content-center" style={{fontSize:'10pt'}}>
-              <p>가입과 동시에
-                <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
-                및
-                <a href="#" onClick={this.gotoPrivacyPolicy}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
-              </p>
-            </Row>
+            <Container>
+              <Row className="justify-content-center" style={{fontSize:'10pt'}}>
+                <p>가입과 동시에
+                  <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
+                  및
+                  <a href="#" onClick={this.gotoPrivacyPolicy.bind(this)}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
+                </p>
+              </Row>
+            </Container>
           </Container>
         </div>
       </div>

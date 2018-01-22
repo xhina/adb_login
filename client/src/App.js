@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
-import ReactDOMServer from 'react-dom/server';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {SetRouteContainer, Go, PageUID, RoutePage} from './js/route/page-route-controller';
+import {SetRouteContainer, PageUID, RoutePage} from './js/route/page-route-controller';
 import StringResource from './js/string-resource';
 
 import { createStore } from 'redux';
@@ -45,12 +44,8 @@ class App extends Component {
     this.renderTree.push(page);
   }
 
-  removeRender() {
+  removeRenderPop() {
     this.renderTree = _.dropRight(this.renderTree);
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return true;
   }
 
   getRenderElements() {
@@ -62,7 +57,8 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Route exact path="/" render={() => this.getRenderElements()} />
+            <Route path="/" render={() => this.getRenderElements()} />
+
             <Route exact path="/oauth_kakao" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_fb" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_cancel_fb" render={() => this.getRenderElements()} />

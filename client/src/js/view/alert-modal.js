@@ -7,18 +7,18 @@ class AlertModal extends Component {
     super(props);
     this.state = {
       visible:false
-    }
+    };
     this.toggle = this.toggle.bind(this);
   }
 
   show(body, onConfirm) {
     this.body = body ? body : this.props.body;
     this.onConfirm = onConfirm;
-    this.setState({visible: true})
+    this.setState({visible: true});
   }
 
   toggle() {
-    this.setState({visible: !this.state.visible})
+    this.setState({visible: !this.state.visible});
     if (!this.state.visible && this.onConfirm) {
       this.onConfirm();
     }
@@ -28,7 +28,7 @@ class AlertModal extends Component {
     return (
       <Modal isOpen={this.state.visible} toggle={this.toggle}>
         <ModalBody className="text-center">
-          {this.body}
+          <p>{this.body}</p>
         </ModalBody>
         <ModalFooter className="justify-content-center">
           <p onClick={this.toggle} style={{cursor:'pointer'}}>확인</p>
@@ -37,5 +37,6 @@ class AlertModal extends Component {
     );
   }
 }
+
 
 export default AlertModal;
