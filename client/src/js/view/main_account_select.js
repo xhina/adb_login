@@ -35,8 +35,6 @@ class View extends BaseView {
   }
 
   componentDidMount() {
-    super.pageRender(this.view());
-
     if (checkKakaoSess()) {
       !checkOAuthErrorKakao() ? getKakaoInfo() : null;
     }
@@ -46,7 +44,7 @@ class View extends BaseView {
     }
   }
 
-  view() {
+  render() {
     return (
       <div className="page">
         { super.attachHeader('') }
