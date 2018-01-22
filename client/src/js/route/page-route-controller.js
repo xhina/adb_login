@@ -9,7 +9,6 @@ import PrivacyPolicy from '../view/privacy_policy';
 import AdditionalInfo from '../view/additional_info';
 import Login from '../view/login';
 import TemporaryPassword from '../view/temporary_password';
-import {GoFowardTransition, GoBackwardTransition} from './page-transition';
 
 export const PageUID = {
   MAIN_ACCOUNT_SELECT: Symbol(),
