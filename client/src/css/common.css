@@ -14,3 +14,13 @@
   overflow: auto;
   -webkit-overflow-scrolling:touch;
 }
+
+.modal-body {
+  overflow-wrap:break-word;
+  min-width:70vw;
+  max-width:90vw;
+}
+
+.modal-footer {
+
+}

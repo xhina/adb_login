@@ -23,7 +23,7 @@ class View extends BaseView {
 
   gotoPrivacyPolicy() {
     // super.go(PageUID.PRIVACY_POLICY);
-    super.alert('alert message');
+    super.alert('lkr');
   }
 
   startWithFB() {
