@@ -11,7 +11,7 @@ export default class BaseView extends Page {
   }
 
   attachHeader(title, leftBtnType, rightBtnType) {
-    return <Header left={leftBtnType} right={rightBtnType} />;
+    return <Header title={title} left={leftBtnType} right={rightBtnType} />;
   }
 
   alert(message, onConfirm) {

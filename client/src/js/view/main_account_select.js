@@ -70,7 +70,7 @@ class View extends BaseView {
               </Row>
             </div>
             <Container>
-              <Row className="justify-content-center" style={{fontSize:'10pt'}}>
+              <Row className="justify-content-center" style={{fontSize:'10pt', marginTop:"40px"}}>
                 <p>가입과 동시에
                   <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
                   및

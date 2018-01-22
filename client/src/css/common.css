@@ -1,6 +1,6 @@
 
 .page {
-  position:absolute;
+  position:relative;
   width:100vw;
   height:100vh;
   background-color:white;
