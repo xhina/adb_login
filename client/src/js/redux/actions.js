@@ -1,14 +1,11 @@
+// @flow
 
 /* action type */
 export const LOGIN = "LOGIN";
 export const CREATE = "CREATE";
 export const LOGOUT = "LOGOUT";
-
-export const Login = {
-  ADB : "adb",
-  FACEBOOK : "facebook",
-  KAKAO : "kakao"
-};
+export const DUID_SET = "DUID_SET";
+export const DUID_GET = "DUID_GET";
 
 export const UserStatus = {
   GUEST : "guest",
@@ -21,7 +18,7 @@ export const AccountType = {
   KAKAO : "kakao",
 };
 
-export function loginAction(accountType, uid, pw) {
+export function loginAction(accountType:Object, uid:string, pw:string) {
   return {
     type : LOGIN,
     accountType : accountType,
@@ -30,7 +27,7 @@ export function loginAction(accountType, uid, pw) {
   };
 }
 
-export function create(accountType) {
+export function create(accountType:Object) {
   return {
     type : CREATE,
     accountType : accountType
@@ -40,5 +37,17 @@ export function create(accountType) {
 export function logoutAction() {
   return {
     type : LOGOUT
+  };
+}
+
+export function setDUID(duid:string) {
+  return {
+    type : DUID_SET
+  };
+}
+
+export function getDUID() {
+  return {
+    type : DUID_GET
   };
 }

@@ -23,16 +23,30 @@ class App extends Component {
 
   initAPP() {
     this.renderTree =[];
-
+    this.setDeviceUID();
     new StringResource(() => {
       SetRouteContainer(this);
       RoutePage(PageUID.MAIN_ACCOUNT_SELECT);
     });
-    console.log(process.env);
-
     store.subscribe(()=> {
-      console.log(store.getState());
+      console.log('store',store.getState());
     });
+
+    console.log(process.env);
+  }
+
+  setDeviceUID() {
+    let params = _.words(window.location.search);
+    let idx = _.indexOf(params, 'duid');
+    if (idx == -1) {
+      console.log('not set a {duid} value');
+      return;
+    }
+    let duid = params[idx + 1];
+    if (params.length % 2 != 0) {
+      console.log('not paired key and value : ' + window.location.search);
+    }
+    console.log('DUID :', duid);
   }
 
   renderTrigger() {
@@ -42,6 +56,7 @@ class App extends Component {
   addRender(page) {
     if (page == null) return;
     this.renderTree.push(page);
+    console.log(1, page);
   }
 
   removeRenderPop() {

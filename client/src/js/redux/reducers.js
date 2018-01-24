@@ -5,7 +5,6 @@ export function userApi(state, action) {
   switch (action.type) {
     case LOGIN:
       // login api
-      action.accountType = Math.random(10);
       return Object.assign({}, action);
       break;
     case LOGOUT:

@@ -1,5 +1,6 @@
 import React from 'react';
 import BrowserHistory from './browser-history';
+import Page from './page'
 
 // Page Component
 import MainPage from '../view/main_account_select';
@@ -92,8 +93,8 @@ const addPageComp = (pageUID, comp)=> {
   PAGE_COMPS[pageUID] = comp;
 }
 
-const getRef = (p)=> {
-  return REF_TABLES[p];
+const getRef = (pageUID)=> {
+  return REF_TABLES[pageUID];
 }
 
 const routeBlock = ()=> {
