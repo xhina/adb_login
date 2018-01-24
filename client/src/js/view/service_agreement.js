@@ -27,7 +27,7 @@ class View extends BaseView {
   }
 
   componentDidMount() {
-    this.pageRender(this.view());
+    super.pageRender(this.view());
     this.loadTextRes();
   }
 
