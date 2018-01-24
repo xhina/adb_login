@@ -1,26 +1,36 @@
+body {
+  overflow: hidden; }
 
 .page {
-  position:absolute;
-  width:100vw;
-  height:100vh;
-  background-color:white;
-  overflow-y:hidden;
-}
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  overflow-y: hidden; }
+  .page .nav {
+    background-color: #ffccaa; }
+  .page .pre-scrollable {
+    max-height: 95vh;
+    padding-bottom: 10vh;
+    background-color: white;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
+  .page .modal-body {
+    overflow-wrap: break-word;
+    text-align: center; }
+    @media (max-width: 500px) {
+      .page .modal-body {
+        min-width: 80vw;
+        max-width: 90vw; } }
+    @media (min-width: 501px) {
+      .page .modal-body {
+        min-width: 60vw;
+        max-width: 60vw; } }
+  .page .modal-open .modal {
+    overflow-y: hidden; }
+  .page .modal.fade .modal-dialog {
+    transform: translate(0, -5%); }
+  .page .modal.show .modal-dialog {
+    transform: translate(0, 0); }
 
-.pre-scrollable {
-  max-height:95vh;
-  padding-bottom:10vh;
-  background-color:white;
-  overflow: auto;
-  -webkit-overflow-scrolling:touch;
-}
-
-.modal-body {
-  overflow-wrap:break-word;
-  min-width:70vw;
-  max-width:90vw;
-}
-
-.modal-footer {
-
-}
+/*# sourceMappingURL=common.css.map */

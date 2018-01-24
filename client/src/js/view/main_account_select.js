@@ -22,8 +22,7 @@ class View extends BaseView {
   }
 
   gotoPrivacyPolicy() {
-    // super.go(PageUID.PRIVACY_POLICY);
-    super.alert('lkr');
+    super.go(PageUID.PRIVACY_POLICY);
   }
 
   startWithFB() {

@@ -26,11 +26,11 @@ class AlertModal extends Component {
 
   render() {
     return (
-      <Modal isOpen={this.state.visible} toggle={this.toggle} style={{display:'flex', height:'100vh',alignItems:'center', justifyContent:'center'}}>
-          <ModalBody className="text-center modal-body">
+      <Modal isOpen={this.state.visible} toggle={this.toggle} style={{display:'flex', height:'90%', alignItems:'center', justifyContent:'center'}}>
+          <ModalBody className="modal-body">
             <p>{this.body}</p>
           </ModalBody>
-          <ModalFooter className="justify-content-center modal-footer">
+          <ModalFooter className="justify-content-center">
             <p onClick={this.toggle} style={{cursor:'pointer'}}>확인</p>
           </ModalFooter>
       </Modal>

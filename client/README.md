@@ -20,6 +20,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - flow
 - react-router
 
+### CSS Preprocessor
+- SASS
+
 ### Module Bundler
 - webpack
 
