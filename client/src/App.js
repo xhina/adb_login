@@ -56,7 +56,6 @@ class App extends Component {
   addRender(page) {
     if (page == null) return;
     this.renderTree.push(page);
-    console.log(1, page);
   }
 
   removeRenderPop() {
