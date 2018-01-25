@@ -1,5 +1,6 @@
 body {
-  overflow: hidden; }
+  overflow: hidden;
+  background-color: #f7f7f7; }
 
 .page {
   position: absolute;
@@ -8,7 +9,8 @@ body {
   background-color: white;
   overflow-y: hidden; }
   .page .nav {
-    background-color: #ffccaa; }
+    background-color: #ffa907;
+    height: 40px; }
   .page .pre-scrollable {
     max-height: 95vh;
     padding-bottom: 10vh;

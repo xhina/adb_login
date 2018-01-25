@@ -2,52 +2,45 @@
 
 /* action type */
 export const LOGIN = "LOGIN";
-export const CREATE = "CREATE";
-export const LOGOUT = "LOGOUT";
+export const JOIN = "JOIN";
 export const DUID_SET = "DUID_SET";
-export const DUID_GET = "DUID_GET";
+export const DUID_LOAD = "DUID_LOAD";
 
-export const UserStatus = {
-  GUEST : "guest",
-  MEMBER : "member",
-};
-
-export const AccountType = {
+export const ACCOUNT_TYPE = {
   ADB : "adb",
   FACEBOOK : "facebook",
   KAKAO : "kakao",
 };
 
-export function loginAction(accountType:Object, uid:string, pw:string) {
+export function login(accountType:Object, id:string, pw:string) {
   return {
     type : LOGIN,
     accountType : accountType,
-    uid : uid,
-    pw : pw
+    id : id,
+    pw : pw,
   };
 }
 
-export function create(accountType:Object) {
+export function join(accountType:Object, id:string, pw:string, name:string) {
   return {
-    type : CREATE,
-    accountType : accountType
-  };
-}
-
-export function logoutAction() {
-  return {
-    type : LOGOUT
+    type : JOIN,
+    accountType : accountType,
+    id : id,
+    pw : pw,
+    name : name,
   };
 }
 
 export function setDUID(duid:string) {
   return {
-    type : DUID_SET
+    type : DUID_SET,
+    duid : duid
   };
 }
 
-export function getDUID() {
+export function loadDUID() {
   return {
-    type : DUID_GET
+    type : DUID_LOAD,
+    duid : ""
   };
 }

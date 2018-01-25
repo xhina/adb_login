@@ -21,12 +21,12 @@ export function checkOAuthError() {
   return bool;
 }
 
-export function getUserInfo() {
+export function getUserInfo(callback) {
   const code = _.replace(window.location.search, "?code=", "");
-  callAccessTokenAPI(code);
+  callAccessTokenAPI(code, callback);
 }
 
-function callAccessTokenAPI(code) {
+function callAccessTokenAPI(code, callback) {
   const body = {
     url : "https://kauth.kakao.com/oauth/token",
     grant_type:"authorization_code",
@@ -40,11 +40,15 @@ function callAccessTokenAPI(code) {
   .then((r) => r.json())
   .then((r) => {
     console.log(r);
-    getUserId(r.access_token);
+    if (r.error != null) {
+      callback({error:1});
+      return;
+    }
+    getUserId(r.access_token, callback);
   });
 }
 
-function getUserId(accessToken) {
+function getUserId(accessToken, callback) {
   const body = {
     url : "https://kapi.kakao.com/v1/user/me",
     access_token : accessToken
@@ -55,5 +59,9 @@ function getUserId(accessToken) {
   .then((r) => r.json())
   .then((r) => {
     console.log(r);
+    if (r.error != null) {
+      callback({error:1});
+      return;
+    }
   });
 }

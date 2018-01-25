@@ -1,25 +1,29 @@
-$font-family: Helvitca, sans-serif;
-$header-color:#ffccaa;
+$font-family: sans-serif;
+$body-bg-color:rgb(247,247,247);
+$header-color:rgb(255,169,7);
+$page-bg-color:white;
 
 body {
   overflow:hidden;
+  background-color:$body-bg-color;
 }
 
 .page {
   position:absolute;
   width:100vw;
   height:100vh;
-  background-color:white;
+  background-color:$page-bg-color;
   overflow-y:hidden;
 
   .nav {
     background-color: $header-color;
+    height:40px;
   }
 
   .pre-scrollable {
     max-height:95vh;
     padding-bottom:10vh;
-    background-color:white;
+    background-color:$page-bg-color;
     overflow: auto;
     -webkit-overflow-scrolling:touch;
   }

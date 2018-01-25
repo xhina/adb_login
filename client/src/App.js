@@ -7,9 +7,12 @@ import StringResource from './js/string-resource';
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { userApi } from './js/redux/reducers';
+import { setDUID, loadDUID } from './js/redux/actions';
 
 let store = createStore(userApi);
-const context = {};
+store.subscribe(()=> {
+  console.log('store', store.getState());
+});
 
 class App extends Component {
   constructor(props) {
@@ -21,31 +24,34 @@ class App extends Component {
   }
 
   initAPP() {
-    this.renderTree =[];
+    this.initRender();
     this.setDeviceUID();
     new StringResource(() => {
       BindRouteContainer(this);
       RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT);
     });
-    store.subscribe(()=> {
-      console.log('store',store.getState());
-    });
-
     console.log(process.env);
   }
 
+  initRender() {
+    this.renderTree = [];
+  }
+
   setDeviceUID() {
-    let params = _.words(window.location.search);
-    let idx = _.indexOf(params, 'duid');
-    if (idx == -1) {
-      console.log('not set a {duid} value');
-      return;
-    }
-    let duid = params[idx + 1];
-    if (params.length % 2 != 0) {
-      console.log('not paired key and value : ' + window.location.search);
-    }
-    console.log('DUID :', duid);
+    let params = _.replace(window.location.search, "?", "");
+    params = _.split(params, "&");
+
+    _.map(params, (e)=>{
+      let p = _.split(e, "=");
+      if (p.length < 2) return false;
+
+      const {k,v} = {k:p[0], v:p[1]};
+      if (k === "duid") {
+        store.dispatch(setDUID(v));
+        return;
+      }
+    });
+    store.dispatch(loadDUID());
   }
 
   renderTrigger() {
@@ -70,7 +76,7 @@ class App extends Component {
       <Provider store={store}>
         <Router>
           <div>
-            <Route path="/" render={() => this.getRenderElements()} />
+            <Route exact path="/" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_kakao" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_fb" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_cancel_fb" render={() => this.getRenderElements()} />

@@ -1,11 +1,25 @@
 import React from 'react';
-import BaseView from './base_view';
+import { connect } from 'react-redux';
 import { Container, Button, Row } from 'reactstrap';
+
+import BaseView from './base_view';
 import img_logo from '../../res/img/logo.png';
+import { ACCOUNT_TYPE, join } from '../redux/actions';
 import { PAGE_UID } from '../route/page-component-factory';
-import _ from 'lodash';
-import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo, checkOAuthError as checkOAuthErrorKakao } from '../login/kakao';
-import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, checkOAuthError as checkOAuthErrorFb } from '../login/facebook';
+
+import {
+  login as kakaoLogin,
+  checkOAuthSession as checkKakaoSess,
+  getUserInfo as getKakaoInfo,
+  checkOAuthError as checkOAuthErrorKakao
+} from '../login/kakao';
+
+import {
+  login as fbLogin,
+  checkOAuthSession as checkFbSess,
+  getUserInfo as getFbInfo,
+  checkOAuthError as checkOAuthErrorFb
+} from '../login/facebook';
 
 class View extends BaseView {
 
@@ -35,15 +49,33 @@ class View extends BaseView {
 
   componentDidMount() {
     if (checkKakaoSess()) {
-      !checkOAuthErrorKakao() ? getKakaoInfo() : null;
+      !checkOAuthErrorKakao() ? getKakaoInfo(this.onRequestFinishKakao.bind(this)) : null;
     }
 
     if (checkFbSess()) {
-      !checkOAuthErrorFb() ? getFbInfo() : null;
+      !checkOAuthErrorFb() ? getFbInfo(this.onRequestFinishFacebook.bind(this)) : null;
     }
   }
 
+  onRequestFinishFacebook(res) {
+    console.log(res);
+    if (res.error) {
+      return;
+    }
+    this.dispatch(join(ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name));
+  }
+
+  onRequestFinishKakao(res) {
+    console.log(res);
+    if (res.error) {
+      return;
+    }
+    this.dispatch(join(ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name));
+  }
+
   render() {
+    this.dispatch = this.props.dispatch;
+
     return (
       <div className="page">
         { super.attachHeader('') }
@@ -92,4 +124,4 @@ const btn_group = {
   marginBottom: '1em'
 }
 
-export default View;
+export default connect()(View);
