@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
+import _ from 'lodash';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import {SetRouteContainer, PageUID, RoutePage} from './js/route/page-route-controller';
+import {BindRouteContainer, RoutePage} from './js/route/page-route-controller';
+import {PAGE_UID} from './js/route/page-component-factory';
 import StringResource from './js/string-resource';
-
 import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { userApi } from './js/redux/reducers';
-import _ from 'lodash';
 
 let store = createStore(userApi);
 const context = {};
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -25,8 +24,8 @@ class App extends Component {
     this.renderTree =[];
     this.setDeviceUID();
     new StringResource(() => {
-      SetRouteContainer(this);
-      RoutePage(PageUID.MAIN_ACCOUNT_SELECT);
+      BindRouteContainer(this);
+      RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT);
     });
     store.subscribe(()=> {
       console.log('store',store.getState());
@@ -72,7 +71,6 @@ class App extends Component {
         <Router>
           <div>
             <Route path="/" render={() => this.getRenderElements()} />
-
             <Route exact path="/oauth_kakao" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_fb" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_cancel_fb" render={() => this.getRenderElements()} />

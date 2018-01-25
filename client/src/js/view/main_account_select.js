@@ -2,7 +2,7 @@ import React from 'react';
 import BaseView from './base_view';
 import { Container, Button, Row } from 'reactstrap';
 import img_logo from '../../res/img/logo.png';
-import { PageUID } from '../route/page-route-controller';
+import { PAGE_UID } from '../route/page-component-factory';
 import _ from 'lodash';
 import { login as kakaoLogin, checkOAuthSession as checkKakaoSess, getUserInfo as getKakaoInfo, checkOAuthError as checkOAuthErrorKakao } from '../login/kakao';
 import { login as fbLogin, checkOAuthSession as checkFbSess, getUserInfo as getFbInfo, checkOAuthError as checkOAuthErrorFb } from '../login/facebook';
@@ -14,15 +14,15 @@ class View extends BaseView {
   }
 
   gotoCreateEmailAccount() {
-    super.go(PageUID.CREATE_EMAIL_ACCOUNT);
+    super.go(PAGE_UID.CREATE_EMAIL_ACCOUNT);
   }
 
   gotoServiceAgreement() {
-    super.go(PageUID.SERVICE_AGREEMENT);
+    super.go(PAGE_UID.SERVICE_AGREEMENT);
   }
 
   gotoPrivacyPolicy() {
-    super.go(PageUID.PRIVACY_POLICY);
+    super.go(PAGE_UID.PRIVACY_POLICY);
   }
 
   startWithFB() {

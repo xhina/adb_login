@@ -1,6 +1,5 @@
 import React from 'react';
 import BaseView from './base_view';
-import { PageUID } from '../route/page-route-controller';
 import {
   Container,
   Row,
@@ -24,7 +23,7 @@ class View extends BaseView {
   }
 
   go() {
-    super.go(PageUID.DUMMY2);
+    
   }
 
   view() {

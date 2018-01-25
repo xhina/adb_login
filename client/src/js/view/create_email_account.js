@@ -1,6 +1,6 @@
 import React from 'react';
 import BaseView from './base_view';
-import { PageUID } from '../route/page-route-controller';
+import { PAGE_UID } from '../route/page-component-factory';
 import {
   Container,
   Row,
@@ -23,7 +23,7 @@ class View extends BaseView {
   }
 
   onClickJoinEmail() {
-    super.go(PageUID.DUMMY1);
+    super.go(PAGE_UID.DUMMY1);
   }
 
   view() {
