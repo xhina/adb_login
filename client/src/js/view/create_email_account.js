@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import {
   Container,
   Row,
@@ -12,9 +11,6 @@ import {
 } from 'reactstrap';
 
 import BaseView from './base_view';
-import { PAGE_UID } from '../route/page-component-factory';
-import { ACCOUNT_TYPE, join } from '../redux/actions';
-
 
 class View extends BaseView {
 
@@ -31,21 +27,32 @@ class View extends BaseView {
     const email = document.querySelector("#inputEmail").value;
     const pw = document.querySelector("#inputPassword").value;
     const name = document.querySelector("#inputUsername").value;
+
     if (pw.length < 4 || pw.length > 12) {
+      super.alert(super.getString("alert_password_limit"));
       return;
     }
+
     if (name.length < 2 || name.length > 16) {
+      super.alert(super.getString("alert_name_limit"));
       return;
     }
-    this.dispatch(join(ACCOUNT_TYPE.ADB, email, pw, name));
+
+    const aType = super.api.ACCOUNT_TYPE.ADB;
+    super.api.join(aType, email, pw, name,
+      (r)=>{
+        if (r.error) {
+          super.alert(super.getString(""));
+          return;
+        }
+      }
+    );
   }
 
   view() {
-    this.dispatch = this.props.dispatch;
-
     return (
       <div className="page">
-        {super.attachHeader(super.getUiString('email_account_title'))}
+        {super.attachHeader(super.getString('header_title_email_join'))}
         {super.attachAlertModal()}
 
         <div className="pre-scrollable">
@@ -57,7 +64,7 @@ class View extends BaseView {
                     <Label for="email">이메일</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="email" name="email" id="inputEmail" placeholder="adb@example.com" required />
+                    <Input type="email" name="email" id="email" placeholder={super.getString("placeholder_input_email")} required />
                   </Col>
                 </Row>
               </FormGroup>
@@ -67,7 +74,7 @@ class View extends BaseView {
                     <Label for="pw">비밀번호</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="password" name="pw" id="inputPassword" placeholder="최소4자 ~ 12자" required />
+                    <Input type="password" name="pw" id="pw" placeholder={super.getString("placeholder_input_pw")} required />
                   </Col>
                 </Row>
               </FormGroup>
@@ -77,7 +84,7 @@ class View extends BaseView {
                     <Label for="userName">이름</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input name="userName" id="inputUsername" placeholder="최소2자 ~ 16자" required />
+                    <Input name="userName" id="userName" placeholder={super.getString("placeholder_input_name")} required />
                   </Col>
                 </Row>
               </FormGroup>
@@ -93,4 +100,4 @@ class View extends BaseView {
 
 }
 
-export default connect()(View);
+export default View;

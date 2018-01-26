@@ -29,7 +29,7 @@ class View extends BaseView {
   view() {
     return (
       <div className="page">
-        {super.attachHeader(super.getUiString('TEST_PAGE_A_TITLE'))}
+        {super.attachHeader(super.getString('TEST_PAGE_A_TITLE'))}
         {super.attachAlertModal()}
         <h1>TEST PAGE</h1>
         <Button onClick={this.go}>go testpage</Button>

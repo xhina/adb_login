@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { LOGIN, JOIN, DUID_SET, DUID_LOAD } from './actions';
 
-let duid = "AAAA";
+let duid;
 
 export function userApi(state, action) {
   switch (action.type) {

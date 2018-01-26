@@ -1,16 +1,8 @@
-// @flow
-
 /* action type */
 export const LOGIN = "LOGIN";
 export const JOIN = "JOIN";
 export const DUID_SET = "DUID_SET";
 export const DUID_LOAD = "DUID_LOAD";
-
-export const ACCOUNT_TYPE = {
-  ADB : "adb",
-  FACEBOOK : "facebook",
-  KAKAO : "kakao",
-};
 
 export function login(accountType:Object, id:string, pw:string) {
   return {

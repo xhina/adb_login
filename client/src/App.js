@@ -8,10 +8,11 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { userApi } from './js/redux/reducers';
 import { setDUID, loadDUID } from './js/redux/actions';
+import { getUserData } from './js/user-data';
 
 let store = createStore(userApi);
 store.subscribe(()=> {
-  console.log('store', store.getState());
+  getUserData().setReduxState(store.getState());
 });
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
       renderHash : "",
     };
     this.initAPP();
+    console.log(getUserData().os);
   }
 
   initAPP() {
@@ -28,9 +30,13 @@ class App extends Component {
     this.setDeviceUID();
     new StringResource(() => {
       BindRouteContainer(this);
-      RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT);
+      this.setDefaultPage();
     });
     console.log(process.env);
+  }
+
+  setDefaultPage() {
+    window.location.pathname.indexOf("pwchange") == -1 ? RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT) : RoutePage(PAGE_UID.PASSWORD_CHANGE);
   }
 
   initRender() {
@@ -80,6 +86,7 @@ class App extends Component {
             <Route exact path="/oauth_kakao" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_fb" render={() => this.getRenderElements()} />
             <Route exact path="/oauth_cancel_fb" render={() => this.getRenderElements()} />
+            <Route exact path="/pwchange" render={() => this.getRenderElements()} />
           </div>
         </Router>
       </Provider>

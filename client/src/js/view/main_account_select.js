@@ -1,11 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Container, Button, Row } from 'reactstrap';
 
 import BaseView from './base_view';
 import img_logo from '../../res/img/logo.png';
-import { ACCOUNT_TYPE, join } from '../redux/actions';
-import { PAGE_UID } from '../route/page-component-factory';
 
 import {
   login as kakaoLogin,
@@ -28,15 +25,15 @@ class View extends BaseView {
   }
 
   gotoCreateEmailAccount() {
-    super.go(PAGE_UID.CREATE_EMAIL_ACCOUNT);
+    super.go(super.pageUID.LOGIN);
   }
 
   gotoServiceAgreement() {
-    super.go(PAGE_UID.SERVICE_AGREEMENT);
+    super.go(super.pageUID.SERVICE_AGREEMENT);
   }
 
   gotoPrivacyPolicy() {
-    super.go(PAGE_UID.PRIVACY_POLICY);
+    super.go(super.pageUID.PRIVACY_POLICY);
   }
 
   startWithFB() {
@@ -58,11 +55,16 @@ class View extends BaseView {
   }
 
   onRequestFinishFacebook(res) {
-    console.log(res);
     if (res.error) {
       return;
     }
-    this.dispatch(join(ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name));
+
+    super.api.join(super.api.ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name, (r)=>{
+      if (r.error) {
+        super.alert(super.getString('login error'));
+        return;
+      }
+    });
   }
 
   onRequestFinishKakao(res) {
@@ -70,12 +72,16 @@ class View extends BaseView {
     if (res.error) {
       return;
     }
-    this.dispatch(join(ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name));
+
+    super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name, (r)=>{
+      if (r.error) {
+        super.alert(super.getString('login error'));
+        return;
+      }
+    });
   }
 
   render() {
-    this.dispatch = this.props.dispatch;
-
     return (
       <div className="page">
         { super.attachHeader('') }
@@ -89,21 +95,22 @@ class View extends BaseView {
             <div style={btn_group}>
               <Row className="justify-content-center">
                 <Button style={btn_style} color="info"
-                  onClick={this.gotoCreateEmailAccount.bind(this)}>이메일로 가입</Button>
+                  onClick={this.gotoCreateEmailAccount.bind(this)}>{super.getString('ui_start_email')}</Button>
               </Row>
               <Row className="justify-content-center">
-                <Button style={btn_style} color="primary" onClick={this.startWithFB}>페이스북으로 가입</Button>
+                <Button style={btn_style} color="primary" onClick={this.startWithFB}>{super.getString('ui_start_fb')}</Button>
               </Row>
               <Row className="justify-content-center">
-                <Button style={btn_style} color="warning" onClick={this.startWithKakao}>카카오톡으로 가입</Button>
+                <Button style={btn_style} color="warning" onClick={this.startWithKakao}>{super.getString('ui_start_kakao')}</Button>
               </Row>
             </div>
             <Container>
               <Row className="justify-content-center" style={{fontSize:'10pt', marginTop:"40px"}}>
-                <p>가입과 동시에
-                  <a href="#" onClick={this.gotoServiceAgreement}> 이용약관 </a>
-                  및
-                  <a href="#" onClick={this.gotoPrivacyPolicy.bind(this)}> 개인정보 보호정책</a>에 동의하신 것으로 간주됩니다.
+                <p>{super.getString("ui_policy_msg_0")}
+                  <a href="#" onClick={this.gotoServiceAgreement}> {super.getString("ui_policy_msg_1")} </a>
+                  {super.getString("ui_policy_msg_2")}
+                  <a href="#" onClick={this.gotoPrivacyPolicy.bind(this)}> {super.getString("ui_policy_msg_3")}</a>
+                  {super.getString("ui_policy_msg_4")}
                 </p>
               </Row>
             </Container>
@@ -124,4 +131,4 @@ const btn_group = {
   marginBottom: '1em'
 }
 
-export default connect()(View);
+export default View;

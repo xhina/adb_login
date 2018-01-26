@@ -8,6 +8,10 @@ body {
   background-color:$body-bg-color;
 }
 
+.box {
+  border:1px solid red;
+}
+
 .page {
   position:absolute;
   width:100vw;
@@ -27,33 +31,33 @@ body {
     overflow: auto;
     -webkit-overflow-scrolling:touch;
   }
+}
 
-  .modal-body {
-    overflow-wrap:break-word;
-    text-align: center;
-    @media (max-width:500px) {
-      min-width:80vw;
-      max-width:90vw;
-    }
-    @media (min-width:501px) {
-      min-width:60vw;
-      max-width:60vw;
-    }
+.modal-body {
+  overflow-wrap:break-word;
+  text-align: center;
+  @media (max-width:500px) {
+    min-width:80vw;
+    max-width:90vw;
   }
-
-  .modal-footer {
-
+  @media (min-width:501px) {
+    min-width:70vw;
+    max-width:70vw;
   }
+}
 
-  .modal-open .modal {
-    overflow-y:hidden;
-  }
+.modal-footer {
 
-  .modal.fade .modal-dialog {
-    transform:translate(0, -5%);
-  }
+}
 
-  .modal.show .modal-dialog {
-    transform:translate(0, 0);
-  }
+.modal-open .modal {
+  overflow-y:hidden;
+}
+
+.modal.fade .modal-dialog {
+  transform:translate(0, -5%);
+}
+
+.modal.show .modal-dialog {
+  transform:translate(0, 0);
 }

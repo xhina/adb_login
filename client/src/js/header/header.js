@@ -15,6 +15,9 @@ class HeaderView extends Navigator {
   }
 
   changeNavButtonView(prop, leftOrRight = 'left') {
+    if (prop === "none")
+      return null;
+      
     if (leftOrRight === 'left') {
       if ((super.isGoBackEnable() || prop === "back")) return "<";
     }

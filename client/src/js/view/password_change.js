@@ -13,12 +13,8 @@ import {
 
 class View extends BaseView {
 
-  componentDidMount() {
-    super.pageRender(this.view());
-  }
-
   gotoPasswordSearchPage() {
-    super.go(super.pageUID.PASSWORD_FIND);
+    super.go(super.pageUID.PASSWORD_SEARCH);
   }
 
   gotoJoinPage() {
@@ -35,8 +31,7 @@ class View extends BaseView {
       return;
     }
 
-    const aType = super.api.ACCOUNT_TYPE.ADB;
-    super.api.login(aType, email, pw,
+    super.api.passwordChange(pw,
       (r)=>{
         if (r.error) {
           super.alert(super.getString("alert_not_member"));
@@ -46,25 +41,16 @@ class View extends BaseView {
       });
   }
 
-  view() {
+  render() {
     return (
       <div className="page">
-        {super.attachHeader(super.getString('header_title_email_login'))}
+        {super.attachHeader(super.getString('header_title_password_change'), "none", "none")}
         {super.attachAlertModal()}
 
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <FormGroup>
-                <Row>
-                  <Col xs='2'>
-                    <Label for="email">{super.getString("ui_email")}</Label>
-                  </Col>
-                  <Col xs='10'>
-                    <Input type="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
+
               <FormGroup>
                 <Row>
                   <Col xs="2">
@@ -75,20 +61,22 @@ class View extends BaseView {
                   </Col>
                 </Row>
               </FormGroup>
+
+              <FormGroup>
+                <Row>
+                  <Col xs="2">
+                    <Label for="passwordRe">{super.getString("ui_password_re")}</Label>
+                  </Col>
+                  <Col xs='10'>
+                    <Input type="password" id="passwordRe" placeholder={super.getString("placeholder_input_pw_re")} required/>
+                  </Col>
+                </Row>
+              </FormGroup>
+
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">{super.getString("ui_login")}</Button>
+                <Button color="primary" size="lg">{super.getString("ui_modify")}</Button>
               </Row>
             </Form>
-
-            <Row>
-              <Col className="text-right">
-                <a href="#" onClick={this.gotoPasswordSearchPage}>{super.getString('ui_password_search')}</a>
-              </Col>
-              <p style={{width:"30px",textAlign:'center'}}>|</p>
-              <Col className="text-left">
-                <a href="#" onClick={this.gotoJoinPage}>{super.getString('ui_join')}</a>
-              </Col>
-            </Row>
 
           </Container>
         </div>

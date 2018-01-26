@@ -4,10 +4,20 @@ import StringResource from '../string-resource';
 import Header from '../header/header';
 import AlertModal from './alert-modal';
 import {TextRes, ImageRes} from '../res-link';
+import * as api from '../api-request-handler';
+import { PAGE_UID } from '../route/page-component-factory';
 
 export default class BaseView extends Page {
   constructor(props) {
     super(props);
+  }
+
+  get pageUID () {
+    return PAGE_UID;
+  }
+
+  get api() {
+      return api;
   }
 
   attachHeader(title, leftBtnType, rightBtnType) {
@@ -23,7 +33,7 @@ export default class BaseView extends Page {
     return React.createElement(AlertModal, {ref:(a) => this.alertModal = a});
   }
 
-  getUiString(id) {
+  getString(id) {
     return StringResource.get(id);
   }
 

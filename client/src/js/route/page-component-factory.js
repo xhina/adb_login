@@ -6,6 +6,8 @@ import PrivacyPolicy from '../view/privacy_policy';
 import AdditionalInfo from '../view/additional_info';
 import Login from '../view/login';
 import TemporaryPassword from '../view/temporary_password';
+import PasswordFind from '../view/password_find';
+import PasswordChange from '../view/password_change';
 import Dummy from '../view/dummy';
 
 let loadedpageUID = null;
@@ -21,6 +23,8 @@ export const PAGE_UID = {
   ADDITIONAL_INFO: Symbol(),
   LOGIN: Symbol(),
   TEMPORARY_PASSWORD: Symbol(),
+  PASSWORD_FIND: Symbol(),
+  PASSWORD_CHANGE: Symbol(),
   DUMMY1: Symbol(),
   DUMMY2: Symbol(),
 };
@@ -49,11 +53,17 @@ export const createPageComponent = (pageUID, options) => {
     case PAGE_UID.TEMPORARY_PASSWORD:
       pageView = <TemporaryPassword key="7" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
+    case PAGE_UID.PASSWORD_FIND:
+      pageView = <PasswordFind key="8" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
+      break;
+    case PAGE_UID.PASSWORD_CHANGE:
+      pageView = <PasswordChange key="9" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
+      break;
     case PAGE_UID.DUMMY1:
-      pageView = <Dummy key="8" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
+      pageView = <Dummy key="1000" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     case PAGE_UID.DUMMY2:
-      pageView = <Dummy key="9" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
+      pageView = <Dummy key="1000" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     default:
       pageView = null;

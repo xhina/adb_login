@@ -2,6 +2,9 @@ body {
   overflow: hidden;
   background-color: #f7f7f7; }
 
+.box {
+  border: 1px solid red; }
+
 .page {
   position: absolute;
   width: 100vw;
@@ -17,22 +20,26 @@ body {
     background-color: white;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
-  .page .modal-body {
-    overflow-wrap: break-word;
-    text-align: center; }
-    @media (max-width: 500px) {
-      .page .modal-body {
-        min-width: 80vw;
-        max-width: 90vw; } }
-    @media (min-width: 501px) {
-      .page .modal-body {
-        min-width: 60vw;
-        max-width: 60vw; } }
-  .page .modal-open .modal {
-    overflow-y: hidden; }
-  .page .modal.fade .modal-dialog {
-    transform: translate(0, -5%); }
-  .page .modal.show .modal-dialog {
-    transform: translate(0, 0); }
+
+.modal-body {
+  overflow-wrap: break-word;
+  text-align: center; }
+  @media (max-width: 500px) {
+    .modal-body {
+      min-width: 80vw;
+      max-width: 90vw; } }
+  @media (min-width: 501px) {
+    .modal-body {
+      min-width: 70vw;
+      max-width: 70vw; } }
+
+.modal-open .modal {
+  overflow-y: hidden; }
+
+.modal.fade .modal-dialog {
+  transform: translate(0, -5%); }
+
+.modal.show .modal-dialog {
+  transform: translate(0, 0); }
 
 /*# sourceMappingURL=common.css.map */
