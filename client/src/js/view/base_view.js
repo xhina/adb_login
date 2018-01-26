@@ -3,6 +3,7 @@ import Page from '../route/page';
 import StringResource from '../string-resource';
 import Header from '../header/header';
 import AlertModal from './alert-modal';
+import LoadingIndicator from './loading_indicator';
 import {TextRes, ImageRes} from '../res-link';
 import * as api from '../api-request-handler';
 import { PAGE_UID } from '../route/page-component-factory';
@@ -24,9 +25,17 @@ export default class BaseView extends Page {
     return <Header title={title} left={leftBtnType} right={rightBtnType} />;
   }
 
+  attachIndicator() {
+    return React.createElement(LoadingIndicator, {ref:(r) => this.indicator = r});
+  }
+
   alert(message, onConfirm) {
     if (this.alertModal == null) return;
     this.alertModal.show(message, onConfirm);
+  }
+
+  visibleIndicator(visible) {
+    document.querySelector("#indicator").style.display = visible ? "" : "none";
   }
 
   attachAlertModal() {

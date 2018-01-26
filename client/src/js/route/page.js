@@ -27,6 +27,7 @@ export default class Page extends Navigator {
   }
 
   renderTick(view) {
+    console.log('renderTick')
     if (view != null) this.pageRender(view);
     this.setState({renderToggle:!this.state.renderToggle});
   }

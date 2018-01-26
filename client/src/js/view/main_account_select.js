@@ -46,20 +46,34 @@ class View extends BaseView {
 
   componentDidMount() {
     if (checkKakaoSess()) {
-      !checkOAuthErrorKakao() ? getKakaoInfo(this.onRequestFinishKakao.bind(this)) : null;
+      super.visibleIndicator(true);
+      if (!checkOAuthErrorKakao()) {
+        getKakaoInfo(this.onRequestFinishKakao.bind(this));
+      }
+      else {
+        super.visibleIndicator(false);
+      }
     }
-
-    if (checkFbSess()) {
-      !checkOAuthErrorFb() ? getFbInfo(this.onRequestFinishFacebook.bind(this)) : null;
+    else if (checkFbSess()) {
+      super.visibleIndicator(true);
+      if (!checkOAuthErrorFb()) {
+        getFbInfo(this.onRequestFinishFacebook.bind(this))
+      }
+      else {
+        super.visibleIndicator(false);
+      }
     }
   }
 
   onRequestFinishFacebook(res) {
     if (res.error) {
+      super.visibleIndicator(false);
       return;
     }
+    super.visibleIndicator(true);
 
     super.api.join(super.api.ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name, (r)=>{
+      super.visibleIndicator(false);
       if (r.error) {
         super.alert(super.getString('login error'));
         return;
@@ -68,12 +82,15 @@ class View extends BaseView {
   }
 
   onRequestFinishKakao(res) {
-    console.log(res);
     if (res.error) {
+      super.visibleIndicator(false);
       return;
     }
 
+    super.visibleIndicator(true);
+
     super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name, (r)=>{
+      super.visibleIndicator(false);
       if (r.error) {
         super.alert(super.getString('login error'));
         return;
@@ -86,6 +103,7 @@ class View extends BaseView {
       <div className="page">
         { super.attachHeader('') }
         { super.attachAlertModal() }
+        { super.attachIndicator() }
 
         <div className="pre-scrollable">
           <Container>

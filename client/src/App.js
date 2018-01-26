@@ -22,7 +22,6 @@ class App extends Component {
       renderHash : "",
     };
     this.initAPP();
-    console.log(getUserData().os);
   }
 
   initAPP() {

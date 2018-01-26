@@ -24,9 +24,9 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#inputEmail").value;
-    const pw = document.querySelector("#inputPassword").value;
-    const name = document.querySelector("#inputUsername").value;
+    const email = document.querySelector("#email").value;
+    const pw = document.querySelector("#pw").value;
+    const name = document.querySelector("#name").value;
 
     if (pw.length < 4 || pw.length > 12) {
       super.alert(super.getString("alert_password_limit"));
@@ -81,10 +81,10 @@ class View extends BaseView {
               <FormGroup>
                 <Row>
                   <Col xs="2">
-                    <Label for="userName">이름</Label>
+                    <Label for="name">이름</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input name="userName" id="userName" placeholder={super.getString("placeholder_input_name")} required />
+                    <Input name="name" id="name" placeholder={super.getString("placeholder_input_name")} required />
                   </Col>
                 </Row>
               </FormGroup>

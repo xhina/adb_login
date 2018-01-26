@@ -27,8 +27,8 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#inputEmail").value;
-
+    const email = document.querySelector("#email").value;
+    
     super.api.passwordFind(email,
       (r)=>{
         if (r.error) {
@@ -54,7 +54,7 @@ class View extends BaseView {
                     <Label for="email">{super.getString("ui_email")}</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="email" name="email" id="inputEmail" placeholder={super.getString("placeholder_input_email")} required/>
+                    <Input type="email" name="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
                   </Col>
                 </Row>
               </FormGroup>

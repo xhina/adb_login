@@ -23,10 +23,15 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#inputEmail").value;
-    const pw = document.querySelector("#inputPassword").value;
+    const pw = document.querySelector("#pw").value;
+    const pw_re = document.querySelector("#pw_re").value;
 
     if (pw.length < 4 || pw.length > 12) {
+      super.alert(super.getString("alert_password_limit"));
+      return;
+    }
+
+    if (pw_re.length < 4 || pw_re.length > 12) {
       super.alert(super.getString("alert_password_limit"));
       return;
     }
@@ -54,10 +59,10 @@ class View extends BaseView {
               <FormGroup>
                 <Row>
                   <Col xs="2">
-                    <Label for="password">{super.getString("ui_password")}</Label>
+                    <Label for="papwssword">{super.getString("ui_password")}</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="password" id="password" placeholder={super.getString("placeholder_input_pw")} required/>
+                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw_info")} required/>
                   </Col>
                 </Row>
               </FormGroup>
@@ -65,10 +70,10 @@ class View extends BaseView {
               <FormGroup>
                 <Row>
                   <Col xs="2">
-                    <Label for="passwordRe">{super.getString("ui_password_re")}</Label>
+                    <Label for="pw_re">{super.getString("ui_password_re")}</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="password" id="passwordRe" placeholder={super.getString("placeholder_input_pw_re")} required/>
+                    <Input type="password" id="pw_re" placeholder={super.getString("placeholder_input_pw_re")} required/>
                   </Col>
                 </Row>
               </FormGroup>

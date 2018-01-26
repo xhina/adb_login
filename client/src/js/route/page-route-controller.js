@@ -3,7 +3,7 @@ import BrowserHistory from './browser-history';
 import Page from './page'
 import {PAGE_UID, createPageComponent, getReactRef} from './page-component-factory';
 
-const ROUTE_routeBlockING_TIME = 800;
+const ROUTE_routeBlockING_TIME = 700;
 const HISTORY = new BrowserHistory();
 
 let routeContainer;

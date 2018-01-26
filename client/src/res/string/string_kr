@@ -30,6 +30,7 @@ ui_policy_msg_3 = 개인정보 보호정책
 ui_policy_msg_4 = 에 동의하신 것으로 간주됩니다.
 
 placeholder_input_email = 이메일을 입력하세요
-placeholder_input_pw = 비밀번호를 입력하세요 (최소 4자~12자)
+placeholder_input_pw = 비밀번호를 입력하세요
+placeholder_input_pw_info = 비밀번호를 입력하세요 (최소 4자~12자)
 placeholder_input_pw_re = 비밀번호를 한번 더 입력하세요
 placeholder_input_name = 이름을 입력하세요 (최소 2자~16자)

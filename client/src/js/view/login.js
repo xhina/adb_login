@@ -27,17 +27,20 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#inputEmail").value;
-    const pw = document.querySelector("#inputPassword").value;
+    const email = document.querySelector("#email").value;
+    const pw = document.querySelector("#pw").value;
 
     if (pw.length < 4 || pw.length > 12) {
       super.alert(super.getString("alert_password_limit"));
       return;
     }
 
-    const aType = super.api.ACCOUNT_TYPE.ADB;
-    super.api.login(aType, email, pw,
+    super.visibleIndicator(true);
+
+    const api = super.api;
+    api.login(api.ACCOUNT_TYPE.ADB, email, pw,
       (r)=>{
+        super.visibleIndicator(false);
         if (r.error) {
           super.alert(super.getString("alert_not_member"));
           // or 이미 가입된 계정 alert message 추가
@@ -68,10 +71,10 @@ class View extends BaseView {
               <FormGroup>
                 <Row>
                   <Col xs="2">
-                    <Label for="password">{super.getString("ui_password")}</Label>
+                    <Label for="pw">{super.getString("ui_password")}</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="password" id="password" placeholder={super.getString("placeholder_input_pw")} required/>
+                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw")} required/>
                   </Col>
                 </Row>
               </FormGroup>

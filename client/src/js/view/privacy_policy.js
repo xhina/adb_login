@@ -11,7 +11,10 @@ class View extends BaseView {
   }
 
   loadTextRes() {
-    if (content != null) return;
+    if (content != null) {
+      super.pageRender(this.view());
+      return;
+    }
 
     fetch(process.env.PUBLIC_URL + "/res/privacy_policy_text")
     .then((r) => r.blob())
@@ -27,7 +30,6 @@ class View extends BaseView {
   }
 
   componentDidMount() {
-    super.pageRender(this.view());
     this.loadTextRes();
   }
 
