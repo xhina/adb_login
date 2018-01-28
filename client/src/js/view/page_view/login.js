@@ -54,7 +54,7 @@ class View extends BaseView {
       <div className="page">
         {super.attachHeader(super.getString('header_title_email_login'))}
         {super.attachAlertModal()}
-
+        
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>

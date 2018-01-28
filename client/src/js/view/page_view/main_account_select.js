@@ -102,8 +102,7 @@ class View extends BaseView {
       <div className="page">
         { super.attachHeader('') }
         { super.attachAlertModal() }
-        { super.attachIndicator() }
-
+        
         <div className="pre-scrollable">
           <Container>
             <Row className="justify-content-center">

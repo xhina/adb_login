@@ -27,7 +27,6 @@ export default class Page extends Navigator {
   }
 
   renderTick(view) {
-    console.log('renderTick')
     if (view != null) this.pageRender(view);
     this.setState({renderToggle:!this.state.renderToggle});
   }
@@ -58,14 +57,6 @@ export default class Page extends Navigator {
     else if (transitionType === "back") {
       defaultX = 0;
       destX = screenSize();
-    }
-    else if (transitionType === "out"){
-      defaultX = 0;
-      destX = -screenSize() / 4;
-    }
-    else if (transitionType === "in"){
-      defaultX = -screenSize();
-      destX = 0;
     }
     else {
       defaultX = 0;

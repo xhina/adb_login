@@ -37,10 +37,11 @@ class View extends BaseView {
       super.alert(super.getString("alert_name_limit"));
       return;
     }
-
+    super.visibleIndicator(true);
     const aType = super.api.ACCOUNT_TYPE.ADB;
     super.api.join(aType, email, pw, name,
       (r)=>{
+        super.visibleIndicator(false);
         if (r.error) {
           super.alert(super.getString(""));
           return;
@@ -52,9 +53,9 @@ class View extends BaseView {
   view() {
     return (
       <div className="page">
-        {super.attachHeader(super.getString('header_title_email_join'))}
-        {super.attachAlertModal()}
-
+        { super.attachHeader(super.getString('header_title_email_join')) }
+        { super.attachAlertModal() }
+        
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>

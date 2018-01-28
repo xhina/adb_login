@@ -1,17 +1,12 @@
 import React from 'react';
 import BrowserHistory from './browser-history';
-import Page from './page'
+import Page from './page';
 import {PAGE_UID, createPageComponent, getReactRef} from './page-component-factory';
+import RenderQueue, { addRender, removeRenderPop, getRenderElements, renderTrigger } from '../app-renderer';
 
 const ROUTE_routeBlockING_TIME = 700;
 const HISTORY = new BrowserHistory();
-
-let routeContainer;
 let routeBlock = false;
-
-export let BindRouteContainer = (container) => {
-  routeContainer = container;
-};
 
 export const RoutePage = (pageUID) => {
   HISTORY.go(pageUID);
@@ -21,25 +16,25 @@ export const RoutePage = (pageUID) => {
 const routerouteBlock = ()=> {
   routeBlock = true;
   setTimeout(()=>routeBlock = false, ROUTE_routeBlockING_TIME);
-}
+};
 
 const Route = (page)=> {
-  routeContainer.addRender(page);
-  routeContainer.renderTrigger();
+  addRender(page);
+  renderTrigger();
 };
 
 const RouteBack = ()=> {
-  routeContainer.removeRenderPop();
-  routeContainer.renderTrigger();
-}
+  removeRenderPop();
+  renderTrigger();
+};
 
 export const Go = (pageUID)=> {
   if (routeBlock) return;
   if (!HISTORY.go(pageUID)) return;
 
   const page = createPageComponent(pageUID, {onFinishPageBack:RouteBack});
-  routerouteBlock();
   Route(page);
+  routerouteBlock();
 };
 
 export const GoBack = ()=> {
