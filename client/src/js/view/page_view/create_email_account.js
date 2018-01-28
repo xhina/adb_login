@@ -24,9 +24,9 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#email").value;
-    const pw = document.querySelector("#pw").value;
-    const name = document.querySelector("#name").value;
+    const email = document.querySelector("#c_email").value;
+    const pw = document.querySelector("#c_pw").value;
+    const name = document.querySelector("#c_name").value;
 
     if (pw.length < 4 || pw.length > 12) {
       super.alert(super.getString("alert_password_limit"));
@@ -55,7 +55,7 @@ class View extends BaseView {
       <div className="page">
         { super.attachHeader(super.getString('header_title_email_join')) }
         { super.attachAlertModal() }
-        
+
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
@@ -65,7 +65,7 @@ class View extends BaseView {
                     <Label for="email">이메일</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="email" name="email" id="email" placeholder={super.getString("placeholder_input_email")} required />
+                    <Input type="email" name="email" id="c_email" placeholder={super.getString("placeholder_input_email")} required />
                   </Col>
                 </Row>
               </FormGroup>
@@ -75,7 +75,7 @@ class View extends BaseView {
                     <Label for="pw">비밀번호</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input type="password" name="pw" id="pw" placeholder={super.getString("placeholder_input_pw")} required />
+                    <Input type="password" name="pw" id="c_pw" placeholder={super.getString("placeholder_input_pw")} required />
                   </Col>
                 </Row>
               </FormGroup>
@@ -85,7 +85,7 @@ class View extends BaseView {
                     <Label for="name">이름</Label>
                   </Col>
                   <Col xs='10'>
-                    <Input name="name" id="name" placeholder={super.getString("placeholder_input_name")} required />
+                    <Input name="name" id="c_name" placeholder={super.getString("placeholder_input_name")} required />
                   </Col>
                 </Row>
               </FormGroup>

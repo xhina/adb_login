@@ -4,7 +4,7 @@ import Page from './page';
 import {PAGE_UID, createPageComponent, getReactRef} from './page-component-factory';
 import RenderQueue, { addRender, removeRenderPop, getRenderElements, renderTrigger } from '../app-renderer';
 
-const ROUTE_routeBlockING_TIME = 700;
+const ROUTE_routeBlockING_TIME = 800;
 const HISTORY = new BrowserHistory();
 let routeBlock = false;
 

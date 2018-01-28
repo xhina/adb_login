@@ -67,7 +67,7 @@ export default class Page extends Navigator {
       <Motion
         defaultStyle={{x:defaultX}}
         onRest={transitionType === "back" ? this.props.onFinishPageBack : null}
-        style={{x:spring(destX, {stiffness:230, damping:30, precision:3})}}
+        style={{x:spring(destX, {stiffness:250, damping:30, precision:5})}}
       >
         {({x}) =>
           <div
