@@ -1,6 +1,6 @@
 import React from 'react';
 import {Nav,NavItem,NavLink} from 'reactstrap';
-import Navigator from '../route/page-navigator';
+import Navigator from '../../route/page-navigator';
 import PropTypes from 'prop-types';
 
 class HeaderView extends Navigator {
@@ -17,7 +17,7 @@ class HeaderView extends Navigator {
   changeNavButtonView(prop, leftOrRight = 'left') {
     if (prop === "none")
       return null;
-      
+
     if (leftOrRight === 'left') {
       if ((super.isGoBackEnable() || prop === "back")) return "<";
     }

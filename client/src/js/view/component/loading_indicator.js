@@ -1,5 +1,5 @@
 import React from 'react';
-import {ImageRes} from '../res-link';
+import {ImageRes} from '../../res-link';
 
 class view extends React.Component {
 

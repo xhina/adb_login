@@ -1,12 +1,12 @@
 import React from 'react';
-import Page from '../route/page';
-import StringResource from '../string-resource';
+import Page from '../../route/page';
+import StringResource from '../../string-resource';
 import Header from '../header/header';
-import AlertModal from './alert-modal';
-import LoadingIndicator from './loading_indicator';
-import {TextRes, ImageRes} from '../res-link';
-import * as api from '../api-request-handler';
-import { PAGE_UID } from '../route/page-component-factory';
+import AlertModal from '../component/alert-modal';
+import LoadingIndicator from '../component/loading_indicator';
+import {TextRes, ImageRes} from '../../res-link';
+import * as api from '../../api-request-handler';
+import { PAGE_UID } from '../../route/page-component-factory';
 
 export default class BaseView extends Page {
   constructor(props) {

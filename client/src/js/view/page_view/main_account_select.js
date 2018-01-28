@@ -2,21 +2,20 @@ import React from 'react';
 import { Container, Button, Row } from 'reactstrap';
 
 import BaseView from './base_view';
-import img_logo from '../../res/img/logo.png';
 
 import {
   login as kakaoLogin,
   checkOAuthSession as checkKakaoSess,
   getUserInfo as getKakaoInfo,
   checkOAuthError as checkOAuthErrorKakao
-} from '../login/kakao';
+} from '../../login/kakao';
 
 import {
   login as fbLogin,
   checkOAuthSession as checkFbSess,
   getUserInfo as getFbInfo,
   checkOAuthError as checkOAuthErrorFb
-} from '../login/facebook';
+} from '../../login/facebook';
 
 class View extends BaseView {
 
@@ -57,7 +56,7 @@ class View extends BaseView {
     else if (checkFbSess()) {
       super.visibleIndicator(true);
       if (!checkOAuthErrorFb()) {
-        getFbInfo(this.onRequestFinishFacebook.bind(this))
+        getFbInfo(this.onRequestFinishFacebook.bind(this));
       }
       else {
         super.visibleIndicator(false);
