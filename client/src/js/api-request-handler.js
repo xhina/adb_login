@@ -1,8 +1,8 @@
 import { getUserData } from './user-data';
 
 const headers = new Headers({
-  'Content-Type': 'application/json',
-  'Access-Control-Allow-Origin':'*',
+  // 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8',
+  // 'Content-Type': 'application/json',
 });
 
 const SERVER_ADDRESS = "https://apidev.doralab.co.kr";
@@ -25,7 +25,7 @@ export function login(accountType, id, pw, callback) {
 }
 
 export function join(accountType, id, pw, name, callback) {
-  request(API_URL.join, {signup_id:id, password:pw, signup_name:name, signup_path:accountType},
+  request(API_URL.join, {"signup_id":id.toString(), "password":pw.toString(), "signup_name":name.toString(), "signup_path":accountType.toString()},
     (res)=>{
       if (res.error) {
         callback(res);
@@ -46,20 +46,30 @@ export function passwordChange(pw) {
 function mergeParams(arg) {
   const userData = getUserData();
   let body = {
-    client_uid : userData.duid,
-    os : userData.os,
+    "client_uid" : userData.duid,
+    "os" : userData.os,
     ...arg
   };
-  return body;
+  // return body;
+
+  const data = new URLSearchParams();
+  for(var obj in body) {
+    let key = obj;
+    let value = body[obj];
+    data.append(key, value);
+    console.log(key, value);
+  }
+  return data;
 }
 
 function request(url, params, callback) {
   let body = mergeParams(params);
-  console.log("request : ", url, body);
+  console.log("request : ", url);
 
-  fetch(url, {method:'POST', mode:'cors', headers:headers, body:JSON.stringify(body)})
+  fetch(url, {method:'POST', body:body})
   .then(r=>{
-    let data = JSON.parse(r);
+    let data = r.json();
+    console.log(data);
     callback({error:!r.res === 0, data:data});
   })
   .catch(r=>{
