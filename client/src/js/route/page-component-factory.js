@@ -3,7 +3,6 @@ import MainPage from '../view/page_view/main_account_select';
 import EmailAccountPage from '../view/page_view/create_email_account';
 import ServiceAgreement from '../view/page_view/service_agreement';
 import PrivacyPolicy from '../view/page_view/privacy_policy';
-import AdditionalInfo from '../view/page_view/additional_info';
 import Login from '../view/page_view/login';
 import TemporaryPassword from '../view/page_view/temporary_password';
 import PasswordFind from '../view/page_view/password_find';
@@ -20,13 +19,11 @@ export const PAGE_UID = {
   CREATE_EMAIL_ACCOUNT: Symbol(),
   SERVICE_AGREEMENT: Symbol(),
   PRIVACY_POLICY: Symbol(),
-  ADDITIONAL_INFO: Symbol(),
   LOGIN: Symbol(),
   TEMPORARY_PASSWORD: Symbol(),
   PASSWORD_FIND: Symbol(),
   PASSWORD_CHANGE: Symbol(),
   DUMMY1: Symbol(),
-  DUMMY2: Symbol(),
 };
 
 export const createPageComponent = (pageUID, options) => {
@@ -44,9 +41,6 @@ export const createPageComponent = (pageUID, options) => {
     case PAGE_UID.PRIVACY_POLICY:
       pageView = <PrivacyPolicy key="4" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
-    case PAGE_UID.ADDITIONAL_INFO:
-      pageView = <AdditionalInfo key="5" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
-      break;
     case PAGE_UID.LOGIN:
       pageView = <Login key="6" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
@@ -60,9 +54,6 @@ export const createPageComponent = (pageUID, options) => {
       pageView = <PasswordChange key="9" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     case PAGE_UID.DUMMY1:
-      pageView = <Dummy key="1000" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
-      break;
-    case PAGE_UID.DUMMY2:
       pageView = <Dummy key="1000" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     default:
