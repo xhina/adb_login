@@ -97,16 +97,21 @@ class View extends BaseView {
     });
   }
 
+  onClose() {
+
+  }
+
   render() {
     return (
-      <div className="page">
-        { super.attachHeader('') }
+      <div className="page" id="account_select_page">
         { super.attachAlertModal() }
-        
+        <div id="main_bg" className="justify-content-center"><div/></div>
+        <div id="close_btn" onClick={this.onClose} />
+
         <div className="pre-scrollable">
           <Container>
             <Row className="justify-content-center">
-              <img alt="logo" src={super.img.logo} />
+              <div id="main_logo" alt="" />
             </Row>
             <div style={btn_group}>
               <Row className="justify-content-center">

@@ -1,7 +1,8 @@
 import { getUserData } from './user-data';
 
 const headers = new Headers({
-  'Content-Type': 'application/json'
+  'Content-Type': 'application/json',
+  'Access-Control-Allow-Origin':'*',
 });
 
 const SERVER_ADDRESS = "https://apidev.doralab.co.kr";
