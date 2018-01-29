@@ -95,7 +95,7 @@ class View extends BaseView {
   }
 
   onClose() {
-    
+
   }
 
   render() {
@@ -113,21 +113,21 @@ class View extends BaseView {
             <Row className="justify-content-center">
               <Button id="kakao_btn" color="info"
                       onClick={this.startWithKakao}>
-                      <div class="icon" />
+                      <div className="icon" />
                       <p>{super.getString('ui_start_kakao')}</p>
                     </Button>
             </Row>
             <Row className="justify-content-center">
               <Button id="fb_btn" color="primary"
                       onClick={this.startWithFB}>
-                      <div class="icon" />
+                      <div className="icon" />
                       <p>{super.getString('ui_start_fb')}</p>
                     </Button>
             </Row>
             <Row className="justify-content-center">
               <Button id="adb_btn" color="warning"
                       onClick={this.startWithEmail.bind(this)}>
-                      <div class="icon" />
+                      <div className="icon" />
                       <p>{super.getString('ui_start_email')}</p>
                     </Button>
             </Row>
