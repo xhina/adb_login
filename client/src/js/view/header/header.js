@@ -19,10 +19,10 @@ class HeaderView extends Navigator {
       return null;
 
     if (leftOrRight === 'left') {
-      if ((super.isGoBackEnable() || prop === "back")) return "<";
+      if ((super.isGoBackEnable() || prop === "back")) return <div id="back_button" />;
     }
     else {
-      if (!super.isGoBackEnable() || prop === "close") return 'X';
+      if (!super.isGoBackEnable() || prop === "close") return <div id="close_btn" />;;
     }
     return null;
   }
@@ -39,17 +39,17 @@ class HeaderView extends Navigator {
 
   render() {
     return (
-      <Nav style={{width:'100%'}} className={"justify-content-center", "nav-fill"}>
-        <NavItem>
+      <Nav id="header" className={"justify-content-center", "nav-fill"}>
+        <NavItem style={{width:'10%'}}>
           <NavLink href="#" className="text-left" onClick={this.clickLeft}>
             {this.changeNavButtonView(this.props.left, 'left')}
           </NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink>{this.props.title}</NavLink>
+        <NavItem style={{width:'70%'}}>
+          <NavLink><p>{this.props.title}</p></NavLink>
         </NavItem>
-        <NavItem>
-          <NavLink href="#" className="text-right" onClick={this.clickRight}>
+        <NavItem style={{width:'10%'}}>
+          <NavLink href="#" onClick={this.clickRight} style={{width:'100%', textAlign:'right'}}>
             {this.changeNavButtonView(this.props.right, 'right')}
           </NavLink>
         </NavItem>

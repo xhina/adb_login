@@ -35,7 +35,7 @@
     @media (min-height: 737px) {
       #account_select_page #main_bg div {
         height: 100vh; } }
-#account_select_page #kakao_btn, #account_select_page #fb_btn, #account_select_page #adb_btn p {
+#account_select_page #kakao_btn, #account_select_page #fb_btn, #account_select_page #adb_btn {
   margin: 2px 0;
   text-align: left; }
 #account_select_page #kakao_btn .icon, #account_select_page #fb_btn .icon, #account_select_page #adb_btn .icon {
@@ -47,10 +47,13 @@
   background: #fae900;
   border-radius: 24px;
   border: 0px;
+  color: white;
   font-weight: lighter;
   font-size: 11pt;
   color: #533737;
   margin-top: 106px; }
+  #account_select_page #kakao_btn p {
+    margin-top: 1px; }
   #account_select_page #kakao_btn .icon {
     width: 22px;
     height: 22px;
@@ -62,9 +65,12 @@
   background: #3b5998;
   border-radius: 24px;
   border: 0px;
+  color: white;
   font-weight: lighter;
   font-size: 11pt;
   margin-top: 18px; }
+  #account_select_page #fb_btn p {
+    margin-top: 1px; }
   #account_select_page #fb_btn .icon {
     width: 22px;
     height: 22px;
@@ -76,9 +82,12 @@
   background: #a1887f;
   border-radius: 24px;
   border: 0px;
+  color: white;
   font-weight: lighter;
   font-size: 11pt;
   margin-top: 18px; }
+  #account_select_page #adb_btn p {
+    margin-top: 1px; }
   #account_select_page #adb_btn .icon {
     width: 22px;
     height: 22px;

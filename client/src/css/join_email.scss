@@ -1,17 +1,9 @@
 @import 'global_mixin';
 
-#login_page {
+#join_email_page {
 
   Button {
     @include adb_button($color-warm-grey, 180px, 36px);
     margin-top:24px;
-  }
-
-  #footer_menu {
-    margin-top:31px;
-
-    a {
-      color:$color-greyish-brown;
-    }
   }
 }

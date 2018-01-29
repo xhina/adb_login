@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAIE,uBAAO;ECWL,KAAK,EDViC,KAAK;ECW3C,MAAM,EDXuC,IAAI;ECYjD,UAAU,EAZG,OAAgB;EAa7B,aAAa,EAAC,IAAI;EAClB,MAAM,EAAC,GAAG;EACV,KAAK,EAAC,KAAK;EACX,WAAW,EAAC,OAAO;EACnB,SAAS,EAAC,IAAI;EDhBd,UAAU,EAAC,IAAI;ECkBf,yBAAE;IACA,UAAU,EAAC,GAAG",
+"sources": ["join_email.scss","global_mixin.scss"],
+"names": [],
+"file": "join_email.css"
+}

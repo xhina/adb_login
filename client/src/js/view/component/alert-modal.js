@@ -26,7 +26,7 @@ class AlertModal extends Component {
 
   render() {
     return (
-      <Modal isOpen={this.state.visible} toggle={this.toggle} style={{display:'flex', height:'90%', alignItems:'center', justifyContent:'center'}}>
+      <Modal id="alert-modal" isOpen={this.state.visible} toggle={this.toggle} style={{display:'flex', height:'90%', alignItems:'center', justifyContent:'center'}}>
           <ModalBody className="modal-body">
             <p>{this.body}</p>
           </ModalBody>

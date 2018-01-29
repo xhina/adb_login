@@ -1,7 +1,9 @@
 $font-family: AppleSDGothicNeo-Regular, sans-serif;
-$body-bg-color:rgb(242,242,242);
-$header-color:rgb(255,169,7);
-$page-bg-color:white;
+$color-body-bg:rgb(242,242,242);
+$color-header:rgb(255,169,7);
+$color-page-bg:white;
+$color-greyish-brown:rgb(74,74,74);
+$color-warm-grey:rgb(161,136,127);
 
 @mixin image_res($filename, $w, $h) {
   width:$w;
@@ -16,6 +18,11 @@ $page-bg-color:white;
     background:$color;
     border-radius:24px;
     border:0px;
+    color:white;
     font-weight:lighter;
     font-size:11pt;
+
+    p {
+      margin-top:1px;
+    }
 }

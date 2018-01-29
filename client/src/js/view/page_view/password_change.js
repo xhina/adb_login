@@ -48,7 +48,7 @@ class View extends BaseView {
 
   render() {
     return (
-      <div className="page">
+      <div className="page" id="password_change_page">
         {super.attachHeader(super.getString('header_title_password_change'), "none", "none")}
         {super.attachAlertModal()}
 
@@ -58,28 +58,28 @@ class View extends BaseView {
 
               <FormGroup>
                 <Row>
-                  <Col xs="2">
+                  <Col className="col_label">
                     <Label for="papwssword">{super.getString("ui_password")}</Label>
                   </Col>
-                  <Col xs='10'>
-                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw_info")} required/>
+                  <Col className="col_input">
+                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw")} required/>
                   </Col>
                 </Row>
               </FormGroup>
 
               <FormGroup>
                 <Row>
-                  <Col xs="2">
-                    <Label for="pw_re">{super.getString("ui_password_re")}</Label>
+                  <Col className="col_label">
+                    <Label className="" for="pw_re">{super.getString("ui_password_re")}</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="password" id="pw_re" placeholder={super.getString("placeholder_input_pw_re")} required/>
                   </Col>
                 </Row>
               </FormGroup>
 
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">{super.getString("ui_modify")}</Button>
+                <Button><p>{super.getString("ui_modify")}</p></Button>
               </Row>
             </Form>
 

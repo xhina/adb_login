@@ -33,9 +33,10 @@ class App extends Component {
   }
 
   setDefaultPage() {
-    RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT);
-    return;
-
+    if (process.env.NODE_ENV.indexOf('dev') != -1) {
+      RoutePage(PAGE_UID.PASSWORD_CHANGE);
+      return;
+    }
     window.location.pathname.indexOf("pwchange") == -1 ? RoutePage(PAGE_UID.MAIN_ACCOUNT_SELECT) : RoutePage(PAGE_UID.PASSWORD_CHANGE);
   }
 

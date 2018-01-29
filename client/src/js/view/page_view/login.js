@@ -22,7 +22,7 @@ class View extends BaseView {
   }
 
   gotoJoinPage() {
-    super.go(super.pageUID.CREATE_EMAIL_ACCOUNT);
+    super.go(super.pageUID.JOIN_EMAIL);
   }
 
   onSubmit(event) {
@@ -51,43 +51,45 @@ class View extends BaseView {
 
   view() {
     return (
-      <div className="page">
+      <div className="page" id="login_page">
         {super.attachHeader(super.getString('header_title_email_login'))}
         {super.attachAlertModal()}
-        
+
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
               <FormGroup>
                 <Row>
-                  <Col xs='2'>
+                  <Col className="col_label">
                     <Label for="email">{super.getString("ui_email")}</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
                   </Col>
                 </Row>
               </FormGroup>
               <FormGroup>
                 <Row>
-                  <Col xs="2">
+                  <Col className="col_label">
                     <Label for="pw">{super.getString("ui_password")}</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw")} required/>
                   </Col>
                 </Row>
               </FormGroup>
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">{super.getString("ui_login")}</Button>
+                <Button color="primary">
+                  <p>{super.getString("ui_login")}</p>
+                </Button>
               </Row>
             </Form>
 
-            <Row>
+            <Row id="footer_menu">
               <Col className="text-right">
                 <a href="#" onClick={this.gotoPasswordSearchPage}>{super.getString('ui_password_search')}</a>
               </Col>
-              <p style={{width:"30px",textAlign:'center'}}>|</p>
+              <p class="menu_separator"></p>
               <Col className="text-left">
                 <a href="#" onClick={this.gotoJoinPage}>{super.getString('ui_join')}</a>
               </Col>
@@ -99,10 +101,5 @@ class View extends BaseView {
     );
   }
 }
-
-const btn_style = {
-  'margin': '.2em 0',
-  'width':'15em'
-};
 
 export default View;

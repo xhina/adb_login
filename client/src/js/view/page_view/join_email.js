@@ -52,7 +52,7 @@ class View extends BaseView {
 
   view() {
     return (
-      <div className="page">
+      <div className="page" id="join_email_page">
         { super.attachHeader(super.getString('header_title_email_join')) }
         { super.attachAlertModal() }
 
@@ -61,36 +61,36 @@ class View extends BaseView {
             <Form onSubmit={this.onSubmit.bind(this)}>
               <FormGroup>
                 <Row>
-                  <Col xs='2'>
+                  <Col className="col_label">
                     <Label for="email">이메일</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="email" name="email" id="c_email" placeholder={super.getString("placeholder_input_email")} required />
                   </Col>
                 </Row>
               </FormGroup>
               <FormGroup>
                 <Row>
-                  <Col xs="2">
+                  <Col className="col_label">
                     <Label for="pw">비밀번호</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="password" name="pw" id="c_pw" placeholder={super.getString("placeholder_input_pw")} required />
                   </Col>
                 </Row>
               </FormGroup>
               <FormGroup>
                 <Row>
-                  <Col xs="2">
+                  <Col className="col_label">
                     <Label for="name">이름</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input name="name" id="c_name" placeholder={super.getString("placeholder_input_name")} required />
                   </Col>
                 </Row>
               </FormGroup>
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">이메일로 가입하기</Button>
+                <Button><p>{super.getString("ui_join")}</p></Button>
               </Row>
             </Form>
           </Container>

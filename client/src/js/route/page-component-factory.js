@@ -1,10 +1,9 @@
 import React from 'react';
 import MainPage from '../view/page_view/main_account_select';
-import EmailAccountPage from '../view/page_view/create_email_account';
+import JoinEmail from '../view/page_view/join_email';
 import ServiceAgreement from '../view/page_view/service_agreement';
 import PrivacyPolicy from '../view/page_view/privacy_policy';
 import Login from '../view/page_view/login';
-import TemporaryPassword from '../view/page_view/temporary_password';
 import PasswordFind from '../view/page_view/password_find';
 import PasswordChange from '../view/page_view/password_change';
 import Dummy from '../view/page_view/dummy';
@@ -16,11 +15,10 @@ const PAGE_COMPS = {};
 
 export const PAGE_UID = {
   MAIN_ACCOUNT_SELECT: Symbol(),
-  CREATE_EMAIL_ACCOUNT: Symbol(),
+  JOIN_EMAIL: Symbol(),
   SERVICE_AGREEMENT: Symbol(),
   PRIVACY_POLICY: Symbol(),
   LOGIN: Symbol(),
-  TEMPORARY_PASSWORD: Symbol(),
   PASSWORD_FIND: Symbol(),
   PASSWORD_CHANGE: Symbol(),
   DUMMY1: Symbol(),
@@ -32,8 +30,8 @@ export const createPageComponent = (pageUID, options) => {
     case PAGE_UID.MAIN_ACCOUNT_SELECT:
       pageView = <MainPage key="1" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
-    case PAGE_UID.CREATE_EMAIL_ACCOUNT:
-      pageView = <EmailAccountPage key="2" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
+    case PAGE_UID.JOIN_EMAIL:
+      pageView = <JoinEmail key="2" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     case PAGE_UID.SERVICE_AGREEMENT:
       pageView = <ServiceAgreement key="3" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
@@ -43,9 +41,6 @@ export const createPageComponent = (pageUID, options) => {
       break;
     case PAGE_UID.LOGIN:
       pageView = <Login key="6" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
-      break;
-    case PAGE_UID.TEMPORARY_PASSWORD:
-      pageView = <TemporaryPassword key="7" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;
       break;
     case PAGE_UID.PASSWORD_FIND:
       pageView = <PasswordFind key="8" onFinishPageBack={options.onFinishPageBack} ref={(c)=>addRefTable(pageUID, c)} />;

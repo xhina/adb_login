@@ -23,11 +23,11 @@
     position:absolute;
     display: flex;
     justify-content: center;
-    background: -webkit-linear-gradient(to right, white, $body-bg-color);
-    background: -moz-linear-gradient(to right, white, $body-bg-color);
-    background: -ms-linear-gradient(to right, white, $body-bg-color);
-    background: -o-linear-gradient(to right, white, $body-bg-color);
-    background: linear-gradient(to right, white, $body-bg-color);
+    background: -webkit-linear-gradient(to right, white, $color-body-bg);
+    background: -moz-linear-gradient(to right, white, $color-body-bg);
+    background: -ms-linear-gradient(to right, white, $color-body-bg);
+    background: -o-linear-gradient(to right, white, $color-body-bg);
+    background: linear-gradient(to right, white, $color-body-bg);
 
     div {
       @include image_res("img_signup_bg@4x.png", 414px, 736px);
@@ -37,7 +37,7 @@
     }
   }
 
-  #kakao_btn,#fb_btn,#adb_btn p {
+  #kakao_btn,#fb_btn,#adb_btn {
     margin:2px 0;
     text-align:left;
   }

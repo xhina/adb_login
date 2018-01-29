@@ -1,4 +1,4 @@
-#login_page Button {
+#join_email_page Button {
   width: 180px;
   height: 36px;
   background: #a1887f;
@@ -8,11 +8,7 @@
   font-weight: lighter;
   font-size: 11pt;
   margin-top: 24px; }
-  #login_page Button p {
+  #join_email_page Button p {
     margin-top: 1px; }
-#login_page #footer_menu {
-  margin-top: 31px; }
-  #login_page #footer_menu a {
-    color: #4a4a4a; }
 
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=join_email.css.map */

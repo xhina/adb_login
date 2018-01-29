@@ -28,7 +28,7 @@ class View extends BaseView {
   onSubmit(event) {
     event.preventDefault();
     const email = document.querySelector("#email").value;
-    
+
     super.api.passwordFind(email,
       (r)=>{
         if (r.error) {
@@ -41,7 +41,7 @@ class View extends BaseView {
 
   view() {
     return (
-      <div className="page">
+      <div className="page" id="password_find_page">
         {super.attachHeader(super.getString('header_title_password_search'))}
         {super.attachAlertModal()}
 
@@ -50,22 +50,20 @@ class View extends BaseView {
             <Form onSubmit={this.onSubmit.bind(this)}>
               <FormGroup>
                 <Row>
-                  <Col xs='2'>
+                  <Col className="col_label">
                     <Label for="email">{super.getString("ui_email")}</Label>
                   </Col>
-                  <Col xs='10'>
+                  <Col className="col_input">
                     <Input type="email" name="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
                   </Col>
                 </Row>
               </FormGroup>
 
               <Row className="justify-content-center">
-                <Button color="primary" size="lg">{super.getString("ui_send")}</Button>
+                <Button><p>{super.getString("ui_send")}</p></Button>
+                <p id="footer_msg">{super.getString("ui_send_notice_msg")}</p>
               </Row>
             </Form>
-
-            <p>{super.getString("ui_send_notice_msg")}</p>
-
           </Container>
         </div>
       </div>

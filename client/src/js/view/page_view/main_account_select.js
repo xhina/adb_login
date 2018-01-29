@@ -111,21 +111,21 @@ class View extends BaseView {
           </Row>
           <div id="btn_group">
             <Row className="justify-content-center">
-              <Button id="kakao_btn" color="info"
+              <Button id="kakao_btn"
                       onClick={this.startWithKakao}>
                       <div className="icon" />
                       <p>{super.getString('ui_start_kakao')}</p>
                     </Button>
             </Row>
             <Row className="justify-content-center">
-              <Button id="fb_btn" color="primary"
+              <Button id="fb_btn"
                       onClick={this.startWithFB}>
                       <div className="icon" />
                       <p>{super.getString('ui_start_fb')}</p>
                     </Button>
             </Row>
             <Row className="justify-content-center">
-              <Button id="adb_btn" color="warning"
+              <Button id="adb_btn"
                       onClick={this.startWithEmail.bind(this)}>
                       <div className="icon" />
                       <p>{super.getString('ui_start_email')}</p>
