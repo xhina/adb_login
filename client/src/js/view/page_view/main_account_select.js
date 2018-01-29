@@ -23,7 +23,15 @@ class View extends BaseView {
     super(props);
   }
 
-  gotoCreateEmailAccount() {
+  startWithKakao() {
+    kakaoLogin();
+  }
+
+  startWithFB() {
+    fbLogin();
+  }
+
+  startWithEmail() {
     super.go(super.pageUID.LOGIN);
   }
 
@@ -33,14 +41,6 @@ class View extends BaseView {
 
   gotoPrivacyPolicy() {
     super.go(super.pageUID.PRIVACY_POLICY);
-  }
-
-  startWithFB() {
-    fbLogin();
-  }
-
-  startWithKakao() {
-    kakaoLogin();
   }
 
   componentDidMount() {
@@ -70,7 +70,6 @@ class View extends BaseView {
       return;
     }
     super.visibleIndicator(true);
-
     super.api.join(super.api.ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name, (r)=>{
       super.visibleIndicator(false);
       if (r.error) {
@@ -85,9 +84,7 @@ class View extends BaseView {
       super.visibleIndicator(false);
       return;
     }
-
     super.visibleIndicator(true);
-
     super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name, (r)=>{
       super.visibleIndicator(false);
       if (r.error) {
@@ -98,7 +95,7 @@ class View extends BaseView {
   }
 
   onClose() {
-
+    
   }
 
   render() {
@@ -108,48 +105,46 @@ class View extends BaseView {
         <div id="main_bg" className="justify-content-center"><div/></div>
         <div id="close_btn" onClick={this.onClose} />
 
-        <div className="pre-scrollable">
-          <Container>
+        <Container>
+          <Row className="justify-content-center">
+            <div id="main_logo" alt="" />
+          </Row>
+          <div id="btn_group">
             <Row className="justify-content-center">
-              <div id="main_logo" alt="" />
+              <Button id="kakao_btn" color="info"
+                      onClick={this.startWithKakao}>
+                      <div class="icon" />
+                      <p>{super.getString('ui_start_kakao')}</p>
+                    </Button>
             </Row>
-            <div style={btn_group}>
-              <Row className="justify-content-center">
-                <Button style={btn_style} color="info"
-                  onClick={this.gotoCreateEmailAccount.bind(this)}>{super.getString('ui_start_email')}</Button>
-              </Row>
-              <Row className="justify-content-center">
-                <Button style={btn_style} color="primary" onClick={this.startWithFB}>{super.getString('ui_start_fb')}</Button>
-              </Row>
-              <Row className="justify-content-center">
-                <Button style={btn_style} color="warning" onClick={this.startWithKakao}>{super.getString('ui_start_kakao')}</Button>
-              </Row>
-            </div>
-            <Container>
-              <Row className="justify-content-center" style={{fontSize:'10pt', marginTop:"40px"}}>
-                <p>{super.getString("ui_policy_msg_0")}
-                  <a href="#" onClick={this.gotoServiceAgreement}> {super.getString("ui_policy_msg_1")} </a>
-                  {super.getString("ui_policy_msg_2")}
-                  <a href="#" onClick={this.gotoPrivacyPolicy.bind(this)}> {super.getString("ui_policy_msg_3")}</a>
-                  {super.getString("ui_policy_msg_4")}
-                </p>
-              </Row>
-            </Container>
-          </Container>
-        </div>
+            <Row className="justify-content-center">
+              <Button id="fb_btn" color="primary"
+                      onClick={this.startWithFB}>
+                      <div class="icon" />
+                      <p>{super.getString('ui_start_fb')}</p>
+                    </Button>
+            </Row>
+            <Row className="justify-content-center">
+              <Button id="adb_btn" color="warning"
+                      onClick={this.startWithEmail.bind(this)}>
+                      <div class="icon" />
+                      <p>{super.getString('ui_start_email')}</p>
+                    </Button>
+            </Row>
+          </div>
+        </Container>
+
+        <Row className="justify-content-center">
+          <p id="footer_text">{super.getString("ui_policy_msg_0")}
+            <a href="#" onClick={this.gotoServiceAgreement}> {super.getString("ui_policy_msg_1")} </a>
+            {super.getString("ui_policy_msg_2")}
+            <a href="#" onClick={this.gotoPrivacyPolicy.bind(this)}> {super.getString("ui_policy_msg_3")}</a>
+            {super.getString("ui_policy_msg_4")}
+          </p>
+        </Row>
       </div>
     );
   }
-}
-
-const btn_style = {
-  'margin': '.2em 0',
-  'width': '15em'
-};
-
-const btn_group = {
-  marginTop: '4em',
-  marginBottom: '1em'
 }
 
 export default View;

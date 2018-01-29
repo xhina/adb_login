@@ -1,4 +1,5 @@
 body {
+  font-family: AppleSDGothicNeo-Regular, sans-serif;
   overflow: hidden;
   background-color: #f2f2f2; }
 
@@ -20,38 +21,6 @@ body {
     background-color: white;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
-
-#account_select_page #main_logo {
-  width: 182px;
-  height: 84px;
-  background-image: url("../res/img/img_logo@2x.png");
-  margin-top: 130px;
-  background-size: cover; }
-#account_select_page #close_btn {
-  width: 22px;
-  height: 22px;
-  background-image: url("../res/img/btn_close@2x.png");
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  right: 15px;
-  top: 10px;
-  background-size: cover; }
-#account_select_page #main_bg {
-  width: 100%;
-  position: absolute;
-  display: flex;
-  justify-content: center;
-  background: -webkit-linear-gradient(to right, white, #f2f2f2);
-  background: -moz-linear-gradient(to right, white, #f2f2f2);
-  background: -ms-linear-gradient(to right, white, #f2f2f2);
-  background: -o-linear-gradient(to right, white, #f2f2f2);
-  background: linear-gradient(to right, white, #f2f2f2); }
-  #account_select_page #main_bg div {
-    width: 414px;
-    height: 736px;
-    background-image: url("../res/img/img_signup_bg@4x.png");
-    background-size: cover; }
 
 .modal-body {
   overflow-wrap: break-word;

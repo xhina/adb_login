@@ -1,0 +1,105 @@
+#account_select_page #main_logo {
+  width: 182px;
+  height: 84px;
+  background-image: url("../res/img/img_logo@2x.png");
+  background-size: cover;
+  margin-top: 17vh; }
+  @media (min-width: 737px) {
+    #account_select_page #main_logo {
+      margin-top: 25vh; } }
+#account_select_page #close_btn {
+  width: 22px;
+  height: 22px;
+  background-image: url("../res/img/btn_close@2x.png");
+  background-size: cover;
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  right: 15px;
+  top: 10pt; }
+#account_select_page #main_bg {
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background: -webkit-linear-gradient(to right, white, #f2f2f2);
+  background: -moz-linear-gradient(to right, white, #f2f2f2);
+  background: -ms-linear-gradient(to right, white, #f2f2f2);
+  background: -o-linear-gradient(to right, white, #f2f2f2);
+  background: linear-gradient(to right, white, #f2f2f2); }
+  #account_select_page #main_bg div {
+    width: 414px;
+    height: 736px;
+    background-image: url("../res/img/img_signup_bg@4x.png");
+    background-size: cover; }
+    @media (min-height: 737px) {
+      #account_select_page #main_bg div {
+        height: 100vh; } }
+#account_select_page #kakao_btn, #account_select_page #fb_btn, #account_select_page #adb_btn p {
+  margin: 2px 0;
+  text-align: left; }
+#account_select_page #kakao_btn .icon, #account_select_page #fb_btn .icon, #account_select_page #adb_btn .icon {
+  margin: -1px 16px;
+  float: left; }
+#account_select_page #kakao_btn {
+  width: 240px;
+  height: 36px;
+  background: #fae900;
+  border-radius: 24px;
+  border: 0px;
+  font-weight: lighter;
+  font-size: 11pt;
+  color: #533737;
+  margin-top: 106px; }
+  #account_select_page #kakao_btn .icon {
+    width: 22px;
+    height: 22px;
+    background-image: url("../res/img/ico_signup_kakao@2x.png");
+    background-size: cover; }
+#account_select_page #fb_btn {
+  width: 240px;
+  height: 36px;
+  background: #3b5998;
+  border-radius: 24px;
+  border: 0px;
+  font-weight: lighter;
+  font-size: 11pt;
+  margin-top: 18px; }
+  #account_select_page #fb_btn .icon {
+    width: 22px;
+    height: 22px;
+    background-image: url("../res/img/ico_signup_fb@2x.png");
+    background-size: cover; }
+#account_select_page #adb_btn {
+  width: 240px;
+  height: 36px;
+  background: #a1887f;
+  border-radius: 24px;
+  border: 0px;
+  font-weight: lighter;
+  font-size: 11pt;
+  margin-top: 18px; }
+  #account_select_page #adb_btn .icon {
+    width: 22px;
+    height: 22px;
+    background-image: url("../res/img/ico_signup_mail@2x.png");
+    background-size: cover; }
+#account_select_page #btn_group {
+  position: relative;
+  margin-top: 0%; }
+#account_select_page #footer_text {
+  font-size: 10.5pt;
+  opacity: 0.7;
+  width: 257px;
+  position: absolute;
+  margin: 0;
+  bottom: 8%;
+  text-align: center; }
+  #account_select_page #footer_text p {
+    margin: 0; }
+  #account_select_page #footer_text a {
+    font-weight: bold;
+    color: black;
+    margin: 0; }
+
+/*# sourceMappingURL=main_account_select.css.map */

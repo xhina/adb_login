@@ -1,0 +1,21 @@
+$font-family: AppleSDGothicNeo-Regular, sans-serif;
+$body-bg-color:rgb(242,242,242);
+$header-color:rgb(255,169,7);
+$page-bg-color:white;
+
+@mixin image_res($filename, $w, $h) {
+  width:$w;
+  height:$h;
+  background-image:url("../res/img/" + $filename);
+  background-size:cover;
+}
+
+@mixin adb_button($color, $width, $height) {
+    width:$width;
+    height:$height;
+    background:$color;
+    border-radius:24px;
+    border:0px;
+    font-weight:lighter;
+    font-size:11pt;
+}

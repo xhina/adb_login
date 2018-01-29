@@ -1,0 +1,101 @@
+@import 'global_mixin';
+
+#account_select_page {
+  #main_logo {
+    @include image_res("img_logo@2x.png", 182px, 84px);
+    margin-top:17vh;
+    @media (min-width:737px) {
+      margin-top:25vh;
+    }
+  }
+
+  #close_btn {
+    @include image_res("btn_close@2x.png", 22px, 22px);
+    position:absolute;
+    width:22px;
+    height:22px;
+    right:15px;
+    top:10pt;
+  }
+
+  #main_bg {
+    width:100%;
+    position:absolute;
+    display: flex;
+    justify-content: center;
+    background: -webkit-linear-gradient(to right, white, $body-bg-color);
+    background: -moz-linear-gradient(to right, white, $body-bg-color);
+    background: -ms-linear-gradient(to right, white, $body-bg-color);
+    background: -o-linear-gradient(to right, white, $body-bg-color);
+    background: linear-gradient(to right, white, $body-bg-color);
+
+    div {
+      @include image_res("img_signup_bg@4x.png", 414px, 736px);
+      @media (min-height:737px) {
+        height:100vh;
+      }
+    }
+  }
+
+  #kakao_btn,#fb_btn,#adb_btn p {
+    margin:2px 0;
+    text-align:left;
+  }
+
+  %btn_icon {
+    margin:-1px 16px;
+    float:left;
+  }
+
+  #kakao_btn {
+    @include adb_button(rgb(250,233,0), 240px, 36px);
+    color:rgb(83,55,55);
+    margin-top:106px;
+    .icon {
+      @include image_res("ico_signup_kakao@2x.png", 22px, 22px);
+      @extend %btn_icon;
+    }
+  }
+
+  #fb_btn {
+    @include adb_button(rgb(59,89,152), 240px, 36px);
+    margin-top:18px;
+    .icon {
+      @include image_res("ico_signup_fb@2x.png", 22px, 22px);
+      @extend %btn_icon;
+    }
+  }
+
+  #adb_btn {
+    @include adb_button(rgb(161,136,127), 240px, 36px);
+    margin-top:18px;
+    .icon {
+      @include image_res("ico_signup_mail@2x.png", 22px, 22px);
+      @extend %btn_icon;
+    }
+  }
+
+  #btn_group {
+    position:relative;
+    margin-top:0%;
+  }
+
+  #footer_text {
+    font-size:10.5pt;
+    opacity:0.7;
+    width:257px;
+    position:absolute;
+    margin:0;
+    bottom:8%;
+    text-align: center;
+
+    p {
+      margin:0;
+    }
+    a {
+      font-weight:bold;
+      color:black;
+      margin:0;
+    }
+  }
+}

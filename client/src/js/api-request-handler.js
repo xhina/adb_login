@@ -50,6 +50,7 @@ function mergeParams(arg) {
     "os" : userData.os,
     ...arg
   };
+  // return body;
 
   const data = new URLSearchParams();
   for(var obj in body) {
@@ -68,7 +69,6 @@ function request(url, params, callback) {
   fetch(url, {method:'POST', body:body})
   .then(r=>{
     let data = r.json();
-    console.log(data);
     callback({error:!r.res === 0, data:data});
   })
   .catch(r=>{

@@ -1,16 +1,7 @@
-$font-family: sans-serif;
-$body-bg-color:rgb(242,242,242);
-$header-color:rgb(255,169,7);
-$page-bg-color:white;
-$path:"..rs/img/";
-
-@mixin image_res($filename, $w, $h) {
-  width:$w;
-  height:$h;
-  background-image:url("../res/img/" + $filename);
-}
+@import 'global_mixin';
 
 body {
+  font-family:$font-family;
   overflow:hidden;
   background-color:$body-bg-color;
 }
@@ -37,41 +28,6 @@ body {
     background-color:$page-bg-color;
     overflow: auto;
     -webkit-overflow-scrolling:touch;
-  }
-}
-
-#account_select_page {
-  #main_logo {
-    @include image_res("img_logo@2x.png", 182px, 84px);
-    margin-top:130px;
-    background-size:cover;
-  }
-
-  #close_btn {
-    @include image_res("btn_close@2x.png", 22px, 22px);
-    position:absolute;
-    width:22px;
-    height:22px;
-    right:15px;
-    top:10px;
-    background-size:cover;
-  }
-
-  #main_bg {
-    width:100%;
-    position:absolute;
-    display: flex;
-    justify-content: center;
-    background: -webkit-linear-gradient(to right, white, $body-bg-color);
-    background: -moz-linear-gradient(to right, white, $body-bg-color);
-    background: -ms-linear-gradient(to right, white, $body-bg-color);
-    background: -o-linear-gradient(to right, white, $body-bg-color);
-    background: linear-gradient(to right, white, $body-bg-color);
-
-    div {
-      @include image_res("img_signup_bg@4x.png", 414px, 736px);
-      background-size:cover;
-    }
   }
 }
 
