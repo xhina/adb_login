@@ -31,6 +31,12 @@ export default class BaseView extends Page {
     this.alertModal.show(message, onConfirm);
   }
 
+  errorAlert(errorCode) {
+    const value = StringResource.hasString(`error${errorCode}`);
+    const str = value ? value : StringResource.getString("error_account_api");
+    this.alert(str);
+  }
+
   visibleIndicator(visible) {
     getLoadingIndicator().visible(visible);
   }

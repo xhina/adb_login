@@ -35,13 +35,11 @@ class View extends BaseView {
 
     super.visibleIndicator(true);
 
-    const api = super.api;
-    api.login(api.ACCOUNT_TYPE.ADB, email, pw,
+    super.api.login(super.api.ACCOUNT_TYPE.ADB, email, pw,
       (r)=>{
         super.visibleIndicator(false);
         if (r.error) {
-          super.alert(super.getString("alert_not_member"));
-          // or 이미 가입된 계정 alert message 추가
+          super.errorAlert(r.res_code);
           return;
         }
       });

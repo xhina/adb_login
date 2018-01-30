@@ -32,12 +32,12 @@ export function join(accountType, id, pw, name, callback) {
     });
 }
 
-export function passwordFind(email) {
-
+export function passwordFind(email, callback) {
+  request(API_URL.send_password, {signup_path:"adb", signup_id:email}, callback);
 }
 
-export function passwordChange(pw) {
-
+export function passwordChange(token, pw, callback) {
+  request(API_URL.change_password, {signup_token:token, signup_pass:pw}, callback);
 }
 
 function mergeParams(arg) {
@@ -66,6 +66,7 @@ function request(url, params, callback) {
   .then(r=>r.json())
   .then(r=>{
     console.log(r.res);
+    if (callback == null) return;
     callback({error:r.res !== 0, res_code:r.res, data:r.data});
   })
   .catch(r=>{

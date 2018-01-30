@@ -72,7 +72,7 @@ class View extends BaseView {
       (r)=>{
         super.visibleIndicator(false);
         if (r.error) {
-          super.alert(super.getString('error_account_api'));
+          super.errorAlert(r.res_code);
           return;
         }
         this.joinComplete(r.data.access_token, res.email, res.name);
@@ -91,7 +91,7 @@ class View extends BaseView {
       (r)=>{
         super.visibleIndicator(false);
         if (r.error) {
-          super.alert(super.getString('login error'));
+          super.errorAlert(r.res_code);
           return;
         }
         this.joinComplete(r.data.access_token, res.kaccount_email, res.kaccount_email);

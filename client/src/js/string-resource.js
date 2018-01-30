@@ -19,6 +19,11 @@ class StringResource {
     let value = StringResource[table_sym][id];
     return (value != null) ? value : '@id/' + id;
   }
+
+  static hasString(id) {
+    let value = StringResource[table_sym][id];
+    return (value != null) ? value : null;
+  }
 }
 
 class StringDataLoader {

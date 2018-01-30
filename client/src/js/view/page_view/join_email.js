@@ -48,8 +48,7 @@ class View extends BaseView {
       (res)=>{
         super.visibleIndicator(false);
         if (res.error) {
-          const msg = res.res_code == -200001 ? super.getString('error-200001') : super.getString("error_account_api");
-          super.alert(msg);
+          super.errorAlert(res.res_code);
           return;
         }
         this.joinComplete(res.data.access_token, email, res.data.account_name);

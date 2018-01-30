@@ -37,11 +37,15 @@ class View extends BaseView {
       return;
     }
 
-    super.api.passwordChange(pw,
+    if (pw_re !== pw) {
+      super.alert(super.getString("alert_password_correct"));
+      return;
+    }
+
+    super.api.passwordChange("token", pw,
       (r)=>{
         if (r.error) {
-          super.alert(super.getString("alert_not_member"));
-          // or 이미 가입된 계정 alert message 추가
+          super.errorAlert(r.res_code);
           return;
         }
       });

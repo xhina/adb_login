@@ -38,3 +38,4 @@ placeholder_input_name = 이름을 입력하세요.
 
 error_account_api = 요청에 실패하였습니다.\n잠시후에 다시 시도해주세요.
 error-200001 = 이미 가입된 계정입니다.
+error-200010 = 가입되지 않은 계정입니다.
