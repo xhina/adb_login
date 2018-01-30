@@ -16,9 +16,9 @@ export function checkOAuthSession() {
   return (window.location.pathname === "/oauth_fb") ? true : false;
 }
 
-export function checkOAuthError() {
+export function checkOAuthValid() {
   const bool = window.location.search.includes("error");
-  return bool;
+  return !bool;
 }
 
 export function getUserInfo(callback) {

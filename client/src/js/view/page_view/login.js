@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseView from './base_view';
 import AdbInput from '../component/adb-input';
+import AdbButton from '../component/adb-button';
 import {
   Container,
   Row,
@@ -42,7 +43,20 @@ class View extends BaseView {
           super.errorAlert(r.res_code);
           return;
         }
+        super.sendAccountInfoToFuse(r.data.access_token, email);
       });
+  }
+
+  onChangeInput(e) {
+    const email = this.email.value;
+    const pw = this.pw.value;
+
+    if (email.length < 1 || pw.length < 1) {
+      this.btn.lock();
+    }
+    else {
+      this.btn.unlock();
+    }
   }
 
   view() {
@@ -55,13 +69,13 @@ class View extends BaseView {
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
 
-              <AdbInput ref={e=>this.email=e} type="email" label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
-              <AdbInput ref={e=>this.pw=e} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput ref={e=>this.email=e} type="email" onChange={this.onChangeInput.bind(this)} label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
+              <AdbInput ref={e=>this.pw=e} type="password" onChange={this.onChangeInput.bind(this)} label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
 
               <Row className="justify-content-center">
-                <Button color="primary">
+                <AdbButton ref={e=>this.btn=e}>
                   <p>{super.getString("ui_login")}</p>
-                </Button>
+                </AdbButton>
               </Row>
             </Form>
 

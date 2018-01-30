@@ -7,7 +7,7 @@ import {TextRes, ImageRes} from '../../res-link';
 import * as api from '../../api-request-handler';
 import { PAGE_UID } from '../../route/page-component-factory';
 import { getLoadingIndicator } from '../component/global-ui';
-import { sendUserAccountInfoToFuse } from '../../fuse-bridge';
+import * as fuse from '../../fuse-bridge';
 
 export default class BaseView extends Page {
   constructor(props) {
@@ -50,7 +50,11 @@ export default class BaseView extends Page {
   }
 
   sendAccountInfoToFuse(token, email, name) {
-    sendUserAccountInfoToFuse(token, email, name);
+    fuse.sendUserAccountInfoToFuse(token, email, name);
+  }
+
+  sendCloseMsgToFuse() {
+    fuse.closeWebModal();
   }
 
   get img() {

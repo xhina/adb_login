@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseView from './base_view';
 import AdbInput from '../component/adb-input';
+import AdbButton from '../component/adb-button';
 import {
   Container,
   Row,
@@ -11,8 +12,16 @@ import {
   Label,
   Input
 } from 'reactstrap';
+import getParamFromURL from '../../util/parameterFromURL';
 
 class View extends BaseView {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      buttonLock:true
+    }
+  }
 
   gotoPasswordSearchPage() {
     super.go(super.pageUID.PASSWORD_SEARCH);
@@ -20,6 +29,14 @@ class View extends BaseView {
 
   gotoJoinPage() {
     super.go(super.pageUID.CREATE_EMAIL_ACCOUNT);
+  }
+
+  componentDidMount() {
+    const token = getParamFromURL('signup_token');
+    if (token == null) {
+      super.alert(super.getString("alert_token_invalid"));
+    }
+    this.callCheckTokenAPI(token);
   }
 
   onSubmit(event) {
@@ -41,14 +58,48 @@ class View extends BaseView {
       super.alert(super.getString("alert_password_correct"));
       return;
     }
+    this.callPasswordChangeAPI(this.token, pw);
+  }
 
-    super.api.passwordChange("token", pw,
+  callCheckTokenAPI(token) {
+    super.api.checkPasswordChangeToken(token, (r)=>{
+      if (r.error) super.errorAlert(r.res_code);
+      this.activeMode(token);
+    });
+  }
+
+  callPasswordChangeAPI(token, pw) {
+    super.visibleIndicator(true);
+    super.api.passwordChange(token, pw,
       (r)=>{
+        super.visibleIndicator(false);
         if (r.error) {
           super.errorAlert(r.res_code);
           return;
         }
-      });
+        super.alert(super.getString("alert_password_change_complete"),()=>this.deactiveMode());
+      }
+    );
+  }
+
+  activeMode(token) {
+    this.token = token;
+    this.setState({buttonLock:true});
+  }
+
+  deactiveMode() {
+    this.setState({buttonLock:false});
+  }
+
+  onChangeInput(e) {
+    const pw = this.pw.value;
+    const pw_re = this.pw_re.value;
+    if (pw.length < 1 || pw_re.length < 1) {
+      this.btn.lock();
+    }
+    else {
+      this.btn.unlock();
+    }
   }
 
   render() {
@@ -60,11 +111,11 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <AdbInput ref={e=>this.pw=e} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
-              <AdbInput ref={e=>this.pw_re=e} type="password" label_title={super.getString("ui_password_re")} email_placeholder={super.getString("placeholder_input_pw_re")} />
+              <AdbInput ref={e=>this.pw=e} onChange={this.onChangeInput.bind(this)} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput ref={e=>this.pw_re=e} onChange={this.onChangeInput.bind(this)} type="password" label_title={super.getString("ui_password_re")} email_placeholder={super.getString("placeholder_input_pw_re")} />
 
               <Row className="justify-content-center">
-                <Button><p>{super.getString("ui_modify")}</p></Button>
+                <AdbButton ref={e=>this.btn=e}><p>{super.getString("ui_modify")}</p></AdbButton>
               </Row>
             </Form>
 

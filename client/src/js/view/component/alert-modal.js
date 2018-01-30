@@ -19,14 +19,14 @@ class AlertModal extends Component {
 
   toggle() {
     this.setState({visible: !this.state.visible});
-    if (!this.state.visible && this.onConfirm) {
+    if (this.state.visible && this.onConfirm) {
       this.onConfirm();
     }
   }
 
   render() {
     return (
-      <Modal id="alert-modal" isOpen={this.state.visible} toggle={this.toggle} style={{display:'flex', height:'90%', alignItems:'center', justifyContent:'center'}}>
+      <Modal id="alert-modal" isOpen={this.state.visible} toggle={this.toggle.bind(this)} style={{display:'flex', height:'90%', alignItems:'center', justifyContent:'center'}}>
           <ModalBody>
             <p>{this.body}</p>
           </ModalBody>

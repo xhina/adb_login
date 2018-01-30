@@ -21,20 +21,6 @@ body {
     background-color: white;
     overflow: auto;
     -webkit-overflow-scrolling: touch; }
-  .page .col_label {
-    flex-grow: 3;
-    padding: 0 0 0 12px; }
-    .page .col_label Label {
-      width: 100%; }
-    @media (max-width: 320px) {
-      .page .col_label {
-        flex-grow: 3; } }
-  .page .col_input {
-    flex-grow: 7;
-    padding: 0; }
-    @media (max-width: 320px) {
-      .page .col_input {
-        flex-grow: 6; } }
   .page ::placeholder {
     color: rgba(59, 63, 66, 0.4);
     font-size: 11pt;
@@ -44,6 +30,10 @@ body {
     width: 2px;
     height: 20px;
     margin: 0 3px; }
+  .page .button_lock {
+    background-color: white !important;
+    border: 1px solid #a1887f !important;
+    color: #a1887f !important; }
 
 #indicator {
   background: rgba(0, 0, 0, 0.5);
@@ -106,7 +96,8 @@ body {
     width: 22px;
     height: 22px;
     background-image: url("../res/img/btn_close@2x.png");
-    background-size: cover; }
+    background-size: cover;
+    cursor: pointer; }
 
 #adb_input_formgroup {
   margin: 13px 0 0 0; }

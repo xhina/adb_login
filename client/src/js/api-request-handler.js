@@ -12,6 +12,7 @@ const API_URL = {
   login : SERVER_ADDRESS + "/adb/account/login",
   send_password : SERVER_ADDRESS + "/adb/account/pwEmail",
   change_password : SERVER_ADDRESS + "/adb/account/pwChange",
+  check_password_change_token : SERVER_ADDRESS + "/adb/account/checkToken",
 }
 
 export const ACCOUNT_TYPE = {
@@ -20,27 +21,7 @@ export const ACCOUNT_TYPE = {
   KAKAO : "kakao",
 };
 
-export function login(accountType, id, pw, callback) {
-  request(API_URL.login, {signup_id:id,  password:pw, signup_path:accountType}, callback);
-}
-
-export function join(accountType, id, pw, name, callback) {
-  request(API_URL.join, {"signup_id":id, "password":pw, "signup_name":name, "signup_path":accountType},
-    (res)=>{
-      if (!res.error) return callback(res);
-      (accountType != ACCOUNT_TYPE.ADB && res.res_code == -200001) ? login(accountType, id, pw, callback) : callback(res);
-    });
-}
-
-export function passwordFind(email, callback) {
-  request(API_URL.send_password, {signup_path:"adb", signup_id:email}, callback);
-}
-
-export function passwordChange(token, pw, callback) {
-  request(API_URL.change_password, {signup_token:token, signup_pass:pw}, callback);
-}
-
-function mergeParams(arg) {
+function convertParameter(arg) {
   const userData = getUserData();
   let body = {
     "client_uid" : userData.duid,
@@ -58,14 +39,48 @@ function mergeParams(arg) {
   return data;
 }
 
+export function login(accountType, id, pw, callback) {
+  request(API_URL.login, {signup_id:id,  password:pw, signup_path:accountType}, callback);
+}
+
+export function join(id, pw, name, callback) {
+  request(API_URL.join, {signup_id:id, password:pw, signup_name:name, signup_path:ACCOUNT_TYPE.ADB},
+    (res)=>{
+      callback(res);
+    });
+}
+
+export function snsJoin(accountType, id, email, name, callback) {
+  request(API_URL.join, {signup_id:id, sns_email:email, signup_name:name, signup_path:accountType},
+    (res)=>{
+      if (!res.error) {
+        callback(res);
+        return;
+      }
+      res.res_code == -200001 ? login(accountType, id, "", callback) : callback(res);
+    });
+}
+
+export function passwordFind(email, callback) {
+  request(API_URL.send_password, {signup_path:"adb", signup_id:email}, callback);
+}
+
+export function checkPasswordChangeToken(token, callback) {
+  request(API_URL.check_password_change_token, {signup_token:token}, callback);
+}
+
+export function passwordChange(token, pw, callback) {
+  request(API_URL.change_password, {signup_token:token, signup_pass:pw}, callback);
+}
+
 function request(url, params, callback) {
   console.log("request : ", url);
-  let body = mergeParams(params);
+  let body = convertParameter(params);
 
   fetch(url, {method:'POST', body:body})
   .then(r=>r.json())
   .then(r=>{
-    console.log(r.res);
+    console.log(r);
     if (callback == null) return;
     callback({error:r.res !== 0, res_code:r.res, data:r.data});
   })

@@ -31,28 +31,6 @@ body {
     -webkit-overflow-scrolling:touch;
   }
 
-  .col_label {
-    flex-grow: 3;
-    padding:0 0 0 12px;
-
-    Label {
-      width:100%;
-    }
-
-    @media (max-width:320px) {
-      flex-grow:3;
-    }
-  }
-
-  .col_input {
-    flex-grow: 7;
-    padding:0;
-
-    @media (max-width:320px) {
-      flex-grow:6;
-    }
-  }
-
   ::placeholder {
     color:rgba(59, 63, 66, 0.4);
     font-size:11pt;
@@ -64,6 +42,12 @@ body {
     width:2px;
     height:20px;
     margin:0 3px;
+  }
+
+  .button_lock {
+    background-color:white !important;
+    border:1px solid $color-warm-grey !important;
+    color:$color-warm-grey !important;
   }
 
 }
@@ -145,6 +129,7 @@ body {
 
   #close_btn {
     @include image_res("btn_close@2x.png", 22px, 22px);
+    cursor: pointer;
   }
 }
 

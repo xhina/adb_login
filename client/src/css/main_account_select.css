@@ -16,7 +16,8 @@
   width: 22px;
   height: 22px;
   right: 15px;
-  top: 10pt; }
+  top: 10pt;
+  cursor: pointer; }
 #account_select_page #main_bg {
   width: 100%;
   position: absolute;

@@ -5,6 +5,7 @@ alert_password_sending_mail = 입력하신 메일 주소로\n비밀번호 메일
 alert_password_limit = 비밀번호는 4자~12자 사이에 입력해야 합니다.
 alert_name_limit = 이름은 2자~16자\n사이에 입력해야 합니다.
 alert_already_join = 이미 가입된 계정입니다.
+alert_password_change_complete = 비밀번호가 수정되었습니다.
 
 header_title_email_login = 이메일 로그인
 header_title_email_join = 이메일 가입
@@ -39,3 +40,5 @@ placeholder_input_name = 이름을 입력하세요.
 error_account_api = 요청에 실패하였습니다.\n잠시후에 다시 시도해주세요.
 error-200001 = 이미 가입된 계정입니다.
 error-200010 = 가입되지 않은 계정입니다.
+error-200110 = 시간이 경과하여 해당 페이지가 만료되었습니다.\n다시 시도해주세요
+error-200011 = 가입되어 있지 않거나 올바르지 않은 정보입니다.

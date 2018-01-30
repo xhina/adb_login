@@ -12,6 +12,7 @@ import {
 
 import BaseView from './base_view';
 import AdbInput from '../component/adb-input';
+import AdbButton from '../component/adb-button';
 
 class View extends BaseView {
 
@@ -43,8 +44,7 @@ class View extends BaseView {
   }
 
   callJoinAPI(email, pw, name) {
-    const aType = super.api.ACCOUNT_TYPE.ADB;
-    super.api.join(aType, email, pw, name,
+    super.api.join(email, pw, name,
       (res)=>{
         super.visibleIndicator(false);
         if (res.error) {
@@ -60,6 +60,18 @@ class View extends BaseView {
     super.sendAccountInfoToFuse(token, email, name);
   }
 
+  onChangeInput(e) {
+    const email = this.email.value;
+    const pw = this.pw.value;
+    const name = this.name.value;
+    if (email.length < 1 || pw.length < 1 || name.length < 1) {
+      this.btn.lock();
+    }
+    else {
+      this.btn.unlock();
+    }
+  }
+
   view() {
     return (
       <div className="page" id="join_email_page">
@@ -69,12 +81,12 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <AdbInput ref={e=>this.email=e} type="email" label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
-              <AdbInput ref={e=>this.pw=e} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
-              <AdbInput ref={e=>this.name=e} type="name" label_title={super.getString("ui_name")} email_placeholder={super.getString("placeholder_input_name")} />
+              <AdbInput ref={e=>this.email=e} onChange={this.onChangeInput.bind(this)} type="email" label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
+              <AdbInput ref={e=>this.pw=e} onChange={this.onChangeInput.bind(this)} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput ref={e=>this.name=e} onChange={this.onChangeInput.bind(this)} type="name" label_title={super.getString("ui_name")} email_placeholder={super.getString("placeholder_input_name")} />
 
               <Row className="justify-content-center">
-                <Button><p>{super.getString("ui_join")}</p></Button>
+                <AdbButton ref={e=>this.btn=e}><p>{super.getString("ui_join")}</p></AdbButton>
               </Row>
             </Form>
           </Container>

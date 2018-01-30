@@ -11,6 +11,7 @@ import { setDUID, loadDUID } from './js/redux/actions';
 import { getUserData } from './js/user-data';
 import { RenderComponent } from './js/app-renderer';
 import { init as initGlobalUI } from './js/view/component/global-ui';
+import getParamFromURL from './js/util/parameterFromURL';
 
 let store = createStore(userApi);
 store.subscribe(()=> {
@@ -39,20 +40,9 @@ class App extends Component {
   }
 
   setDeviceUID() {
-    let params = _.replace(window.location.search, "?", "");
-    params = _.split(params, "&");
-
-    _.map(params, (e)=>{
-      let p = _.split(e, "=");
-      if (p.length < 2) return false;
-
-      const {k,v} = {k:p[0], v:p[1]};
-      if (k === "duid") {
-        store.dispatch(setDUID(v));
-        return;
-      }
-    });
-    store.dispatch(loadDUID());
+    const duid = getParamFromURL("duid");
+    if (duid != null) store.dispatch(setDUID(duid));
+    else store.dispatch(loadDUID());
   }
 
   render() {

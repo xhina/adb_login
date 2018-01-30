@@ -14,11 +14,12 @@ class AdbInput extends React.Component {
   resetValue() {
     if (this.target == null) return;
     this.target.value = "";
+    this.onChange();
   }
 
   onChange(e) {
-    this.target = e.target;
-    this.setState({value:e.target.value});
+    if (e != null) this.target = e.target;
+    if (this.props.onChange != null) this.props.onChange(e);
   }
 
   get value() {
