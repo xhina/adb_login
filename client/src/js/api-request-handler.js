@@ -9,9 +9,9 @@ const SERVER_ADDRESS = "https://apidev.doralab.co.kr";
 
 const API_URL = {
   join : SERVER_ADDRESS + "/adb/account/join",
-  login : SERVER_ADDRESS + "/adb/account/accountLogin",
-  send_password : SERVER_ADDRESS + "/adb/account/findEmail",
-  change_password : SERVER_ADDRESS + "/adb/account/findReset",
+  login : SERVER_ADDRESS + "/adb/account/login",
+  send_password : SERVER_ADDRESS + "/adb/account/pwEmail",
+  change_password : SERVER_ADDRESS + "/adb/account/pwChange",
 }
 
 export const ACCOUNT_TYPE = {
@@ -25,13 +25,10 @@ export function login(accountType, id, pw, callback) {
 }
 
 export function join(accountType, id, pw, name, callback) {
-  request(API_URL.join, {"signup_id":id.toString(), "password":pw.toString(), "signup_name":name.toString(), "signup_path":accountType.toString()},
+  request(API_URL.join, {"signup_id":id, "password":pw, "signup_name":name, "signup_path":accountType},
     (res)=>{
-      if (res.error) {
-        callback(res);
-        return;
-      }
-      // login process로 진행
+      if (!res.error) return callback(res);
+      (accountType != ACCOUNT_TYPE.ADB && res.res_code == -200001) ? login(accountType, id, pw, callback) : callback(res);
     });
 }
 
@@ -50,7 +47,6 @@ function mergeParams(arg) {
     "os" : userData.os,
     ...arg
   };
-  // return body;
 
   const data = new URLSearchParams();
   for(var obj in body) {
@@ -67,9 +63,10 @@ function request(url, params, callback) {
   let body = mergeParams(params);
 
   fetch(url, {method:'POST', body:body})
+  .then(r=>r.json())
   .then(r=>{
-    let data = r.json();
-    callback({error:!r.res === 0, data:data});
+    console.log(r.res);
+    callback({error:r.res !== 0, res_code:r.res, data:r.data});
   })
   .catch(r=>{
     callback({error:true, data:r});

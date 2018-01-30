@@ -5,9 +5,10 @@ const headers = new Headers({
 });
 
 const redirect_uri = "http://localhost:3000/oauth_kakao";
+const client_id = "4407549812527c7efe311010a276073c";
 
 export function login() {
-  const url = "https://kauth.kakao.com/oauth/authorize?client_id=ea8fe6eb511b4caac7312ac1661e4fda&redirect_uri=" + redirect_uri + "&response_type=code";
+  const url = `https://kauth.kakao.com/oauth/authorize?client_id=${client_id}&redirect_uri=${redirect_uri}&response_type=code`;
   window.location.href = url;
 }
 
@@ -30,7 +31,7 @@ function callAccessTokenAPI(code, callback) {
   const body = {
     url : "https://kauth.kakao.com/oauth/token",
     grant_type:"authorization_code",
-    client_id:"ea8fe6eb511b4caac7312ac1661e4fda",
+    client_id:client_id,
     redirect_uri:redirect_uri,
     code:code
   };
@@ -63,5 +64,6 @@ function getUserId(accessToken, callback) {
       callback({error:1});
       return;
     }
+    callback({...r});
   });
 }

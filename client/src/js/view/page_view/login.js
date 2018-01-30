@@ -1,14 +1,12 @@
 import React from 'react';
 import BaseView from './base_view';
+import AdbInput from '../component/adb-input';
 import {
   Container,
   Row,
   Col,
   Button,
   Form,
-  FormGroup,
-  Label,
-  Input
 } from 'reactstrap';
 
 class View extends BaseView {
@@ -58,26 +56,10 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <FormGroup>
-                <Row>
-                  <Col className="col_label">
-                    <Label for="email">{super.getString("ui_email")}</Label>
-                  </Col>
-                  <Col className="col_input">
-                    <Input type="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
-              <FormGroup>
-                <Row>
-                  <Col className="col_label">
-                    <Label for="pw">{super.getString("ui_password")}</Label>
-                  </Col>
-                  <Col className="col_input">
-                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
+
+              <AdbInput label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
+              <AdbInput label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+
               <Row className="justify-content-center">
                 <Button color="primary">
                   <p>{super.getString("ui_login")}</p>
@@ -89,7 +71,7 @@ class View extends BaseView {
               <Col className="text-right">
                 <a href="#" onClick={this.gotoPasswordSearchPage}>{super.getString('ui_password_search')}</a>
               </Col>
-              <p class="menu_separator"></p>
+              <p className="menu_separator"></p>
               <Col className="text-left">
                 <a href="#" onClick={this.gotoJoinPage}>{super.getString('ui_join')}</a>
               </Col>

@@ -11,7 +11,6 @@ export function setDUID(duid:string) {
 
 export function loadDUID() {
   return {
-    type : DUID_LOAD,
-    duid : ""
+    type : DUID_LOAD
   };
 }

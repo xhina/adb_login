@@ -3,7 +3,7 @@
   height: 84px;
   background-image: url("../res/img/img_logo@2x.png");
   background-size: cover;
-  margin-top: 17vh; }
+  margin-top: 14vh; }
   @media (min-width: 737px) {
     #account_select_page #main_logo {
       margin-top: 25vh; } }
@@ -38,18 +38,19 @@
 #account_select_page #kakao_btn, #account_select_page #fb_btn, #account_select_page #adb_btn {
   margin: 2px 0;
   text-align: left; }
-#account_select_page #kakao_btn .icon, #account_select_page #fb_btn .icon, #account_select_page #adb_btn .icon {
-  margin: -1px 16px;
-  float: left; }
+  #account_select_page #kakao_btn .icon, #account_select_page #fb_btn .icon, #account_select_page #adb_btn .icon {
+    margin: -1px 16px;
+    float: left; }
 #account_select_page #kakao_btn {
   width: 240px;
-  height: 36px;
+  height: 37px;
   background: #fae900;
   border-radius: 24px;
   border: 0px;
   color: white;
   font-weight: lighter;
   font-size: 11pt;
+  cursor: pointer;
   color: #533737;
   margin-top: 106px; }
   #account_select_page #kakao_btn p {
@@ -61,13 +62,14 @@
     background-size: cover; }
 #account_select_page #fb_btn {
   width: 240px;
-  height: 36px;
+  height: 37px;
   background: #3b5998;
   border-radius: 24px;
   border: 0px;
   color: white;
   font-weight: lighter;
   font-size: 11pt;
+  cursor: pointer;
   margin-top: 18px; }
   #account_select_page #fb_btn p {
     margin-top: 1px; }
@@ -78,13 +80,14 @@
     background-size: cover; }
 #account_select_page #adb_btn {
   width: 240px;
-  height: 36px;
+  height: 37px;
   background: #a1887f;
   border-radius: 24px;
   border: 0px;
   color: white;
   font-weight: lighter;
   font-size: 11pt;
+  cursor: pointer;
   margin-top: 18px; }
   #account_select_page #adb_btn p {
     margin-top: 1px; }

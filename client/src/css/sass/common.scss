@@ -31,35 +31,6 @@ body {
     -webkit-overflow-scrolling:touch;
   }
 
-  .form-group {
-    margin:13px 0 0 0;
-  }
-
-  .form-group .row {
-    width:100%;
-    height:35px;
-    margin:0;
-    border:0;
-    border-radius:0;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
-  }
-
-  Label {
-    color:rgb(141, 141, 141);
-    width:100px;
-    height:19px;
-    font-size:11pt;
-  }
-
-  Input {
-    border:0;
-    margin:0;
-    padding:0;
-    margin-top:2px;
-    color:rgb(59,63,66);
-    font-size:11pt;
-  }
-
   .col_label {
     flex-grow: 3;
     padding:0 0 0 12px;
@@ -118,33 +89,47 @@ body {
   justify-content:'center';
 
   .modal-body {
-    overflow-wrap:break-word;
+    font-size:10.5pt;
+    color:$color-alert-msg;
     text-align: center;
+    overflow-wrap:break-word;
+
     @media (max-width:500px) {
-      min-width:80vw;
-      max-width:90vw;
+      min-width:68vw;
+      max-width:75vw;
     }
     @media (min-width:501px) {
-      min-width:70vw;
-      max-width:70vw;
+      min-width:40vw;
+      max-width:50vw;
+    }
+
+    p {
+      margin:0;
+      white-space:pre-line;
     }
   }
 
   .modal-footer {
+    color:$color-header;
+    font-size:14pt;
+    padding:10px 0;
 
+    p {
+      margin:0;
+    }
   }
+}
 
-  .modal-open .modal {
-    overflow-y:hidden;
-  }
+.modal-open .modal {
+  overflow-y:hidden;
+}
 
-  .modal.fade .modal-dialog {
-    transform:translate(0, -5%);
-  }
+.modal.fade .modal-dialog {
+  transform:translate(0, -5%);
+}
 
-  .modal.show .modal-dialog {
-    transform:translate(0, 0);
-  }
+.modal.show .modal-dialog {
+  transform:translate(0, 0);
 }
 
 #header {
@@ -160,5 +145,67 @@ body {
 
   #close_btn {
     @include image_res("btn_close@2x.png", 22px, 22px);
+  }
+}
+
+#adb_input_formgroup {
+  margin:13px 0 0 0;
+
+  .row {
+    width:100%;
+    height:35px;
+    margin:0;
+    border:0;
+    border-radius:0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+  }
+
+  Label {
+    color:rgb(141, 141, 141);
+    width:100px;
+    height:19px;
+    font-size:11pt;
+  }
+
+  Input {
+    border:0;
+    margin:0;
+    padding:0;
+    margin-top:2px;
+    color:rgb(59,63,66);
+    font-size:11pt;
+  }
+
+  #col_label {
+    flex-grow: 3;
+    padding:0 0 0 12px;
+
+    Label {
+      width:100%;
+    }
+
+    @media (max-width:320px) {
+      flex-grow:3;
+    }
+  }
+
+  #col_input {
+    flex-grow: 7;
+    padding:0;
+
+    @media (max-width:320px) {
+      flex-grow:4;
+    }
+  }
+
+  #col_reset {
+    flex-grow:0.1;
+
+    div {
+      @include image_res("btn_close_g@2x.png", 12px, 12px);
+      vertical-align: middle;
+      display:inline-block;
+      cursor: pointer;
+    }
   }
 }

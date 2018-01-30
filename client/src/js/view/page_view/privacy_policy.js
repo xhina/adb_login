@@ -35,7 +35,7 @@ class View extends BaseView {
 
   view() {
     return (
-      <div className="page">
+      <div className="page" id="privacy_policy_page">
         {super.attachHeader('개인정보 보호정책')}
         <div className="pre-scrollable">
           <Container>

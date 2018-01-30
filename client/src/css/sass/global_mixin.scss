@@ -4,6 +4,7 @@ $color-header:rgb(255,169,7);
 $color-page-bg:white;
 $color-greyish-brown:rgb(74,74,74);
 $color-warm-grey:rgb(161,136,127);
+$color-alert-msg:rgb(3,3,3);
 
 @mixin image_res($filename, $w, $h) {
   width:$w;
@@ -21,6 +22,7 @@ $color-warm-grey:rgb(161,136,127);
     color:white;
     font-weight:lighter;
     font-size:11pt;
+    cursor: pointer;
 
     p {
       margin-top:1px;

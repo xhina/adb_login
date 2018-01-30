@@ -1,5 +1,6 @@
 import React from 'react';
 import BaseView from './base_view';
+import AdbInput from '../component/adb-input';
 import {
   Container,
   Row,
@@ -55,28 +56,8 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-
-              <FormGroup>
-                <Row>
-                  <Col className="col_label">
-                    <Label for="papwssword">{super.getString("ui_password")}</Label>
-                  </Col>
-                  <Col className="col_input">
-                    <Input type="password" id="pw" placeholder={super.getString("placeholder_input_pw")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
-
-              <FormGroup>
-                <Row>
-                  <Col className="col_label">
-                    <Label className="" for="pw_re">{super.getString("ui_password_re")}</Label>
-                  </Col>
-                  <Col className="col_input">
-                    <Input type="password" id="pw_re" placeholder={super.getString("placeholder_input_pw_re")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
+              <AdbInput label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput label_title={super.getString("ui_password_re")} email_placeholder={super.getString("placeholder_input_pw_re")} />
 
               <Row className="justify-content-center">
                 <Button><p>{super.getString("ui_modify")}</p></Button>

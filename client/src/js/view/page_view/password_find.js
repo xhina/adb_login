@@ -1,5 +1,4 @@
 import React from 'react';
-import BaseView from './base_view';
 import {
   Container,
   Row,
@@ -10,6 +9,9 @@ import {
   Label,
   Input
 } from 'reactstrap';
+
+import BaseView from './base_view';
+import AdbInput from '../component/adb-input';
 
 class View extends BaseView {
 
@@ -48,16 +50,7 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <FormGroup>
-                <Row>
-                  <Col className="col_label">
-                    <Label for="email">{super.getString("ui_email")}</Label>
-                  </Col>
-                  <Col className="col_input">
-                    <Input type="email" name="email" id="email" placeholder={super.getString("placeholder_input_email")} required/>
-                  </Col>
-                </Row>
-              </FormGroup>
+              <AdbInput label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
 
               <Row className="justify-content-center">
                 <Button><p>{super.getString("ui_send")}</p></Button>

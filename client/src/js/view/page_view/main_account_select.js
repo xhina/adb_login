@@ -19,10 +19,6 @@ import {
 
 class View extends BaseView {
 
-  constructor(props) {
-    super(props);
-  }
-
   startWithKakao() {
     kakaoLogin();
   }
@@ -67,31 +63,43 @@ class View extends BaseView {
   onRequestFinishFacebook(res) {
     if (res.error) {
       super.visibleIndicator(false);
+      super.alert(super.getString('error_account_api'));
       return;
     }
+
     super.visibleIndicator(true);
-    super.api.join(super.api.ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name, (r)=>{
-      super.visibleIndicator(false);
-      if (r.error) {
-        super.alert(super.getString('login error'));
-        return;
-      }
-    });
+    super.api.join(super.api.ACCOUNT_TYPE.FACEBOOK, res.id, res.email, res.name,
+      (r)=>{
+        super.visibleIndicator(false);
+        if (r.error) {
+          super.alert(super.getString('error_account_api'));
+          return;
+        }
+        this.joinComplete(r.data.access_token, res.email, res.name);
+      });
   }
 
   onRequestFinishKakao(res) {
     if (res.error) {
       super.visibleIndicator(false);
+      super.alert(super.getString('error_account_api'));
       return;
     }
     super.visibleIndicator(true);
-    super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.email, res.name, (r)=>{
-      super.visibleIndicator(false);
-      if (r.error) {
-        super.alert(super.getString('login error'));
-        return;
-      }
-    });
+    // res.kaccount_email_verified
+    super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.kaccount_email, res.properties.nickname,
+      (r)=>{
+        super.visibleIndicator(false);
+        if (r.error) {
+          super.alert(super.getString('login error'));
+          return;
+        }
+        this.joinComplete(r.data.access_token, res.kaccount_email, res.kaccount_email);
+      });
+  }
+
+  joinComplete(token, email, name) {
+    super.sendAccountInfoToFuse(token, email, name);
   }
 
   onClose() {

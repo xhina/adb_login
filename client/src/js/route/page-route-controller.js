@@ -1,4 +1,3 @@
-import React from 'react';
 import BrowserHistory from './browser-history';
 import Page from './page';
 import {PAGE_UID, createPageComponent, getReactRef} from './page-component-factory';

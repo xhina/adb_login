@@ -1,3 +1,5 @@
+import { DUID_SET, DUID_LOAD } from './redux/actions';
+
 let userData;
 
 export function getUserData() {
@@ -15,10 +17,20 @@ class UserData {
 
   set duid(duid) {
     this.data.duid = duid;
+    localStorage.setItem('duid', duid);
+    console.log('set', duid);
   }
 
   get duid() {
     return this.data.duid;
+  }
+
+  loadDuid() {
+    let duid = localStorage.getItem('duid');
+    if (duid == null) {
+      duid = Math.abs(Math.random() * Number.MAX_SAFE_INTEGER);
+    }
+    this.duid = duid;
   }
 
   get os() {
@@ -34,6 +46,11 @@ class UserData {
 
   setReduxState(state) {
     this.data.state = state;
-    console.log(state);
+    if (state.type == DUID_SET) {
+      this.duid = state.duid;
+    }
+    else if (state.type == DUID_LOAD) {
+      this.loadDuid();
+    }
   }
 }

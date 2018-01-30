@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDom from 'react-dom';
 import Page from '../../route/page';
 import StringResource from '../../string-resource';
 import Header from '../header/header';
@@ -8,6 +7,7 @@ import {TextRes, ImageRes} from '../../res-link';
 import * as api from '../../api-request-handler';
 import { PAGE_UID } from '../../route/page-component-factory';
 import { getLoadingIndicator } from '../component/global-ui';
+import { sendUserAccountInfoToFuse } from '../../fuse-bridge';
 
 export default class BaseView extends Page {
   constructor(props) {
@@ -41,6 +41,10 @@ export default class BaseView extends Page {
 
   getString(id) {
     return StringResource.get(id);
+  }
+
+  sendAccountInfoToFuse(token, email, name) {
+    sendUserAccountInfoToFuse(token, email, name);
   }
 
   get img() {

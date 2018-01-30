@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAGI,qDAAI;EACF,KAAK,ECAU,OAAa;EDC5B,SAAS,EAAC,IAAI;EACd,cAAc,EAAC,IAAI",
+"sources": ["sass/privacy_agreement.scss","sass/global_mixin.scss"],
+"names": [],
+"file": "privacy_agreement.css"
+}

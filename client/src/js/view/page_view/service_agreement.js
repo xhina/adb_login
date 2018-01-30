@@ -35,7 +35,7 @@ class View extends BaseView {
 
   view() {
     return (
-      <div className="page">
+      <div className="page" id="service_agreement_page">
         {super.attachHeader('이용약관')}
         <div className="pre-scrollable">
           <Container>
