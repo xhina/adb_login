@@ -21,7 +21,7 @@ export const ACCOUNT_TYPE = {
 };
 
 export function login(accountType, id, pw, callback) {
-  request(API_URL.login, {email:id,  password:pw, signup_path:accountType}, callback);
+  request(API_URL.login, {signup_id:id,  password:pw, signup_path:accountType}, callback);
 }
 
 export function join(accountType, id, pw, name, callback) {

@@ -18,7 +18,7 @@ class UserData {
   set duid(duid) {
     this.data.duid = duid;
     localStorage.setItem('duid', duid);
-    console.log('set', duid);
+    console.log('set duid', duid);
   }
 
   get duid() {
@@ -30,7 +30,7 @@ class UserData {
     if (duid == null) {
       duid = Math.abs(Math.random() * Number.MAX_SAFE_INTEGER);
     }
-    this.duid = duid;
+    this.data.duid = duid;
   }
 
   get os() {

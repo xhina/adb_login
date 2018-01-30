@@ -59,7 +59,6 @@ function getUserId(accessToken, callback) {
   {method:'POST', headers:headers, body:JSON.stringify(body)})
   .then((r) => r.json())
   .then((r) => {
-    console.log(r);
     if (r.error != null) {
       callback({error:1});
       return;

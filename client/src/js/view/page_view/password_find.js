@@ -29,7 +29,7 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#email").value;
+    const email = this.email.value;
 
     super.api.passwordFind(email,
       (r)=>{
@@ -50,7 +50,7 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <AdbInput label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
+              <AdbInput ref={e=>this.email=e} type="email" label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
 
               <Row className="justify-content-center">
                 <Button><p>{super.getString("ui_send")}</p></Button>

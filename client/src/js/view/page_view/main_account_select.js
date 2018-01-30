@@ -63,7 +63,7 @@ class View extends BaseView {
   onRequestFinishFacebook(res) {
     if (res.error) {
       super.visibleIndicator(false);
-      super.alert(super.getString('error_account_api'));
+      super.errorAlert("");
       return;
     }
 
@@ -82,11 +82,12 @@ class View extends BaseView {
   onRequestFinishKakao(res) {
     if (res.error) {
       super.visibleIndicator(false);
-      super.alert(super.getString('error_account_api'));
+      super.errorAlert("");
       return;
     }
+    console.log(res);
     super.visibleIndicator(true);
-    // res.kaccount_email_verified
+    // res.kaccount_email_verified (valid_email)
     super.api.join(super.api.ACCOUNT_TYPE.KAKAO, res.id, res.kaccount_email, res.properties.nickname,
       (r)=>{
         super.visibleIndicator(false);
@@ -94,7 +95,7 @@ class View extends BaseView {
           super.errorAlert(r.res_code);
           return;
         }
-        this.joinComplete(r.data.access_token, res.kaccount_email, res.kaccount_email);
+        this.joinComplete(r.data.access_token, res.kaccount_email, res.properties.nickname);
       });
   }
 

@@ -25,8 +25,8 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const email = document.querySelector("#email").value;
-    const pw = document.querySelector("#pw").value;
+    const email = this.email.value;
+    const pw = this.pw.value;
 
     if (pw.length < 4 || pw.length > 12) {
       super.alert(super.getString("alert_password_limit"));
@@ -55,8 +55,8 @@ class View extends BaseView {
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
 
-              <AdbInput label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
-              <AdbInput label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput ref={e=>this.email=e} type="email" label_title={super.getString("ui_email")} email_placeholder={super.getString("placeholder_input_email")} />
+              <AdbInput ref={e=>this.pw=e} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
 
               <Row className="justify-content-center">
                 <Button color="primary">

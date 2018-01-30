@@ -24,8 +24,8 @@ class View extends BaseView {
 
   onSubmit(event) {
     event.preventDefault();
-    const pw = document.querySelector("#pw").value;
-    const pw_re = document.querySelector("#pw_re").value;
+    const pw = this.pw.value;
+    const pw_re = this.pw_re.value;
 
     if (pw.length < 4 || pw.length > 12) {
       super.alert(super.getString("alert_password_limit"));
@@ -60,8 +60,8 @@ class View extends BaseView {
         <div className="pre-scrollable">
           <Container>
             <Form onSubmit={this.onSubmit.bind(this)}>
-              <AdbInput label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
-              <AdbInput label_title={super.getString("ui_password_re")} email_placeholder={super.getString("placeholder_input_pw_re")} />
+              <AdbInput ref={e=>this.pw=e} type="password" label_title={super.getString("ui_password")} email_placeholder={super.getString("placeholder_input_pw")} />
+              <AdbInput ref={e=>this.pw_re=e} type="password" label_title={super.getString("ui_password_re")} email_placeholder={super.getString("placeholder_input_pw_re")} />
 
               <Row className="justify-content-center">
                 <Button><p>{super.getString("ui_modify")}</p></Button>

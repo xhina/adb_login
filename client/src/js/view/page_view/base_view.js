@@ -33,7 +33,7 @@ export default class BaseView extends Page {
 
   errorAlert(errorCode) {
     const value = StringResource.hasString(`error${errorCode}`);
-    const str = value ? value : StringResource.getString("error_account_api");
+    const str = value ? value : this.getString("error_account_api");
     this.alert(str);
   }
 
